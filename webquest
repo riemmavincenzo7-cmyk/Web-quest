@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dal Caos all'Inconscio — Mostra Virtuale</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dada-red: #D42B2B;
+    --dada-black: #0A0A0A;
+    --dada-cream: #F5F0E8;
+    --dada-yellow: #F0C040;
+    --surr-blue: #1A2744;
+    --surr-gold: #C9A84C;
+    --surr-sand: #E8D5B0;
+    --surr-violet: #6B3FA0;
+    --abst-orange: #E85D04;
+    --abst-blue: #023E8A;
+    --abst-yellow: #FFBE0B;
+    --abst-red: #CB1B16;
+    --abst-white: #FAFAFA;
+    --inter-teal: #0D4F5C;
+    --inter-lime: #A8C96B;
+    --inter-dark: #0A1628;
+    --font-display: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'Cormorant Garamond', serif;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+body {
+background: var(–dada-black);
+color: var(–dada-cream);
+font-family: var(–font-body);
+font-size: 18px;
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+/* ─── NAVIGATION ─── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+background: rgba(10,10,10,0.95);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255,255,255,0.08);
+padding: 0 2rem;
+display: flex; align-items: center; justify-content: space-between;
+height: 60px;
+}
+.nav-logo {
+font-family: var(–font-mono); font-size: 0.75rem; letter-spacing: 0.15em;
+color: var(–dada-yellow); text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 0.2rem; }
+.nav-links a {
+font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+color: rgba(255,255,255,0.6); text-decoration: none;
+padding: 0.4rem 0.8rem; border-radius: 2px;
+text-transform: uppercase; transition: all 0.3s;
+border: 1px solid transparent;
+}
+.nav-links a:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
+.nav-links a.dada { color: var(–dada-red); }
+.nav-links a.dada:hover { background: var(–dada-red); color: #fff; }
+.nav-links a.surr { color: var(–surr-gold); }
+.nav-links a.surr:hover { background: var(–surr-gold); color: var(–surr-blue); }
+.nav-links a.abst { color: var(–abst-orange); }
+.nav-links a.abst:hover { background: var(–abst-orange); color: #fff; }
+.nav-links a.inter { color: var(–inter-lime); }
+.nav-links a.inter:hover { background: var(–inter-lime); color: var(–inter-dark); }
+
+/* ─── SECTIONS ─── */
+section { min-height: 100vh; position: relative; }
+
+/* ─── HOME ─── */
+#home {
+background: var(–dada-black);
+display: flex; flex-direction: column;
+justify-content: center; align-items: center;
+overflow: hidden; padding: 80px 2rem 4rem;
+text-align: center; position: relative;
+}
+.home-noise {
+position: absolute; inset: 0; opacity: 0.04;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘1’/%3E%3C/svg%3E”);
+background-size: 200px;
+}
+.home-grid-lines {
+position: absolute; inset: 0; opacity: 0.05;
+background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+background-size: 80px 80px;
+}
+.home-year {
+font-family: var(–font-mono); font-size: clamp(6rem, 20vw, 16rem);
+font-weight: 700; line-height: 0.85;
+color: transparent;
+-webkit-text-stroke: 1px rgba(255,255,255,0.12);
+position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+white-space: nowrap; pointer-events: none; user-select: none;
+letter-spacing: -0.04em;
+}
+.home-tag {
+font-family: var(–font-mono); font-size: 0.7rem; letter-spacing: 0.3em;
+text-transform: uppercase; color: var(–dada-yellow);
+margin-bottom: 1.5rem; position: relative; z-index: 2;
+}
+.home-title {
+font-family: var(–font-display);
+font-size: clamp(2.2rem, 6vw, 5rem);
+font-weight: 900; line-height: 1.05;
+position: relative; z-index: 2;
+max-width: 900px;
+}
+.home-title em { font-style: italic; color: var(–dada-red); }
+.home-subtitle {
+font-family: var(–font-body); font-size: 1.3rem;
+font-weight: 300; font-style: italic;
+color: rgba(255,255,255,0.6); margin-top: 1.5rem;
+max-width: 700px; position: relative; z-index: 2;
+}
+.home-divider {
+width: 60px; height: 1px; background: var(–dada-yellow);
+margin: 2rem auto; position: relative; z-index: 2;
+}
+.home-intro-text {
+max-width: 720px; font-size: 1.15rem;
+color: rgba(255,255,255,0.75); line-height: 1.9;
+position: relative; z-index: 2;
+}
+.home-movements {
+display: flex; gap: 1.5rem; margin-top: 3rem;
+position: relative; z-index: 2; flex-wrap: wrap; justify-content: center;
+}
+.movement-pill {
+font-family: var(–font-mono); font-size: 0.7rem; letter-spacing: 0.18em;
+text-transform: uppercase; padding: 0.7rem 1.6rem;
+border: 1px solid; border-radius: 2px;
+text-decoration: none; transition: all 0.4s;
+cursor: pointer;
+}
+.movement-pill.d { border-color: var(–dada-red); color: var(–dada-red); }
+.movement-pill.d:hover { background: var(–dada-red); color: #fff; transform: translateY(-2px); }
+.movement-pill.s { border-color: var(–surr-gold); color: var(–surr-gold); }
+.movement-pill.s:hover { background: var(–surr-gold); color: var(–surr-blue); transform: translateY(-2px); }
+.movement-pill.a { border-color: var(–abst-orange); color: var(–abst-orange); }
+.movement-pill.a:hover { background: var(–abst-orange); color: #fff; transform: translateY(-2px); }
+.movement-pill.i { border-color: var(–inter-lime); color: var(–inter-lime); }
+.movement-pill.i:hover { background: var(–inter-lime); color: var(–inter-dark); transform: translateY(-2px); }
+.scroll-hint {
+position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+color: rgba(255,255,255,0.3); z-index: 2; text-transform: uppercase;
+display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.scroll-hint::after {
+content: ‘’; display: block; width: 1px; height: 40px;
+background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+animation: pulse-line 2s ease-in-out infinite;
+}
+@keyframes pulse-line { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+.context-bar {
+background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.06);
+padding: 2.5rem 4rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem;
+position: relative; z-index: 2; margin-top: 3rem; width: 100%; max-width: 1000px;
+border: 1px solid rgba(255,255,255,0.06); border-radius: 4px;
+}
+.context-item { text-align: left; }
+.context-item-label {
+font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.4rem;
+}
+.context-item-val {
+font-family: var(–font-display); font-size: 1.1rem; font-weight: 700;
+color: rgba(255,255,255,0.85);
+}
+.context-item-desc {
+font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem;
+font-style: italic;
+}
+
+/* ─── SHARED SECTION STYLES ─── */
+.section-header {
+padding: 7rem 4rem 3rem;
+position: relative; overflow: hidden;
+}
+.section-number {
+font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.3em;
+text-transform: uppercase; opacity: 0.5; margin-bottom: 0.8rem; display: block;
+}
+.section-title-huge {
+font-family: var(–font-display); font-size: clamp(3rem, 9vw, 8rem);
+font-weight: 900; line-height: 0.9; letter-spacing: -0.02em;
+}
+.section-subtitle-main {
+font-family: var(–font-body); font-size: 1.4rem; font-style: italic;
+font-weight: 300; margin-top: 1rem; opacity: 0.7; max-width: 600px;
+}
+.content-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+padding: 2rem 4rem 4rem; max-width: 1400px;
+}
+.content-grid.wide { grid-template-columns: 1.5fr 1fr; }
+.content-grid.single { grid-template-columns: 1fr; max-width: 900px; }
+.content-block p {
+font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.4rem; color: rgba(255,255,255,0.82);
+}
+.content-block p strong { font-weight: 600; }
+.content-block h3 {
+font-family: var(–font-display); font-size: 1.6rem; font-weight: 700;
+margin-bottom: 1rem; margin-top: 2rem;
+}
+.pullquote {
+font-family: var(–font-display); font-size: 1.6rem; font-style: italic;
+font-weight: 400; line-height: 1.4; padding: 2rem 0;
+border-left: 3px solid; padding-left: 2rem; margin: 2rem 0;
+}
+
+/* ─── OBRA CARD ─── */
+.obra-card {
+border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
+padding: 1.8rem; position: relative; overflow: hidden;
+transition: all 0.4s; cursor: pointer;
+}
+.obra-card:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-4px); }
+.obra-card-img-placeholder {
+width: 100%; aspect-ratio: 4/3; background: rgba(255,255,255,0.05);
+border-radius: 2px; display: flex; align-items: center; justify-content: center;
+margin-bottom: 1.2rem; position: relative; overflow: hidden;
+font-family: var(–font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.25);
+letter-spacing: 0.1em; text-transform: uppercase; flex-direction: column; gap: 0.5rem;
+}
+.obra-card-img-placeholder span { font-size: 3rem; opacity: 0.3; }
+.obra-title {
+font-family: var(–font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem;
+}
+.obra-meta {
+font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+text-transform: uppercase; opacity: 0.45; margin-bottom: 0.8rem;
+}
+.obra-desc { font-size: 0.95rem; opacity: 0.7; line-height: 1.7; }
+.obra-link {
+display: inline-block; margin-top: 1rem;
+font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
+text-transform: uppercase; text-decoration: none; padding: 0.5rem 1rem;
+border: 1px solid; border-radius: 2px; transition: all 0.3s;
+}
+
+/* ─── INTERACTIVE BOX ─── */
+.interactive-box {
+border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+padding: 2.5rem; margin: 2rem 0; position: relative;
+background: rgba(255,255,255,0.03);
+}
+.interactive-box .box-label {
+position: absolute; top: -0.75rem; left: 1.5rem;
+font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+text-transform: uppercase; padding: 0.2rem 0.8rem;
+border: 1px solid rgba(255,255,255,0.15); border-radius: 2px;
+background: var(–dada-black);
+}
+.interactive-box h4 {
+font-family: var(–font-display); font-size: 1.3rem; font-weight: 700;
+margin-bottom: 1rem;
+}
+.interactive-box p { font-size: 1rem; opacity: 0.75; margin-bottom: 1rem; }
+.btn-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
+.btn {
+font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid;
+border-radius: 2px; cursor: pointer; transition: all 0.3s; background: transparent;
+color: inherit;
+}
+.reveal-content { display: none; margin-top: 1.5rem; }
+.reveal-content.active {
+display: block; animation: fadeSlide 0.4s ease;
+}
+@keyframes fadeSlide { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+.reveal-content p { font-size: 1rem; line-height: 1.8; opacity: 0.85; }
+
+/* ─── QUIZ ─── */
+.quiz-box {
+background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+border-radius: 6px; padding: 2.5rem; margin: 2rem 0;
+}
+.quiz-question {
+font-family: var(–font-display); font-size: 1.2rem; font-weight: 600;
+margin-bottom: 1.2rem; line-height: 1.5;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 0.6rem; }
+.quiz-opt {
+font-family: var(–font-mono); font-size: 0.75rem; letter-spacing: 0.08em;
+padding: 0.8rem 1.2rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px;
+cursor: pointer; transition: all 0.3s; text-align: left; background: transparent; color: inherit;
+}
+.quiz-opt:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+.quiz-opt.correct { border-color: #4CAF50; background: rgba(76,175,80,0.1); color: #4CAF50; }
+.quiz-opt.wrong { border-color: var(–dada-red); background: rgba(212,43,43,0.1); color: var(–dada-red); }
+.quiz-feedback {
+margin-top: 1rem; font-size: 0.95rem; opacity: 0;
+transition: opacity 0.4s; font-style: italic;
+}
+.quiz-feedback.show { opacity: 1; }
+
+/* ─── TIMELINE ─── */
+.timeline { padding: 2rem 4rem; }
+.timeline-item {
+display: grid; grid-template-columns: 120px 1fr; gap: 2rem;
+margin-bottom: 2.5rem; position: relative;
+}
+.timeline-item::before {
+content: ‘’; position: absolute; left: 119px; top: 0; bottom: -2.5rem;
+width: 1px; background: rgba(255,255,255,0.1);
+}
+.timeline-year {
+font-family: var(–font-mono); font-size: 0.8rem; font-weight: 700;
+color: rgba(255,255,255,0.5); text-align: right; padding-top: 0.1rem;
+position: relative;
+}
+.timeline-year::after {
+content: ‘’; position: absolute; right: -8px; top: 0.45rem;
+width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+border: 1px solid rgba(255,255,255,0.3);
+}
+.timeline-content { }
+.timeline-content h4 {
+font-family: var(–font-display); font-size: 1.1rem; font-weight: 700;
+margin-bottom: 0.4rem;
+}
+.timeline-content p { font-size: 0.95rem; opacity: 0.65; line-height: 1.7; }
+
+/* ─── DADAISMO ─── */
+#dadaismo {
+background: var(–dada-black);
+border-top: 3px solid var(–dada-red);
+}
+#dadaismo .section-title-huge { color: var(–dada-red); }
+#dadaismo .pullquote { border-color: var(–dada-red); color: rgba(255,255,255,0.9); }
+#dadaismo .obra-link { border-color: var(–dada-red); color: var(–dada-red); }
+#dadaismo .obra-link:hover { background: var(–dada-red); color: #fff; }
+#dadaismo .btn { border-color: var(–dada-red); color: var(–dada-red); }
+#dadaismo .btn:hover { background: var(–dada-red); color: #fff; }
+#dadaismo .interactive-box .box-label { color: var(–dada-red); border-color: var(–dada-red); }
+
+.dada-manifesto {
+background: var(–dada-red); color: #fff;
+padding: 3rem 4rem; margin: 2rem 0;
+font-family: var(–font-mono); font-size: 0.85rem; line-height: 2.2;
+letter-spacing: 0.08em;
+}
+.dada-manifesto h3 {
+font-family: var(–font-display); font-size: 2rem; font-weight: 900;
+margin-bottom: 1.5rem; letter-spacing: -0.02em;
+}
+.dada-chaos-text {
+font-family: var(–font-display); font-size: 3rem; font-weight: 900;
+line-height: 1; color: rgba(212,43,43,0.08);
+position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+writing-mode: vertical-rl; pointer-events: none; user-select: none;
+white-space: nowrap;
+}
+
+.ready-made-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+padding: 2rem 4rem;
+}
+.ready-made-item {
+border: 1px solid rgba(212,43,43,0.3); padding: 1.5rem;
+border-radius: 3px; transition: all 0.4s; cursor: pointer;
+}
+.ready-made-item:hover { border-color: var(–dada-red); background: rgba(212,43,43,0.05); }
+.ready-made-item .item-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
+.ready-made-item h4 {
+font-family: var(–font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;
+}
+.ready-made-item p { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+
+/* ─── SURREALISMO ─── */
+#surrealismo {
+background: var(–surr-blue);
+border-top: 3px solid var(–surr-gold);
+}
+#surrealismo .section-title-huge { color: var(–surr-gold); }
+#surrealismo .pullquote { border-color: var(–surr-gold); color: rgba(255,255,255,0.9); }
+#surrealismo .obra-link { border-color: var(–surr-gold); color: var(–surr-gold); }
+#surrealismo .obra-link:hover { background: var(–surr-gold); color: var(–surr-blue); }
+#surrealismo .btn { border-color: var(–surr-gold); color: var(–surr-gold); }
+#surrealismo .btn:hover { background: var(–surr-gold); color: var(–surr-blue); }
+#surrealismo .interactive-box { border-color: rgba(201,168,76,0.2); background: rgba(255,255,255,0.02); }
+#surrealismo .interactive-box .box-label { color: var(–surr-gold); border-color: var(–surr-gold); background: var(–surr-blue); }
+#surrealismo .quiz-opt:hover { border-color: var(–surr-gold); background: rgba(201,168,76,0.05); }
+#surrealismo .timeline-year { color: var(–surr-gold); }
+#surrealismo .obra-card { border-color: rgba(201,168,76,0.15); }
+#surrealismo .obra-card:hover { border-color: var(–surr-gold); }
+
+.dream-landscape {
+background: linear-gradient(180deg, #1A2744 0%, #0D1A33 40%, #0A1020 100%);
+padding: 4rem; position: relative; overflow: hidden;
+border-top: 1px solid rgba(201,168,76,0.15);
+border-bottom: 1px solid rgba(201,168,76,0.15);
+margin: 2rem 0;
+}
+.dream-stars {
+position: absolute; inset: 0; pointer-events: none;
+background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 80% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+radial-gradient(1px 1px at 10% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1px 1px at 70% 50%, rgba(255,255,255,0.25) 0%, transparent 100%),
+radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.35) 0%, transparent 100%);
+}
+.dream-title {
+font-family: var(–font-display); font-size: 2.5rem; font-style: italic;
+font-weight: 400; color: var(–surr-gold); text-align: center;
+position: relative; z-index: 1; margin-bottom: 1.5rem;
+}
+.dream-text {
+font-family: var(–font-body); font-size: 1.2rem; font-style: italic;
+text-align: center; max-width: 600px; margin: 0 auto;
+color: rgba(255,255,255,0.65); line-height: 1.9; position: relative; z-index: 1;
+}
+.freud-box {
+display: grid; grid-template-columns: auto 1fr; gap: 2rem;
+background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2);
+border-radius: 6px; padding: 2rem; margin: 2rem 4rem;
+}
+.freud-portrait {
+width: 80px; height: 80px; border-radius: 50%;
+background: rgba(201,168,76,0.15); display: flex; align-items: center;
+justify-content: center; font-size: 2.5rem; flex-shrink: 0;
+border: 1px solid rgba(201,168,76,0.3);
+}
+.freud-content h4 {
+font-family: var(–font-display); font-size: 1.1rem; font-weight: 700;
+color: var(–surr-gold); margin-bottom: 0.5rem;
+}
+.freud-content p { font-size: 0.95rem; opacity: 0.7; line-height: 1.7; }
+
+/* ─── ASTRATTISMO ─── */
+#astrattismo {
+background: #0A0A0A;
+border-top: 3px solid var(–abst-yellow);
+}
+#astrattismo .section-title-huge { color: var(–abst-yellow); }
+#astrattismo .pullquote { border-color: var(–abst-orange); }
+#astrattismo .obra-link { border-color: var(–abst-orange); color: var(–abst-orange); }
+#astrattismo .obra-link:hover { background: var(–abst-orange); color: #fff; }
+#astrattismo .btn { border-color: var(–abst-yellow); color: var(–abst-yellow); }
+#astrattismo .btn:hover { background: var(–abst-yellow); color: var(–dada-black); }
+#astrattismo .interactive-box .box-label { color: var(–abst-yellow); border-color: var(–abst-yellow); }
+
+.trio-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+margin: 2rem 0;
+}
+.trio-panel {
+padding: 3rem 2.5rem; border-right: 1px solid rgba(255,255,255,0.07);
+position: relative; overflow: hidden; transition: all 0.4s;
+}
+.trio-panel:last-child { border-right: none; }
+.trio-panel:hover { background: rgba(255,255,255,0.03); }
+.trio-color-bar { width: 100%; height: 4px; margin-bottom: 1.8rem; border-radius: 1px; }
+.trio-panel h3 {
+font-family: var(–font-display); font-size: 1.8rem; font-weight: 900;
+margin-bottom: 0.6rem; line-height: 1.1;
+}
+.trio-panel .trio-period {
+font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+text-transform: uppercase; opacity: 0.4; margin-bottom: 1.2rem; display: block;
+}
+.trio-panel p { font-size: 0.95rem; opacity: 0.7; line-height: 1.75; margin-bottom: 1rem; }
+.trio-tag {
+display: inline-block; font-family: var(–font-mono); font-size: 0.6rem;
+letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.7rem;
+border: 1px solid; border-radius: 2px; margin: 0.2rem;
+}
+.kandinskij-color { background: linear-gradient(135deg, var(–abst-blue), var(–abst-orange)); }
+.mondrian-color { background: linear-gradient(135deg, var(–abst-red), var(–abst-blue)); }
+.klee-color { background: linear-gradient(135deg, #7B3F00, #FFA07A); }
+
+.color-theory-vis {
+display: flex; gap: 0; height: 80px; border-radius: 3px; overflow: hidden; margin: 1.5rem 0;
+}
+.color-seg { flex: 1; transition: flex 0.5s ease; cursor: pointer; position: relative;
+display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.4rem; }
+.color-seg:hover { flex: 2; }
+.color-seg span {
+font-family: var(–font-mono); font-size: 0.55rem; letter-spacing: 0.1em;
+text-transform: uppercase; color: rgba(255,255,255,0.7); white-space: nowrap;
+writing-mode: vertical-rl; transform: rotate(180deg);
+opacity: 0; transition: opacity 0.3s;
+}
+.color-seg:hover span { opacity: 1; }
+
+/* ─── INTERDISCIPLINARE ─── */
+#interdisciplinare {
+background: var(–inter-dark);
+border-top: 3px solid var(–inter-lime);
+}
+#interdisciplinare .section-title-huge { color: var(–inter-lime); }
+#interdisciplinare .pullquote { border-color: var(–inter-lime); }
+#interdisciplinare .btn { border-color: var(–inter-lime); color: var(–inter-lime); }
+#interdisciplinare .btn:hover { background: var(–inter-lime); color: var(–inter-dark); }
+#interdisciplinare .interactive-box .box-label { color: var(–inter-lime); border-color: var(–inter-lime); background: var(–inter-dark); }
+
+.connections-diagram {
+padding: 3rem 4rem;
+display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;
+}
+.connection-node {
+background: rgba(255,255,255,0.04); border: 1px solid rgba(168,201,107,0.2);
+border-radius: 6px; padding: 1.8rem; text-align: center;
+transition: all 0.4s; cursor: pointer;
+}
+.connection-node:hover { border-color: var(–inter-lime); background: rgba(168,201,107,0.05); transform: scale(1.02); }
+.connection-node .node-icon { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+.connection-node h4 {
+font-family: var(–font-display); font-size: 1.1rem; font-weight: 700;
+color: var(–inter-lime); margin-bottom: 0.5rem;
+}
+.connection-node p { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+.connection-arrow {
+font-size: 2rem; opacity: 0.3; text-align: center;
+display: flex; flex-direction: column; gap: 1rem; align-items: center;
+}
+.debate-section { padding: 2rem 4rem 4rem; }
+.debate-section h3 {
+font-family: var(–font-display); font-size: 2.2rem; font-weight: 700;
+color: var(–inter-lime); margin-bottom: 2rem; line-height: 1.2;
+}
+.debate-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+.debate-card {
+border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 2rem;
+transition: all 0.4s;
+}
+.debate-card:hover { border-color: rgba(255,255,255,0.25); }
+.debate-card.yes { border-top: 3px solid var(–inter-lime); }
+.debate-card.no { border-top: 3px solid var(–dada-red); }
+.debate-card h4 {
+font-family: var(–font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;
+}
+.debate-card ul { padding-left: 1.2rem; }
+.debate-card ul li { font-size: 0.95rem; opacity: 0.7; line-height: 1.7; margin-bottom: 0.5rem; }
+
+.final-answer {
+background: rgba(168,201,107,0.06); border: 1px solid rgba(168,201,107,0.25);
+border-radius: 6px; padding: 3rem 4rem; margin: 2rem 4rem;
+}
+.final-answer h3 {
+font-family: var(–font-display); font-size: 2rem; font-weight: 900;
+color: var(–inter-lime); margin-bottom: 1.5rem; line-height: 1.2;
+}
+.final-answer p { font-size: 1.05rem; line-height: 1.9; opacity: 0.8; margin-bottom: 1.2rem; }
+
+/* ─── FOOTER ─── */
+footer {
+background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.06);
+padding: 3rem 4rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+}
+footer h4 { font-family: var(–font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; margin-bottom: 1rem; }
+footer p, footer a { font-size: 0.9rem; opacity: 0.5; display: block; margin-bottom: 0.3rem; text-decoration: none; color: inherit; transition: opacity 0.3s; line-height: 1.6; }
+footer a:hover { opacity: 0.9; }
+footer .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 2rem; padding-top: 1.5rem; text-align: center; }
+footer .footer-bottom p { font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.3; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+.content-grid, .content-grid.wide { grid-template-columns: 1fr; }
+.ready-made-grid, .trio-grid { grid-template-columns: 1fr; }
+.debate-sides { grid-template-columns: 1fr; }
+.connections-diagram { grid-template-columns: 1fr; }
+.connection-arrow { display: none; }
+.nav-links { display: none; }
+.context-bar { grid-template-columns: 1fr; padding: 2rem; }
+.section-header, .content-grid, .ready-made-grid, .timeline,
+.freud-box, .final-answer, .debate-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+.dada-manifesto { padding: 2rem 1.5rem; }
+footer { grid-template-columns: 1fr; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+.float-anim { animation: float 6s ease-in-out infinite; }
+
+.fade-in {
+opacity: 0; transform: translateY(20px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+z-index: 2000; display: flex; align-items: center; justify-content: center;
+opacity: 0; pointer-events: none; transition: opacity 0.3s;
+backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;
+padding: 2.5rem; position: relative;
+transform: scale(0.95); transition: transform 0.3s;
+}
+.modal-overlay.open .modal-box { transform: scale(1); }
+.modal-close {
+position: absolute; top: 1rem; right: 1rem;
+font-family: var(–font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+background: transparent; border: 1px solid rgba(255,255,255,0.2);
+color: rgba(255,255,255,0.5); padding: 0.3rem 0.7rem; border-radius: 2px;
+cursor: pointer; transition: all 0.3s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.modal-box h3 { font-family: var(–font-display); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+.modal-box p { font-size: 1rem; opacity: 0.75; line-height: 1.8; margin-bottom: 1rem; }
+.modal-box .modal-meta {
+font-family: var(–font-mono); font-size: 0.6rem; letter-spacing: 0.15em;
+text-transform: uppercase; opacity: 0.4; margin-bottom: 1rem;
+}
+
+/* ─── PROGRESS BAR ─── */
+.reading-progress {
+position: fixed; top: 60px; left: 0; right: 0; height: 2px;
+background: rgba(255,255,255,0.05); z-index: 999;
+}
+.reading-progress-bar {
+height: 100%; background: linear-gradient(90deg, var(–dada-red), var(–surr-gold), var(–abst-orange), var(–inter-lime));
+width: 0; transition: width 0.2s;
+}
+
+/* Visually distinguish section backgrounds */
+#home { background: #060606; }
+#dadaismo { background: #0C0505; }
+#surrealismo { background: #0B1020; }
+#astrattismo { background: #060606; }
+#interdisciplinare { background: #040A14; }
+</style>
+
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progressBar"></div></div>
+
+<!-- NAV -->
+
+<nav>
+  <div class="nav-logo">Mostra Virtuale · '900</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#dadaismo" class="dada">Dadaismo</a>
+    <a href="#surrealismo" class="surr">Surrealismo</a>
+    <a href="#astrattismo" class="abst">Astrattismo</a>
+    <a href="#interdisciplinare" class="inter">Connessioni</a>
+  </div>
+</nav>
+
+<!-- MODAL GLOBALE -->
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕ chiudi</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEZIONE 1 – HOME
+═══════════════════════════════════════════════════════════════ -->
+
+<section id="home">
+  <div class="home-noise"></div>
+  <div class="home-grid-lines"></div>
+  <div class="home-year">1900</div>
+
+<span class="home-tag">Mostra Virtuale · Classe 5B</span>
+
+  <h1 class="home-title">
+    Dal <em>Caos</em><br>all'Inconscio
+  </h1>
+  <p class="home-subtitle">
+    La rivoluzione artistica degli inizi del '900 — quando l'arte decise di rompere tutto
+  </p>
+  <div class="home-divider"></div>
+  <p class="home-intro-text">
+    Immaginate un mondo che credeva di aver capito tutto. La fisica di Newton sembrava eterna, le regole sociali erano solide come roccia, la ragione era Dio. Poi, in pochi decenni, <strong>tutto crollò</strong>. Einstein relativizzò lo spazio e il tempo. Freud scoprì che la mente umana era un oceano oscuro e sconosciuto. E una guerra devastò un'intera generazione, lasciandola con una sola certezza: le vecchie certezze non valevano nulla.
+    <br><br>
+    In questo caos nacquero tre dei movimenti artistici più radicali della storia: il <strong>Dadaismo</strong>, il <strong>Surrealismo</strong> e l'<strong>Astrattismo</strong>. Non erano semplici "stili pittorici" — erano <em>risposte esistenziali</em> a un mondo che aveva perso il senso.
+  </p>
+
+  <div class="home-movements">
+    <a href="#dadaismo" class="movement-pill d">① Dadaismo</a>
+    <a href="#surrealismo" class="movement-pill s">② Surrealismo</a>
+    <a href="#astrattismo" class="movement-pill a">③ Astrattismo</a>
+    <a href="#interdisciplinare" class="movement-pill i">④ Connessioni</a>
+  </div>
+
+  <div class="context-bar">
+    <div class="context-item">
+      <div class="context-item-label">Contesto storico</div>
+      <div class="context-item-val">1914–1945</div>
+      <div class="context-item-desc">Due guerre mondiali, ascesa dei totalitarismi</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Rivoluzione scientifica</div>
+      <div class="context-item-val">Einstein · Freud</div>
+      <div class="context-item-desc">Relatività e psicoanalisi sconvolgono la visione del mondo</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Risposta artistica</div>
+      <div class="context-item-val">3 movimenti</div>
+      <div class="context-item-desc">Dada, Surrealismo, Astrattismo: tre vie per sopravvivere al caos</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Scorri per entrare</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEZIONE 2 – DADAISMO
+═══════════════════════════════════════════════════════════════ -->
+
+<section id="dadaismo">
+  <div class="section-header" style="position:relative;overflow:hidden;">
+    <div class="dada-chaos-text">ANTI-ARTE</div>
+    <span class="section-number">Sala 01 / 04 — 1916–1924</span>
+    <h2 class="section-title-huge">DADA</h2>
+    <p class="section-subtitle-main">L'arte dell'anti-arte. Il rifiuto come manifesto.</p>
+  </div>
+
+  <div class="dada-manifesto">
+    <h3>"DADA NON SIGNIFICA NULLA"</h3>
+    Questo è l'unico punto fermo del movimento più irrazionale del '900.<br>
+    Nato a Zurigo nel 1916, al Cabaret Voltaire, mentre l'Europa si dissanguava nelle trincee.<br>
+    Hugo Ball, Emmy Hennings, Tristan Tzara, Jean Arp: artisti in esilio che risposero alla follia con la follia.<br><br>
+    Se il mondo "razionale" aveva prodotto la Prima Guerra Mondiale,<br>
+    allora la razionalità era il problema — non la soluzione.
+  </div>
+
+  <div class="content-grid wide">
+    <div class="content-block">
+      <h3>Il contesto: la trincea come fabbrica di nichilismo</h3>
+      <p>Per comprendere il Dadaismo bisogna capire cosa fu davvero la Prima Guerra Mondiale per chi la visse. Non fu una guerra eroica come quelle del passato: fu un massacro industriale. Milioni di giovani uccisi nelle trincee del Fronte Occidentale da mitragliatrici, gas tossici, artiglieria. La tecnologia — frutto della ragione e del progresso — era diventata la macchina di morte più efficiente mai costruita.</p>
+      <p>Gli artisti che fondarono Dada erano rifugiati a Zurigo (neutrale) ma sapevano perfettamente cosa stava accadendo. La loro risposta non fu il pianto: fu la <strong>risata nichilista</strong>. Se il mondo aveva senso, allora non valeva la pena capirlo. Se non aveva senso, allora l'arte poteva — doveva — smettere di dargliene uno.</p>
+
+```
+  <div class="pullquote">
+    "Per fare una poesia dadaista: prendi un giornale, prendi le forbici, taglia le parole, mettile in un sacchetto, agita, estrai una per una." — Tristan Tzara
+  </div>
+
+  <p>Questo non era nichilismo passivo: era una critica radicale alla <strong>cultura borghese</strong> che aveva glorificato la guerra come "igiene del mondo". I dadaisti dissero: se questa è la vostra civiltà, noi non vogliamo farne parte. L'arte diventa sabotaggio culturale.</p>
+
+  <h3>Hugo Ball e la performance come rottura</h3>
+  <p>Il 23 giugno 1916, Hugo Ball salì sul palco del Cabaret Voltaire vestito da "vescovo cubista" — un costume di cartone azzurro — e iniziò a recitare la sua <em>Karawane</em>, una poesia di sillabe senza senso: <em>"jolifanto bambla ô falli bambla / grossiga m'pfa habla horm..."</em>. Non erano parole. Non volevano dire niente. E questo era esattamente il punto: la lingua, strumento della ragione e della propaganda bellica, veniva smontata pezzo per pezzo.</p>
+
+  <div class="interactive-box">
+    <div class="box-label">⚡ Interazione</div>
+    <h4>Questo è arte?</h4>
+    <p>Una poesia di sillabe senza senso, recitata da un uomo vestito da scatola di cartone. Ti mette a disagio? Bene — è esattamente quello che volevano.</p>
+    <div class="btn-group">
+      <button class="btn" onclick="revealDada('si')">SÌ, è arte</button>
+      <button class="btn" onclick="revealDada('no')">NO, è spazzatura</button>
+      <button class="btn" onclick="revealDada('trap')">È una trappola</button>
+    </div>
+    <div class="reveal-content" id="dadaReveal">
+      <p id="dadaRevealText"></p>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="obra-card fade-in" onclick="openModal('fountain')">
+    <div class="obra-card-img-placeholder">
+      <span>🚽</span>
+      clicca per approfondire
+    </div>
+    <div class="obra-title">Fountain</div>
+    <div class="obra-meta">Marcel Duchamp · 1917 · Orinatoio · Philadelphia Museum of Art</div>
+    <p class="obra-desc">L'opera più scandalosa del '900. Un orinatoio comprato in un negozio, firmato "R. Mutt", presentato come scultura. Rifiutato dalla Society of Independent Artists, divenne il manifesto del concetto di ready-made.</p>
+    <a class="obra-link" onclick="openModal('fountain')">→ Approfondisci</a>
+  </div>
+
+  <div class="obra-card fade-in" onclick="openModal('lhooq')" style="margin-top:1.5rem;">
+    <div class="obra-card-img-placeholder">
+      <span>🎨</span>
+      clicca per approfondire
+    </div>
+    <div class="obra-title">L.H.O.O.Q.</div>
+    <div class="obra-meta">Marcel Duchamp · 1919 · Riproduzione su carta · Vari musei</div>
+    <p class="obra-desc">Una cartolina della Gioconda di Leonardo con baffi e pizzetto aggiunti a matita. Il titolo, letto in francese, è una frase oscena. Un attacco diretto all'arte "sacra" del passato.</p>
+    <a class="obra-link" onclick="openModal('lhooq')">→ Approfondisci</a>
+  </div>
+</div>
+```
+
+  </div>
+
+  <h3 style="padding: 1rem 4rem 0.5rem; font-family: var(--font-display); font-size:1.5rem;">Il Ready-Made: rivoluzione in tre mosse</h3>
+  <div class="ready-made-grid">
+    <div class="ready-made-item">
+      <span class="item-emoji">🛒</span>
+      <h4>Mossa 1: Scegli un oggetto qualunque</h4>
+      <p>Non dipinge, non scolpisce. Duchamp va in un negozio e acquista un oggetto di uso comune: un orinatoio, una ruota di bicicletta, uno scolapiatti. L'atto creativo inizia con la scelta, non con la produzione manuale.</p>
+    </div>
+    <div class="ready-made-item">
+      <span class="item-emoji">✍️</span>
+      <h4>Mossa 2: Firma e contestualizza</h4>
+      <p>Firma l'oggetto con uno pseudonimo (R. Mutt per Fountain) e lo colloca in un contesto artistico — una galleria, una mostra. Questo spostamento di contesto trasforma radicalmente il significato dell'oggetto.</p>
+    </div>
+    <div class="ready-made-item">
+      <span class="item-emoji">💥</span>
+      <h4>Mossa 3: Aspetta la reazione</h4>
+      <p>La reazione del pubblico — scandalizzato, divertito, infuriato — diventa parte dell'opera stessa. Il ready-made non è l'oggetto: è la domanda che pone. "Che cos'è l'arte?" Non c'è risposta. Questo è il punto.</p>
+    </div>
+  </div>
+
+  <div class="timeline" style="margin-top:2rem;">
+    <h3 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:1.5rem;padding-left:140px;color:var(--dada-red);">Cronologia Dada</h3>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1914</div>
+      <div class="timeline-content">
+        <h4>Scoppia la Prima Guerra Mondiale</h4>
+        <p>Il 28 luglio 1914 l'Austria-Ungheria dichiara guerra alla Serbia. In pochi mesi, l'intera Europa è in guerra. La "Belle Époque" finisce nel sangue. La fiducia nel progresso e nella razionalità umana inizia a sgretolarsi.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1916</div>
+      <div class="timeline-content">
+        <h4>Nasce Dada — Cabaret Voltaire, Zurigo</h4>
+        <p>Hugo Ball, Emmy Hennings, Tristan Tzara, Jean Arp e altri fondano il movimento a Zurigo. Il nome "Dada" — in francese "cavallo a dondolo", in russo "sì sì", in molte lingue non vuol dire nulla — viene scelto a caso dal dizionario. O forse no. Forse è tutto intenzionale.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1917</div>
+      <div class="timeline-content">
+        <h4>Duchamp e Fountain a New York</h4>
+        <p>Marcel Duchamp presenta <em>Fountain</em> alla Society of Independent Artists. L'opera viene rifiutata. Duchamp si dimette dal comitato organizzativo in protesta. La storia dell'arte cambia per sempre. Oggi Fountain è considerata l'opera più influente del XX secolo da un sondaggio tra 500 artisti e critici (2004).</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1918</div>
+      <div class="timeline-content">
+        <h4>Manifesto Dada — La voce di Tzara</h4>
+        <p>Tristan Tzara pubblica il <em>Manifesto Dada 1918</em>. "Il Dada è contro il futuro. Il Dada è morto. Il Dada è idiota. Lunga vita al Dada." Una contraddizione permanente come metodo. L'incoerenza come coerenza.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1919–22</div>
+      <div class="timeline-content">
+        <h4>Dada si espande in Europa</h4>
+        <p>Il movimento si diffonde a Berlino (con una connotazione più politica e di critica al militarismo), Colonia, Parigi, Hannover. In Germania, figure come Georg Grosz e Hannah Höch usano il fotomontaggio per attaccare il governo e la borghesia militarista.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" style="color:var(--dada-red);">1924</div>
+      <div class="timeline-content">
+        <h4>Dada si dissolve nel Surrealismo</h4>
+        <p>André Breton pubblica il Primo Manifesto Surrealista. Molti artisti dada confluiscono nel nuovo movimento. Dada non "finisce" — si trasforma, lasciando in eredità la provocazione, il nonsense e l'idea che <em>qualsiasi cosa</em> possa essere arte se l'artista lo decide.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:2rem 4rem 4rem;">
+    <div class="quiz-box">
+      <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dada-red);margin-bottom:0.8rem;">Quiz · Dadaismo</div>
+      <div class="quiz-question">Duchamp affermava che il ready-made dimostra soprattutto che:</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">A) L'artigianato manuale è la vera forma d'arte</button>
+        <button class="quiz-opt" onclick="quiz(this,'correct','dada1')">B) L'opera d'arte è definita dalla scelta e dal contesto, non dalla tecnica</button>
+        <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">C) Qualsiasi oggetto di uso comune è automaticamente bello</button>
+        <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">D) Le regole accademiche del disegno sono fondamentali</button>
+      </div>
+      <div class="quiz-feedback" id="dada1">✓ Esatto. L'arte non dipende dalla bravura tecnica ma dall'intenzione dell'artista e dal contesto in cui l'opera viene collocata. Questa idea ha rivoluzionato tutto — dall'arte concettuale alla performance art contemporanea.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEZIONE 3 – SURREALISMO
+═══════════════════════════════════════════════════════════════ -->
+
+<section id="surrealismo">
+  <div class="section-header">
+    <span class="section-number">Sala 02 / 04 — 1924–1950</span>
+    <h2 class="section-title-huge">SURREAL<br>ISMO</h2>
+    <p class="section-subtitle-main">L'inconscio come territorio dell'arte. I sogni come realtà più vera della realtà.</p>
+  </div>
+
+  <div class="dream-landscape">
+    <div class="dream-stars"></div>
+    <div class="dream-title float-anim">Entra nella mente surrealista</div>
+    <p class="dream-text">
+      Stai sognando. Gli orologi si sciolgono. Un uomo in bombetta fluttua davanti a una finestra. Un elefante cammina su zampe di ragno. Il tuo cervello sa benissimo cosa significano tutte queste immagini — ma la parte razionale non riesce a tradurlo. <em>Questo</em> è il surrealismo.
+    </p>
+  </div>
+
+  <div class="content-grid" style="margin-top:2rem;">
+    <div class="content-block">
+      <h3>Dall'eredità Dada alla scoperta di Freud</h3>
+      <p>Se il Dadaismo aveva detto "il mondo non ha senso", il Surrealismo rispose: "ha un senso profondissimo — ma non è accessibile alla ragione cosciente." Nato ufficialmente nel 1924 con il <em>Manifesto del Surrealismo</em> di André Breton, il movimento fu il primo nella storia dell'arte a dialogare sistematicamente con la psicoanalisi di Sigmund Freud.</p>
+      <p>Freud aveva pubblicato nel 1899 <em>L'interpretazione dei sogni</em> — un testo che, pur ricevuto con scetticismo iniziale, stava rivoluzionando la comprensione della mente umana. La sua tesi: la coscienza è solo la punta dell'iceberg. Sotto, nell'inconscio, brulicano desideri, paure, traumi repressi che guidano il comportamento umano molto più di quanto pensiamo.</p>
+
+```
+  <div class="pullquote">
+    "Il Surrealismo è un automatismo psichico puro, con cui ci si propone di esprimere il reale funzionamento del pensiero, in assenza di qualsiasi controllo esercitato dalla ragione." — André Breton, Manifesto 1924
+  </div>
+
+  <p>Per i surrealisti, la vera realtà — la <em>sur-réalité</em>, la "super-realtà" — si trova nell'inconscio, non nel mondo fisico. L'arte doveva trovare modi per accedervi, aggirando il censore razionale che normalmente blocca queste immagini.</p>
+</div>
+<div class="content-block">
+  <h3>Le tecniche dell'automatismo</h3>
+  <p><strong>Scrittura automatica:</strong> scrivere senza fermarsi, senza correggere, senza pensare — lasciando che la penna segua il flusso dell'inconscio.</p>
+  <p><strong>Écriture cadavre exquis (cadavere squisito):</strong> più persone completano un disegno o un testo senza vedere il contributo degli altri. Il risultato, bizzarro e incoerente, rivela connessioni che la mente cosciente non avrebbe mai fatto.</p>
+  <p><strong>Pittura onirica:</strong> ricreare con precisione fotografica le immagini dei sogni. Non rappresentare il sogno in modo "onirico" — ma con dettaglio quasi maniacale, come se fosse reale. Questo è il metodo di Dalí: il "metodo paranoico-critico".</p>
+  <p><strong>Frottage e grattage:</strong> tecniche di Max Ernst — strofinare carta su superfici ruvide o grattare il colore per far emergere immagini "accidentali" che il cervello poi interpreta.</p>
+</div>
+```
+
+  </div>
+
+  <div class="freud-box fade-in">
+    <div class="freud-portrait">🧠</div>
+    <div class="freud-content">
+      <h4>Sigmund Freud e il surrealismo: un rapporto complicato</h4>
+      <p>I surrealisti adoravano Freud. Lui non adorava i surrealisti. Quando Dalí andò a trovarlo a Londra nel 1938 — un anno prima della sua morte — Freud gli disse: "Nel caso di un dipinto classico, cerco l'inconscio. Nel caso di un dipinto surrealista, cerco il conscio." Non era un complimento. Per Freud, i surrealisti usavano le sue idee in modo superficiale e narcisistico. Ma questo non cambia il fatto che la psicoanalisi sia la vera struttura intellettuale su cui poggia il surrealismo.</p>
+    </div>
+  </div>
+
+  <div class="content-grid" style="margin-top:1rem;">
+    <div class="obra-card fade-in" onclick="openModal('orologi')">
+      <div class="obra-card-img-placeholder">
+        <span>⏰</span>
+        clicca per approfondire
+      </div>
+      <div class="obra-title">La persistenza della memoria</div>
+      <div class="obra-meta">Salvador Dalí · 1931 · Olio su tela · MoMA, New York</div>
+      <p class="obra-desc">Orologi molli che colano su un paesaggio desertico. Un'opera piccola fisicamente (24×33 cm), immensa concettualmente. Il tempo — la misura della realtà — si dissolve come cera.</p>
+      <a class="obra-link" onclick="openModal('orologi')">→ Leggi l'analisi</a>
+    </div>
+    <div class="obra-card fade-in" onclick="openModal('figliodell')">
+      <div class="obra-card-img-placeholder">
+        <span>🍎</span>
+        clicca per approfondire
+      </div>
+      <div class="obra-title">Il figlio dell'uomo</div>
+      <div class="obra-meta">René Magritte · 1964 · Olio su tela · Collezione privata</div>
+      <p class="obra-desc">Un uomo in bombetta con una mela verde al posto del volto. Magritte chiedeva: "Tutto ciò che vediamo ne nasconde un altro." La realtà visibile è solo una maschera.</p>
+      <a class="obra-link" onclick="openModal('figliodell')">→ Leggi l'analisi</a>
+    </div>
+  </div>
+
+  <div style="padding:0 4rem 2rem;">
+    <div class="interactive-box">
+      <div class="box-label">🌙 Esercizio surrealista</div>
+      <h4>Automatismo in 60 secondi</h4>
+      <p>I surrealisti usavano la scrittura automatica per accedere all'inconscio. Prova questo: chiudi gli occhi 5 secondi, poi scrivi le prime 5 parole che ti vengono in mente. Non pensarci. Poi chiediti: cosa hanno in comune? C'è un'immagine che le unisce? Spesso sì — e quella connessione è il tuo inconscio che parla.</p>
+      <div class="btn-group">
+        <button class="btn" onclick="revealSurr('method')">Come funziona davvero?</button>
+        <button class="btn" onclick="revealSurr('examples')">Esempi di automatismo</button>
+      </div>
+      <div class="reveal-content" id="surrReveal">
+        <p id="surrRevealText"></p>
+      </div>
+    </div>
+
+```
+<div class="quiz-box" style="margin-top:1.5rem;">
+  <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--surr-gold);margin-bottom:0.8rem;">Quiz · Surrealismo</div>
+  <div class="quiz-question">Dalí descriveva il suo metodo pittorico come "paranoico-critico". Cosa significa?</div>
+  <div class="quiz-options">
+    <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">A) Dipingere in stato febbricitante per ottenere visioni autentiche</button>
+    <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">B) Usare la fotografia come punto di partenza per i dipinti</button>
+    <button class="quiz-opt" onclick="quiz(this,'correct','surr1')">C) Simulare uno stato paranoico per produrre associazioni irrazionali, mantenendo però piena controllo tecnico nell'esecuzione</button>
+    <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">D) Criticare la psichiatria attraverso l'arte</button>
+  </div>
+  <div class="quiz-feedback" id="surr1">✓ Perfetto. Dalí non "andava di testa" mentre dipingeva: simulava consapevolmente la paranoia per generare associazioni strane, poi le realizzava con una tecnica accademica quasi fotorealistica. Questo contrasto tra contenuto onirico e tecnica precisissima è il cuore del suo stile.</div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEZIONE 4 – ASTRATTISMO
+═══════════════════════════════════════════════════════════════ -->
+
+<section id="astrattismo">
+  <div class="section-header">
+    <span class="section-number">Sala 03 / 04 — 1910–1940</span>
+    <h2 class="section-title-huge">ASTRAT<br>TISMO</h2>
+    <p class="section-subtitle-main">Quando la forma e il colore parlano da soli. Senza oggetti, senza storie.</p>
+  </div>
+
+  <div class="content-grid" style="margin-top:0;">
+    <div class="content-block">
+      <h3>La grande rinuncia: addio al mondo visibile</h3>
+      <p>L'Astrattismo è probabilmente la rottura più radicale con la tradizione artistica occidentale. Per millenni, l'arte aveva rappresentato qualcosa: dei, uomini, paesaggi, battaglie. Anche l'Impressionismo — che aveva dissolto i contorni — continuava a ritrarre la realtà visibile. L'Astrattismo disse basta.</p>
+      <p>Ma non fu una scelta arbitraria. Fu una scelta <strong>filosofica, spirituale e scientifica</strong>. I tre grandi protagonisti dell'astrazione — Vasilij Kandinskij, Piet Mondrian e Paul Klee — arrivarono all'astrazione per strade diverse, spinti da domande profonde sulla natura della realtà, della spiritualità e dell'arte stessa.</p>
+
+```
+  <div class="pullquote" style="border-color:var(--abst-orange);">
+    "Il colore è il tasto. L'occhio è il martelletto. L'anima è il pianoforte con le molte corde." — Vasilij Kandinskij
+  </div>
+
+  <p>Kandinskij fu probabilmente il primo pittore a creare un'opera completamente astratta (attorno al 1910). Secondo la leggenda, vide per caso una sua tela poggiata di lato nella sua bottega e non riconobbe immediatamente il soggetto — ma rimase colpito dalla forza delle forme e dei colori. Quella visione accidentale fu la sua illuminazione.</p>
+</div>
+<div class="content-block">
+  <h3>Arte e musica: la grande analogia</h3>
+  <p>Kandinskij era ossessionato dalla musica. Perché? Perché la musica è l'arte che da sempre "comunica emozioni" senza rappresentare nulla di fisico. Nessuno ha mai chiesto a Beethoven "ma cosa sta raffigurando questa sinfonia?" La musica lavora direttamente sulle emozioni attraverso suoni, ritmi, strutture.</p>
+  <p>Kandinskij voleva fare la stessa cosa con la pittura. Se il Mi bemolle può evocare malinconia, perché il blu non può fare lo stesso? Se un accordo dissonante crea tensione, perché due colori in contrasto non possono generare la stessa sensazione?</p>
+  <p>Non è un caso che Kandinskij fosse amico di Arnold Schönberg, il compositore che stava rivoluzionando la musica con la <strong>dodecafonia</strong> — un sistema che rifiutava la tonalità tradizionale, così come Kandinskij rifiutava la rappresentazione tradizionale. Sono rivoluzioni parallele.</p>
+</div>
+```
+
+  </div>
+
+  <h3 style="padding:1rem 4rem 0.5rem;font-family:var(--font-display);font-size:1.5rem;color:var(--abst-yellow);">Tre visioni dell'astrazione a confronto</h3>
+  <div class="trio-grid">
+    <div class="trio-panel">
+      <div class="trio-color-bar kandinskij-color"></div>
+      <span class="trio-period">Monaco · Bauhaus · 1866–1944</span>
+      <h3>Kandinskij</h3>
+      <p style="color:var(--abst-orange);font-weight:600;font-size:1rem;margin-bottom:1rem;">Astrazione Lirica</p>
+      <p>Per Kandinskij l'astrazione è <strong>musica visiva</strong>. Le forme sono fluide, organiche, dinamiche. I colori hanno valori spirituali precisi: il giallo è aggressivo ed energico, il blu è spirituale e profondo, il rosso è caldo e possente. Nel suo testo teorico <em>Lo spirituale nell'arte</em> (1911) costruisce un sistema completo di corrispondenze tra colori, forme e stati emotivi.</p>
+      <p>Fu anche cofondatore del <strong>Blaue Reiter</strong> (Cavaliere Azzurro) con Franz Marc — un gruppo che credeva nell'arte come espressione spirituale, influenzato dal teosofia e dalla musica romantica.</p>
+      <div>
+        <span class="trio-tag" style="border-color:var(--abst-orange);color:var(--abst-orange);">Emotivo</span>
+        <span class="trio-tag" style="border-color:var(--abst-orange);color:var(--abst-orange);">Spirituale</span>
+        <span class="trio-tag" style="border-color:var(--abst-orange);color:var(--abst-orange);">Musicale</span>
+      </div>
+    </div>
+    <div class="trio-panel">
+      <div class="trio-color-bar mondrian-color"></div>
+      <span class="trio-period">Olanda · De Stijl · 1872–1944</span>
+      <h3>Mondrian</h3>
+      <p style="color:#E43737;font-weight:600;font-size:1rem;margin-bottom:1rem;">Astrazione Geometrica</p>
+      <p>Mondrian cerca l'<strong>ordine universale</strong>. Dopo un percorso che passa dal realismo all'impressionismo al cubismo, arriva alla sua visione finale: la realtà può essere ridotta a linee orizzontali e verticali, e ai tre colori primari (rosso, giallo, blu) più bianco e nero. Questa è la struttura fondamentale del cosmo.</p>
+      <p>Il suo movimento, <strong>De Stijl</strong> (Lo Stile), influenzò profondamente il design, l'architettura e la grafica del '900. I palazzi in stile internazionale, le griglie del design moderno — tutto questo ha radici nella visione di Mondrian.</p>
+      <div>
+        <span class="trio-tag" style="border-color:#E43737;color:#E43737;">Geometrico</span>
+        <span class="trio-tag" style="border-color:#E43737;color:#E43737;">Universale</span>
+        <span class="trio-tag" style="border-color:#E43737;color:#E43737;">Razionale</span>
+      </div>
+    </div>
+    <div class="trio-panel">
+      <div class="trio-color-bar klee-color"></div>
+      <span class="trio-period">Berna · Bauhaus · 1879–1940</span>
+      <h3>Paul Klee</h3>
+      <p style="color:#FFA07A;font-weight:600;font-size:1rem;margin-bottom:1rem;">Astrazione Poetica</p>
+      <p>Klee è il più inclassificabile dei tre. Non è né puramente lirico come Kandinskij né puramente geometrico come Mondrian: è <strong>poetico, fiabesco, infantile nel senso migliore</strong>. Le sue opere sembrano favole visive, geroglifici di un linguaggio sconosciuto, mappe di paesi immaginari.</p>
+      <p>Insegnante al <strong>Bauhaus</strong> (la rivoluzionaria scuola di design tedesca), Klee sviluppò una teoria del colore sofisticatissima e un approccio all'astrazione che incorporava elementi figurativi e simbolici in modo giocoso e ambiguo. La sua frase più celebre: <em>"L'arte non riproduce ciò che è visibile, rende visibile ciò che non lo è."</em></p>
+      <div>
+        <span class="trio-tag" style="border-color:#FFA07A;color:#FFA07A;">Poetico</span>
+        <span class="trio-tag" style="border-color:#FFA07A;color:#FFA07A;">Simbolico</span>
+        <span class="trio-tag" style="border-color:#FFA07A;color:#FFA07A;">Multiforme</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:2rem 4rem;">
+    <h3 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:1rem;color:var(--abst-yellow);">La psicologia dei colori secondo Kandinskij</h3>
+    <p style="font-size:1rem;opacity:0.7;margin-bottom:1rem;">Passa il cursore sui colori per scoprire il significato che Kandinskij attribuiva a ciascuno.</p>
+    <div class="color-theory-vis">
+      <div class="color-seg" style="background:#FFD700;"><span>Giallo · Aggressivo, caldo, terrestre</span></div>
+      <div class="color-seg" style="background:#1E3A8A;"><span>Blu · Spirituale, freddo, cosmico</span></div>
+      <div class="color-seg" style="background:#CC1818;"><span>Rosso · Caldo, vitale, determinato</span></div>
+      <div class="color-seg" style="background:#1A6B2A;"><span>Verde · Calmo, passivo, borghese</span></div>
+      <div class="color-seg" style="background:#F5F0E8;border:1px solid rgba(255,255,255,0.1);"><span style="color:var(--dada-black);">Bianco · Silenzio, potenziale</span></div>
+      <div class="color-seg" style="background:#111111;border:1px solid rgba(255,255,255,0.1);"><span>Nero · Il nulla, la fine</span></div>
+      <div class="color-seg" style="background:#8B4513;"><span>Marrone · Ottuso, immobile</span></div>
+      <div class="color-seg" style="background:#808080;"><span>Grigio · Silenzio senza speranza</span></div>
+    </div>
+  </div>
+
+  <div style="padding:0 4rem 2rem;">
+    <div class="obra-card fade-in" onclick="openModal('composizione')" style="max-width:600px;">
+      <div class="obra-card-img-placeholder">
+        <span>🎨</span>
+        clicca per approfondire
+      </div>
+      <div class="obra-title">Composizione VIII</div>
+      <div class="obra-meta">Vasilij Kandinskij · 1923 · Olio su tela · Guggenheim Museum, New York</div>
+      <p class="obra-desc">Un'orchestra di forme geometriche e organiche in dialogo. Cerchi, triangoli, linee rette si confrontano con curve improvvise. Il quadro "suona".</p>
+      <a class="obra-link" onclick="openModal('composizione')">→ Analisi completa</a>
+    </div>
+
+```
+<div class="quiz-box" style="margin-top:2rem;">
+  <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--abst-yellow);margin-bottom:0.8rem;">Quiz · Astrattismo</div>
+  <div class="quiz-question">Qual è la differenza fondamentale tra l'astrazione di Kandinskij e quella di Mondrian?</div>
+  <div class="quiz-options">
+    <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">A) Kandinskij usava solo il colore, Mondrian solo le forme</button>
+    <button class="quiz-opt" onclick="quiz(this,'correct','abst1')">B) Kandinskij puntava all'espressione emotiva e spirituale (lirica), Mondrian all'ordine universale e razionale (geometrica)</button>
+    <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">C) Kandinskij era influenzato da Freud, Mondrian da Einstein</button>
+    <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">D) Non c'è differenza sostanziale, sono entrambi astratti allo stesso modo</button>
+  </div>
+  <div class="quiz-feedback" id="abst1">✓ Preciso. La dicotomia lirico/geometrico è centrale nell'astrattismo. Kandinskij vuole emozionare come la musica; Mondrian vuole trovare la struttura cosmica universale. Klee si situa tra i due in modo unico e personale.</div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEZIONE 5 – INTERDISCIPLINARE
+═══════════════════════════════════════════════════════════════ -->
+
+<section id="interdisciplinare">
+  <div class="section-header">
+    <span class="section-number">Sala 04 / 04 — Sintesi Finale</span>
+    <h2 class="section-title-huge">CON<br>NESS<br>IONI</h2>
+    <p class="section-subtitle-main">Arte, fisica quantistica e psicoanalisi: coincidenza o rivoluzione condivisa?</p>
+  </div>
+
+  <div class="connections-diagram">
+    <div class="connection-node">
+      <span class="node-icon">⚛️</span>
+      <h4>Fisica Quantistica e Relatività</h4>
+      <p>Einstein (1905, 1915): spazio e tempo sono relativi, non assoluti. Heisenberg (1927): non si può conoscere contemporaneamente posizione e velocità di una particella. La realtà oggettiva viene messa in dubbio dalla scienza stessa.</p>
+    </div>
+    <div class="connection-arrow">
+      <div>↔</div>
+      <div style="font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.1em;opacity:0.4;">influenza<br>reciproca?</div>
+    </div>
+    <div class="connection-node">
+      <span class="node-icon">🧠</span>
+      <h4>Psicoanalisi</h4>
+      <p>Freud (1899+): l'inconscio governa il comportamento umano. Jung: archetipi collettivi nell'inconscio universale. La mente cosciente è solo una piccola parte dell'essere umano.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:1rem 4rem;margin-bottom:1rem;">
+    <div style="font-size:3rem;opacity:0.3;">⬇</div>
+    <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0.5;">risposta artistica</div>
+    <div style="font-size:3rem;opacity:0.3;">⬇</div>
+  </div>
+
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding:0 4rem 2rem;">
+    <div style="border:1px solid rgba(212,43,43,0.3);border-radius:4px;padding:1rem 1.5rem;text-align:center;min-width:160px;">
+      <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--dada-red);">DADA</div>
+      <div style="font-size:0.8rem;opacity:0.5;margin-top:0.3rem;">Rifiuto totale</div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:1rem 1.5rem;text-align:center;min-width:160px;">
+      <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--surr-gold);">SURREALISMO</div>
+      <div style="font-size:0.8rem;opacity:0.5;margin-top:0.3rem;">Esplorazione inconscia</div>
+    </div>
+    <div style="border:1px solid rgba(255,190,11,0.3);border-radius:4px;padding:1rem 1.5rem;text-align:center;min-width:160px;">
+      <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--abst-yellow);">ASTRATTISMO</div>
+      <div style="font-size:0.8rem;opacity:0.5;margin-top:0.3rem;">Nuova realtà visiva</div>
+    </div>
+  </div>
+
+  <div class="debate-section">
+    <h3>"Arte e scienza si influenzano a vicenda<br>o sono semplici coincidenze storiche?"</h3>
+
+```
+<div class="debate-sides">
+  <div class="debate-card yes">
+    <h4 style="color:var(--inter-lime);">✓ SÌ, c'è una connessione reale</h4>
+    <ul>
+      <li>Kandinskij conosceva e discuteva le teorie atomiche di Rutherford. Quando scoprì che l'atomo era divisibile (1897), scrisse che si sentì come se "la terra si fosse aperta sotto i piedi". Da quel momento, l'idea di realtà come struttura solida era compromessa.</li>
+      <li>La dissoluzione dell'oggetto nel Cubismo di Picasso (direttamente influenzato dalla relatività e dalla fisica moderna) anticipa e prepara il terreno per l'Astrattismo.</li>
+      <li>Breton citava esplicitamente Freud come fonte teorica del Surrealismo. Non è una coincidenza — è una dipendenza intellettuale diretta e dichiarata.</li>
+      <li>Einstein, Freud, Picasso, Schönberg erano contemporanei, vivevano spesso nelle stesse città (Vienna, Parigi, Berlino), frequentavano gli stessi salotti intellettuali. Le idee circolavano.</li>
+    </ul>
+  </div>
+  <div class="debate-card no">
+    <h4 style="color:var(--dada-red);">⚠ Ma attenzione: non è così semplice</h4>
+    <ul>
+      <li>La maggior parte degli artisti dada non aveva una conoscenza approfondita della fisica quantistica. La correlazione rischia di essere una proiezione retrospettiva — la mente umana che cerca connessioni dove ci sono solo coincidenze cronologiche.</li>
+      <li>Cause comuni possono produrre effetti paralleli senza influenza diretta. Sia scienziati che artisti rispondevano alla stessa crisi culturale (la guerra, il crollo delle certezze borghesi) in modo indipendente.</li>
+      <li>Freud stesso diffidava dei surrealisti. La connessione era più a senso unico di quanto sembri.</li>
+      <li>Mondrian era ispirato principalmente dalla teosofia e dalla filosofia spiritualista, non dalla fisica moderna.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="final-answer fade-in" style="margin-top:2rem;">
+  <h3>La risposta argomentata: una rivoluzione condivisa dell'epoca</h3>
+  <p>La risposta più onesta è che non si tratta né di influenza diretta sistematica né di pura coincidenza. Si tratta di qualcosa di più sottile e affascinante: un <strong>Zeitgeist</strong> — uno "spirito del tempo" — che pervadeva la cultura europea e mondiale all'inizio del '900.</p>
+  <p>Il XX secolo era iniziato con la certezza che la ragione umana avrebbe risolto ogni problema. La scienza newtoniana sembrava completa. La pace sembrava consolidata. Il progresso sembrava inarrestabile. Poi, in pochissimi anni, tutto questo crollò. Einstein dimostrò che lo spazio e il tempo sono relativi (1905). Freud mostrò che la razionalità è in balia di forze oscure (1899-1900). La Prima Guerra Mondiale (1914-1918) dimostrò che la ragione poteva produrre il più grande massacro della storia.</p>
+  <p>In questo contesto, scienziati e artisti non si copiavano a vicenda: <strong>rispondevano alla stessa crisi</strong>. La domanda comune era: se le nostre certezze fondamentali — la realtà oggettiva, la razionalità umana, la stabilità del mondo fisico — sono false, cosa rimane? Le risposte furono diverse: la fisica andò verso l'indeterminazione e la relatività; la psicologia verso l'inconscio; l'arte verso l'astrazione, il sogno e il rifiuto.</p>
+  <p>E in questo senso — ma solo in questo senso — artisti e scienziati si influenzarono: non trasmettendosi teorie, ma <strong>condividendo la stessa domanda</strong>. E alcune risposte specifiche (Breton–Freud, Kandinskij–Schönberg) furono effettivamente dirette e documentate.</p>
+  <p><em>Quindi: non coincidenza, non influenza meccanica. <strong>Risposta condivisa a una crisi epocale.</strong></em></p>
+</div>
+
+<div class="interactive-box" style="margin-top:2rem;">
+  <div class="box-label">💬 Riflessione finale</div>
+  <h4>Cosa ne pensi tu?</h4>
+  <p>Oggi viviamo in un momento simile: l'intelligenza artificiale sta mettendo in discussione cosa significa "essere creativi", "essere umani", "essere intelligenti". Secondo te, stiamo vivendo un nuovo "momento Dada"? Come risponde l'arte contemporanea?</p>
+  <div class="btn-group">
+    <button class="btn" onclick="revealInter('sì')">Sì, è un momento di crisi simile</button>
+    <button class="btn" onclick="revealInter('no')">No, è diverso</button>
+    <button class="btn" onclick="revealInter('forse')">Forse — ma non lo sapremo per decenni</button>
+  </div>
+  <div class="reveal-content" id="interReveal">
+    <p id="interRevealText"></p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+
+<footer>
+  <div>
+    <h4>Musei consigliati</h4>
+    <a href="https://www.moma.org" target="_blank">→ MoMA New York</a>
+    <a href="https://www.centrepompidou.fr" target="_blank">→ Centre Pompidou, Parigi</a>
+    <a href="https://www.guggenheim.org" target="_blank">→ Guggenheim Museum</a>
+    <a href="https://www.tate.org.uk" target="_blank">→ Tate Modern, Londra</a>
+    <a href="https://www.gnam.beniculturali.it" target="_blank">→ GNAM, Roma</a>
+  </div>
+  <div>
+    <h4>Risorse di approfondimento</h4>
+    <a href="https://www.treccani.it/enciclopedia/dadaismo/" target="_blank">→ Treccani — Dadaismo</a>
+    <a href="https://www.artribune.com" target="_blank">→ Artribune</a>
+    <a href="https://www.theartstory.org/movement/dada/" target="_blank">→ The Art Story</a>
+    <p>Kandinskij, <em>Lo spirituale nell'arte</em>, 1911</p>
+    <p>Breton, <em>Manifesto del Surrealismo</em>, 1924</p>
+  </div>
+  <div>
+    <h4>Questa mostra</h4>
+    <p>Realizzata per il compito WebQuest<br>"Oltre la Realtà: Le avanguardie storiche<br>come laboratorio e sperimentazione"</p>
+    <p style="margin-top:0.8rem;">Classe 5B — Storia dell'Arte</p>
+  </div>
+  <div class="footer-bottom">
+    <p>Mostra Virtuale · Dal Caos all'Inconscio · La Rivoluzione Artistica degli Inizi del '900</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MODAL CONTENTS (DATA)
+═══════════════════════════════════════════════════════════════ -->
+
+<script>
+const modalData = {
+  fountain: {
+    title: "Fountain — Marcel Duchamp, 1917",
+    meta: "Orinatoio in porcellana · 36 × 48 × 61 cm · Philadelphia Museum of Art",
+    body: `<p>La storia di Fountain è quasi più interessante dell'opera stessa. Duchamp la presentò alla Society of Independent Artists di New York nel 1917 firmandola "R. Mutt" — uno pseudonimo che alludeva alla ditta JL Mott Iron Works che produceva sanitari, con un riferimento alla figura comica "Mutt" dei fumetti. Il comitato della mostra, di cui Duchamp era membro, la rifiutò a porte chiuse.</p>
+    <p>Duchamp si dimise in protesta. L'orinatoio originale andò perduto (probabilmente buttato via). Oggi le versioni autenticate prodotte in seguito a firma di Duchamp sono nei più grandi musei del mondo.</p>
+    <p><strong>Perché è rivoluzionaria?</strong> Perché pone una domanda a cui non c'è risposta definitiva: chi definisce cos'è arte? Il museo? Il critico? L'artista? Il pubblico? Duchamp risponde: l'artista, con un atto di scelta. E questa risposta ha cambiato tutto — dall'arte concettuale alla performance, dagli happenings alla Street Art.</p>
+    <p>Nel 2004, un sondaggio tra 500 artisti e critici d'arte britannici ha votato Fountain come "l'opera d'arte più influente del XX secolo" — battendo Picasso, Matisse e Andy Warhol.</p>`
+  },
+  lhooq: {
+    title: "L.H.O.O.Q. — Marcel Duchamp, 1919",
+    meta: "Matita su riproduzione a stampa · varie versioni · Collezioni varie",
+    body: `<p>Duchamp prese una cartolina postale con la riproduzione della <em>Gioconda</em> di Leonardo da Vinci e aggiunse a matita baffi e pizzetto. Il titolo è un acronimo che, letto lettera per lettera in francese, suona come una frase oscena riferita al soggetto del quadro.</p>
+    <p><strong>L'attacco all'opera sacra:</strong> La Gioconda era già un'icona assoluta — "il quadro più famoso del mondo". Duchamp la scelse proprio per questo: per profanare il sacro dell'arte. Non stava dicendo che Leonardo fosse mediocre — stava dicendo che il culto dell'arte classica come "intoccabile" era una prigione culturale.</p>
+    <p><strong>Il concetto di "readymade assistito":</strong> Qui Duchamp non prende semplicemente un oggetto esistente — lo modifica, lo trasforma con un intervento minimo ma radicale. Questo si chiama "readymade assistito" e dimostra che anche una minima aggiunta intenzionale cambia completamente il significato di un'opera.</p>
+    <p>L'opera anticipa di 50 anni tutta la Pop Art e le pratiche di appropriazione artistica contemporanea. Jeff Koons, Andy Warhol, Banksy — senza L.H.O.O.Q. non esisterebbero.</p>`
+  },
+  orologi: {
+    title: "La persistenza della memoria — Salvador Dalí, 1931",
+    meta: "Olio su tela · 24,1 × 33 cm · MoMA, New York",
+    body: `<p>È un'opera piccola fisicamente — quasi delle dimensioni di un foglio A4 — ma enorme concettualmente. Dalí la dipinse in sole due ore, partendo da un pezzo di formaggio Camembert che si stava sciogliendo sul tavolo (sua stessa dichiarazione). La sua tecnica era opposta all'automatismo puro: dipingeva con una precisione quasi fotografica, un realismo illusionistico che rendeva il sogno più "reale" della realtà.</p>
+    <p><strong>Gli orologi molli:</strong> Il tempo è la misura della realtà oggettiva per eccellenza. Se il tempo si scioglie, la realtà stessa si liquefa. Questo è coerente con il contesto culturale: Einstein aveva già dimostrato che il tempo non è assoluto. Dalí trasforma questa idea in immagine visiva — non illustra Einstein, ma condivide con lui la stessa inquietudine sul tempo.</p>
+    <p><strong>La mosca sull'orologio:</strong> Spesso trascurata, la mosca sopra uno degli orologi è un simbolo classico di memento mori — ricordo della morte, della decomposizione. Il tempo si decompone come la carne.</p>
+    <p><strong>Il paesaggio:</strong> Riconosci la baia di Portlligat, vicino a Cadaqués (Catalogna) — il paesaggio della casa di Dalí. L'onirico e il familiare si fondono.</p>`
+  },
+  figliodell: {
+    title: "Il figlio dell'uomo — René Magritte, 1964",
+    meta: "Olio su tela · 116 × 89 cm · Collezione privata",
+    body: `<p>Magritte è forse il pittore surrealista più "accessibile" al grande pubblico — ma non il meno profondo. Il figlio dell'uomo è un autoritratto: un uomo in bombetta e cappotto scuro, con una mela verde che fluttua davanti al suo viso. Il volto è quasi completamente nascosto. Solo un occhio spunta dall'ombra della mela.</p>
+    <p><strong>La sua spiegazione:</strong> "Tutto ciò che vediamo ne nasconde un altro. Ci interessa sempre quello che è nascosto da quello che vediamo. C'è un interesse per quello che è nascosto e quello che il visibile non ci mostra. Questo interesse può assumere la forma di un sentimento abbastanza intenso, una sorta di conflitto se vogliamo, tra il visibile nascosto e il visibile presente."</p>
+    <p><strong>La bombetta:</strong> In Magritte, la bombetta ricorre continuamente — è il simbolo della borghesia, dell'uomo comune, dell'anonimato. Non è un individuo specifico: è "il figlio dell'uomo" — ogni uomo.</p>
+    <p><strong>La mela:</strong> Simbolo della conoscenza (Adamo ed Eva), della tentazione, del velo che nasconde la verità. Magritte non vuole rispondere alla domanda "chi è questo uomo" — vuole che tu la ponga.</p>
+    <p>Il dipinto è diventato uno dei simboli pop della cultura contemporanea, apparendo in film, pubblicità, fumetti. Ma il suo messaggio filosofico — che la realtà visibile è sempre incompleta — rimane attualissimo.</p>`
+  },
+  composizione: {
+    title: "Composizione VIII — Vasilij Kandinskij, 1923",
+    meta: "Olio su tela · 140 × 201 cm · Guggenheim Museum, New York",
+    body: `<p>Dipinta durante il periodo Bauhaus di Kandinskij, Composizione VIII è considerata uno dei capolavori dell'astrattismo geometrico. Ma attenzione: per Kandinskij la geometria non è razionale come in Mondrian — è emotiva, musicale, carica di tensione spirituale.</p>
+    <p><strong>Il cerchio:</strong> In questo periodo, Kandinskij era ossessionato dal cerchio, che considerava "la sintesi delle maggiori opposizioni: il piano eccentrico e il concentrico, tutto in equilibrio... non è teso o freddo, né caldo o freddo." Il grande cerchio in alto a destra domina la composizione.</p>
+    <p><strong>La struttura musicale:</strong> L'opera è organizzata come una partitura musicale. Le forme si "scontrano" e "dialogano" come strumenti in un'orchestra. Kandinskij usava spesso termini musicali per descrivere i suoi quadri — "accordi", "ritmo", "contrappunto".</p>
+    <p><strong>Il contesto Bauhaus:</strong> La scuola Bauhaus (fondata da Walter Gropius nel 1919) voleva unificare arte, artigianato e tecnologia. Kandinskij insegnava lì dal 1922 e questa influenza si vede: la composizione è più geometrica e strutturata rispetto alle opere precedenti più fluide.</p>`
+  }
+};
+
+function openModal(id) {
+  const d = modalData[id];
+  if(!d) return;
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-meta">${d.meta}</div>
+    <h3>${d.title}</h3>
+    ${d.body}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+document.getElementById('modalOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+
+function revealDada(choice) {
+  const texts = {
+    si: "Hai ragione — ma non nel senso che ti aspettavi. Per i dadaisti, la domanda stessa 'è arte?' è già il successo. Se ti stai facendo quella domanda, l'opera ha già raggiunto il suo scopo: farti pensare. L'arte non deve essere bella, non deve raccontare storie. Deve provocare una reazione. Questa è arte.",
+    no: "Perfetto — questa è esattamente la risposta che volevano! I dadaisti erano felici quando il pubblico diceva 'questo è spazzatura'. Perché quella reazione di rifiuto dimostrava che l'arte tradizionale aveva condizionato il nostro giudizio. Rifiutando il Dada, stai inconsapevolmente confermando la loro tesi: l'arte ha bisogno di essere 'bella' solo perché ti hanno insegnato che deve esserlo.",
+    trap: "Hai colto esattamente l'essenza del Dada! È effettivamente una trappola — o meglio, un paradosso. Se dici 'è arte', convalidi il sistema che Dada voleva distruggere. Se dici 'non è arte', usi criteri estetici tradizionali che Dada considerava vuoti. L'unica via d'uscita è rendersi conto che la domanda stessa è il problema."
+  };
+  document.getElementById('dadaRevealText').textContent = texts[choice];
+  document.getElementById('dadaReveal').classList.add('active');
+}
+
+function revealSurr(choice) {
+  const texts = {
+    method: "La scrittura automatica funziona perché bypassa il 'censore interno' — quella voce critica nella tua testa che giudica continuamente. Quando scrivi veloci, senza fermarti, quella voce non riesce a tenere il passo. Quello che emerge è più vicino ai pattern del tuo inconscio: paure, desideri, associazioni che normalmente non avresti il coraggio di ammettere. I surrealisti credevano che questo fosse il materiale grezzo dell'arte autentica.",
+    examples: "Breton e Soupault scrissero insieme 'I campi magnetici' (1920) — il primo libro di scrittura automatica. Breton descriveva di sedersi con una penna e scrivere continuamente, senza sollevare la penna dal foglio, per ore. Il risultato erano testi che sembravano privi di senso ma contenevano immagini potentissime: 'Il cavallo bianco del cuculo rosso canta nella foresta di diamanti'. Nessun significato letterale — ma un'immagine visiva forte e inquietante."
+  };
+  document.getElementById('surrRevealText').textContent = texts[choice];
+  document.getElementById('surrReveal').classList.add('active');
+}
+
+function revealInter(choice) {
+  const texts = {
+    'sì': "Ci sono forti parallelismi. L'intelligenza artificiale generativa sta mettendo in crisi la definizione stessa di 'creativo'. Se una macchina può scrivere una poesia o dipingere un quadro, cosa rimane agli artisti? Alcune risposte artistiche contemporanee assomigliano molto al Dada: performance, arte relazionale, installazioni che non 'producono' nulla di tangibile. L'arte che resiste alla replicabilità macchina.",
+    no: "È vero che ci sono differenze importanti. Il '900 era segnato dalla violenza di massa e dal crollo di un'intera visione del mondo. La crisi dell'IA è più sottile — riguarda l'identità e la creatività, non la sopravvivenza fisica. Forse l'arte risponderà in modo completamente diverso — e non potremo prevederlo finché non sarà già successo.",
+    forse: "Probabilmente è la risposta più onesta. Gli storici dell'arte dell'epoca non sapevano di vivere una 'crisi epocale' — lo abbiamo capito in retrospettiva. Allo stesso modo, i movimenti artistici che stanno nascendo oggi in risposta all'IA potrebbero sembrare marginali ora, e rivoluzionari tra 50 anni. O potrebbe essere l'opposto. La storia dell'arte è spietata con le previsioni."
+  };
+  document.getElementById('interRevealText').textContent = texts[choice];
+  document.getElementById('interReveal').classList.add('active');
+}
+
+function quiz(btn, result, id) {
+  const parent = btn.closest('.quiz-box');
+  const opts = parent.querySelectorAll('.quiz-opt');
+  opts.forEach(o => { o.disabled = true; });
+  btn.classList.add(result);
+  const fb = document.getElementById(id);
+  if(fb) fb.classList.add('show');
+}
+
+// Reading progress
+window.addEventListener('scroll', () => {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const prog = (window.scrollY / docH) * 100;
+  document.getElementById('progressBar').style.width = prog + '%';
+});
+
+// Fade in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
