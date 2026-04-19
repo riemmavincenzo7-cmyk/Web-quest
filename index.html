@@ -25,8 +25,8 @@
       --inter-dark: #081423;
       --inter-lime: #a8c96b;
 
-      --text-main: rgba(255,255,255,0.95);
-      --text-soft: rgba(255,255,255,0.84);
+      --text-main: rgba(255,255,255,0.94);
+      --text-soft: rgba(255,255,255,0.82);
       --text-muted: rgba(255,255,255,0.62);
 
       --font-display: "Playfair Display", serif;
@@ -62,15 +62,6 @@
       color: inherit;
     }
 
-    strong {
-      color: var(--text-main);
-      font-weight: 700;
-    }
-
-    em {
-      font-style: italic;
-    }
-
     nav {
       position: fixed;
       top: 0;
@@ -82,7 +73,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1.3rem;
-      background: rgba(10,10,10,0.96);
+      background: rgba(10,10,10,0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -126,26 +117,9 @@
       position: relative;
     }
 
-    .progress {
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(255,255,255,0.05);
-      z-index: 999;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--dada-red), var(--surr-gold), var(--abst-orange), var(--inter-lime));
-      transition: width 0.18s ease;
-    }
-
     #home {
       background:
-        linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.78)),
+        linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.72)),
         url('https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
@@ -156,7 +130,7 @@
 
     .home-overlay {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1050px;
       position: relative;
     }
 
@@ -173,7 +147,7 @@
     .home-title {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.6rem, 8vw, 5.8rem);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
       line-height: 0.98;
       color: var(--text-main);
     }
@@ -185,7 +159,7 @@
 
     .home-subtitle {
       margin: 1.4rem auto 0;
-      max-width: 780px;
+      max-width: 760px;
       color: var(--text-soft);
       font-size: 1.28rem;
       font-style: italic;
@@ -193,7 +167,7 @@
 
     .home-text {
       margin: 2rem auto 0;
-      max-width: 860px;
+      max-width: 800px;
       color: var(--text-soft);
       font-size: 1.14rem;
     }
@@ -226,7 +200,7 @@
 
     .context-bar {
       margin: 2.4rem auto 0;
-      max-width: 1000px;
+      max-width: 980px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
@@ -287,7 +261,7 @@
 
     .section-subtitle {
       margin-top: 0.9rem;
-      max-width: 700px;
+      max-width: 650px;
       font-size: 1.22rem;
       font-style: italic;
       color: var(--text-soft);
@@ -307,7 +281,7 @@
 
     .text-block h3 {
       font-family: var(--font-display);
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       margin-bottom: 0.8rem;
       color: var(--text-main);
     }
@@ -408,41 +382,6 @@
       color: var(--text-soft);
       font-size: 0.95rem;
       line-height: 1.6;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1.6rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .timeline-year {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.64);
-      padding-top: 0.15rem;
-    }
-
-    .timeline-content h4 {
-      font-family: var(--font-display);
-      font-size: 1.08rem;
-      color: var(--text-main);
-      margin-bottom: 0.2rem;
-    }
-
-    .timeline-content p {
-      color: var(--text-soft);
-      font-size: 0.98rem;
-      line-height: 1.62;
     }
 
     .quiz-box,
@@ -704,7 +643,7 @@
     }
 
     .modal-box {
-      width: min(820px, 100%);
+      width: min(760px, 100%);
       max-height: 88vh;
       overflow-y: auto;
       background: #101010;
@@ -739,7 +678,7 @@
 
     .modal-image img {
       width: 100%;
-      max-height: 420px;
+      max-height: 380px;
       object-fit: cover;
     }
 
@@ -750,21 +689,35 @@
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 0.7rem;
-      line-height: 1.5;
     }
 
     .modal-box h3 {
       font-family: var(--font-display);
-      font-size: 1.95rem;
+      font-size: 1.8rem;
       color: var(--text-main);
       margin-bottom: 0.7rem;
-      line-height: 1.15;
     }
 
     .modal-box p {
       color: var(--text-soft);
       margin-bottom: 0.85rem;
-      font-size: 1.04rem;
+    }
+
+    .progress {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.05);
+      z-index: 999;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--dada-red), var(--surr-gold), var(--abst-orange), var(--inter-lime));
+      transition: width 0.18s ease;
     }
 
     .fade-in {
@@ -785,11 +738,6 @@
       .debate-grid,
       .footer-grid {
         grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
       }
     }
 
@@ -842,9 +790,9 @@
     <div class="home-overlay">
       <div class="home-tag">Mostra virtuale · Marco Cugno · Vincenzo Riemma · Vincenzo Fava · Alessandro Montalto</div>
       <h1 class="home-title">Dal <em>Caos</em><br>all'Inconscio</h1>
-      <p class="home-subtitle">La rivoluzione artistica degli inizi del '900 — quando l’arte smise di fidarsi delle vecchie certezze e cominciò a reinventare il mondo.</p>
+      <p class="home-subtitle">La rivoluzione artistica degli inizi del '900 — quando l'arte smise di fidarsi delle vecchie certezze.</p>
       <p class="home-text">
-        Il primo Novecento è uno dei momenti più drammatici e affascinanti della storia culturale europea. La Prima guerra mondiale spezza l’illusione di un progresso lineare e positivo; la relatività di Einstein incrina l’idea di uno spazio e di un tempo assoluti; la psicoanalisi di Freud rivela che l’essere umano non coincide affatto con la sua parte razionale e cosciente. In questo clima di crisi, di disorientamento e di trasformazione radicale, l’arte non può più limitarsi a rappresentare la realtà come aveva fatto per secoli. Nascono così tre grandi risposte: il <strong>Dadaismo</strong>, che rifiuta la logica della civiltà borghese e del “buon gusto”; il <strong>Surrealismo</strong>, che esplora il sogno, il desiderio e l’inconscio; e l’<strong>Astrattismo</strong>, che cerca un linguaggio nuovo fatto di forme, linee e colori puri.
+        Guerra, crisi della ragione, relatività, inconscio, rottura dei linguaggi tradizionali: il primo Novecento cambia il modo di vedere il mondo. Dadaismo, Surrealismo e Astrattismo nascono come tre risposte diverse allo stesso shock storico e culturale.
       </p>
 
       <div class="home-links">
@@ -858,17 +806,17 @@
         <div class="context-card">
           <div class="context-label">Contesto storico</div>
           <div class="context-value">1914–1945</div>
-          <div class="context-desc">Guerre mondiali, crisi della modernità, crollo della fiducia nel progresso.</div>
+          <div class="context-desc">Guerre mondiali, crisi europea, crollo della fiducia nel progresso.</div>
         </div>
         <div class="context-card">
           <div class="context-label">Rivoluzione culturale</div>
           <div class="context-value">Freud · Einstein</div>
-          <div class="context-desc">Inconscio e relatività cambiano il modo di pensare l’uomo e la realtà.</div>
+          <div class="context-desc">Inconscio e relatività cambiano il modo di pensare la realtà.</div>
         </div>
         <div class="context-card">
           <div class="context-label">Risposta artistica</div>
           <div class="context-value">3 movimenti</div>
-          <div class="context-desc">Rifiuto, sogno, astrazione: tre modi diversi di attraversare il caos.</div>
+          <div class="context-desc">Rifiuto, sogno, astrazione: tre modi di attraversare il caos.</div>
         </div>
       </div>
     </div>
@@ -878,31 +826,31 @@
     <div class="section-header">
       <span class="section-number">Sala 01 / 04 — 1916–1924</span>
       <h2 class="section-title">DADA</h2>
-      <p class="section-subtitle">L’anti-arte come risposta alla follia del mondo moderno.</p>
+      <p class="section-subtitle">L'anti-arte come risposta alla follia del mondo moderno.</p>
     </div>
 
     <div class="content-wrap">
       <div class="two-col">
         <div class="text-block">
-          <h3>Il rifiuto come linguaggio</h3>
+          <h3>Quando la ragione fallisce</h3>
           <p>
-            Il Dadaismo nasce a Zurigo nel 1916, nel contesto del Cabaret Voltaire, mentre l’Europa è devastata dalla Prima guerra mondiale. Non è un caso che Dada sorga proprio in un momento in cui la cultura occidentale sembra aver fallito clamorosamente. Se la civiltà che si definiva razionale, colta e progressiva ha prodotto trincee, gas, mitragliatrici e distruzione di massa, allora forse è proprio l’idea di civiltà a dover essere messa sotto accusa. Dada non vuole proporre un nuovo ordine, ma mostrare il crollo di quello precedente.
+            Il Dadaismo nasce nel 1916 a Zurigo, al Cabaret Voltaire, mentre l'Europa si dissangua nelle trincee. Se la civiltà “razionale” ha prodotto il massacro industriale della guerra, allora la razionalità non è più un rifugio: è parte del problema.
           </p>
           <p>
-            Per questo il linguaggio dadaista è fatto di frammento, nonsense, ironia, provocazione, disordine volontario. L’opera non cerca più di essere armoniosa o “bella” nel senso tradizionale. Vuole disturbare, spiazzare, costringere il pubblico a sentirsi a disagio. In questo senso il Dadaismo non è semplicemente un movimento artistico, ma una forma di critica radicale alla cultura borghese, al culto del capolavoro e all’idea che l’arte debba necessariamente essere nobile, elevata e rassicurante.
+            I dadaisti reagiscono con il nonsense, la provocazione, la distruzione delle convenzioni artistiche. Non vogliono consolare: vogliono sabotare.
           </p>
 
           <div class="pullquote">
-            "Dada non significa nulla." La contraddizione non è un difetto: è una presa di posizione contro un mondo che aveva perso ogni coerenza.
+            "Dada non significa nulla." La contraddizione non è un difetto: è un metodo.
           </div>
 
           <p>
-            Il Dadaismo ha inoltre un merito enorme: sposta il centro dell’arte dall’oggetto all’idea. L’opera non è più soltanto qualcosa da ammirare, ma un’azione mentale, una domanda, una sfida. Da qui nasceranno molte esperienze artistiche successive, dall’arte concettuale alla performance.
+            Il gesto dadaista non cerca il bello, ma lo shock. L'opera diventa domanda: che cos'è arte? Chi la decide? Il museo? L'artista? Il pubblico?
           </p>
 
           <div class="interactive-box">
             <h4>Questo è arte?</h4>
-            <p>Per i dadaisti, il vero successo non è piacere al pubblico, ma costringerlo a rimettere in discussione i propri criteri di giudizio.</p>
+            <p>Per i dadaisti, il vero successo non è piacere al pubblico, ma costringerlo a rimettere in discussione i propri criteri.</p>
             <div class="btn-group">
               <button class="btn" onclick="revealBox('dadaReveal','si')">Sì</button>
               <button class="btn" onclick="revealBox('dadaReveal','no')">No</button>
@@ -919,9 +867,9 @@
               <div class="image-card-title">Hugo Ball al Cabaret Voltaire</div>
               <div class="image-card-meta">Zurigo · 1916</div>
               <div class="image-card-desc">
-                Una delle immagini più celebri del Dada storico: costume, performance, rottura del linguaggio e del gesto teatrale tradizionale.
+                Una delle immagini simbolo del Dada storico: costume, performance, disarticolazione del linguaggio e del corpo.
               </div>
-              <div class="caption-lite">Il corpo entra nell’avanguardia come strumento di shock e di sperimentazione.</div>
+              <div class="caption-lite">L'avanguardia entra in scena non con l'armonia, ma con la rottura.</div>
             </div>
           </div>
 
@@ -931,7 +879,7 @@
               <div class="image-card-title">Fountain</div>
               <div class="image-card-meta">Marcel Duchamp · 1917</div>
               <div class="image-card-desc">
-                Un orinatoio diventa opera d’arte. La tecnica non basta più: conta la scelta, conta il contesto, conta la domanda.
+                Un orinatoio diventa opera d'arte. La tecnica non basta più: conta la scelta, conta il contesto, conta la domanda.
               </div>
             </div>
           </div>
@@ -942,9 +890,9 @@
               <div class="image-card-title">L.H.O.O.Q.</div>
               <div class="image-card-meta">Marcel Duchamp · 1919</div>
               <div class="image-card-desc">
-                La Gioconda con baffi e pizzetto: il capolavoro più venerato della tradizione occidentale viene desacralizzato con un gesto minimo ma violentissimo sul piano simbolico.
+                La Gioconda con baffi e pizzetto: il capolavoro intoccabile viene desacralizzato con un gesto minimo e feroce.
               </div>
-              <div class="caption-lite">La citazione diventa provocazione: il passato non è più sacro né intoccabile.</div>
+              <div class="caption-lite">La citazione diventa provocazione: il passato non è più sacro.</div>
             </div>
           </div>
         </div>
@@ -953,7 +901,7 @@
       <div class="grid-3">
         <div class="small-card">
           <h4>Scelta</h4>
-          <p>Duchamp mostra che l’atto creativo può iniziare non dalla produzione manuale, ma dalla selezione di un oggetto comune.</p>
+          <p>Duchamp mostra che l'atto creativo può iniziare non dalla produzione manuale, ma dalla selezione di un oggetto comune.</p>
         </div>
         <div class="small-card">
           <h4>Contesto</h4>
@@ -961,38 +909,7 @@
         </div>
         <div class="small-card">
           <h4>Reazione</h4>
-          <p>Lo scandalo fa parte dell’opera. La provocazione non è un accessorio: è il cuore del linguaggio dadaista.</p>
-        </div>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">1914</div>
-          <div class="timeline-content">
-            <h4>Scoppia la Prima guerra mondiale</h4>
-            <p>La fiducia nella civiltà europea, nella ragione e nel progresso inizia a crollare in modo drammatico.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1916</div>
-          <div class="timeline-content">
-            <h4>Nasce Dada a Zurigo</h4>
-            <p>Nel Cabaret Voltaire si mescolano poesia sonora, collage, performance, improvvisazione e provocazione.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1917</div>
-          <div class="timeline-content">
-            <h4>Duchamp presenta <em>Fountain</em></h4>
-            <p>Il ready-made diventa il simbolo più radicale della sfida dadaista all’idea classica di opera d’arte.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1919</div>
-          <div class="timeline-content">
-            <h4><em>L.H.O.O.Q.</em> attacca il culto del capolavoro</h4>
-            <p>Duchamp mostra che anche la tradizione può essere rimontata, derisa e usata come materiale critico.</p>
-          </div>
+          <p>Lo scandalo fa parte dell'opera. La provocazione non è accessoria: è il cuore del linguaggio dadaista.</p>
         </div>
       </div>
 
@@ -1003,9 +920,9 @@
           <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">A) il valore artistico dipende dalla bravura manuale</button>
           <button class="quiz-option" onclick="quiz(this,'correct','dadaQ')">B) il contesto e la scelta possono definire un'opera</button>
           <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">C) ogni oggetto comune è automaticamente bello</button>
-          <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">D) l’arte deve rispettare sempre le regole accademiche</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">D) l'arte deve rispettare sempre le regole accademiche</button>
         </div>
-        <div class="quiz-feedback" id="dadaQ">✓ Esatto: il ready-made sposta l’attenzione dall’esecuzione alla decisione concettuale.</div>
+        <div class="quiz-feedback" id="dadaQ">✓ Esatto: il ready-made sposta l'attenzione dall'esecuzione alla decisione concettuale.</div>
       </div>
     </div>
   </section>
@@ -1014,31 +931,31 @@
     <div class="section-header">
       <span class="section-number">Sala 02 / 04 — 1924–1950</span>
       <h2 class="section-title">SURREALISMO</h2>
-      <p class="section-subtitle">L’inconscio, il sogno, il reale che si nasconde dietro il visibile.</p>
+      <p class="section-subtitle">L'inconscio, il sogno, il reale che si nasconde dietro il visibile.</p>
     </div>
 
     <div class="content-wrap">
       <div class="two-col">
         <div class="text-block">
-          <h3>Dal rifiuto all’esplorazione</h3>
+          <h3>Oltre la logica</h3>
           <p>
-            Se il Dadaismo aveva messo in crisi il senso stesso dell’arte, il Surrealismo prova a cercare un livello più profondo di realtà. Non si accontenta di negare: vuole esplorare. André Breton, nel Manifesto del 1924, definisce il Surrealismo come un automatismo psichico puro, cioè un modo di esprimere il funzionamento del pensiero senza il controllo esercitato dalla ragione. Al centro non c’è più il caos come gesto di rottura, ma il sogno, il desiderio, l’inconscio.
+            Se Dada distrugge il senso, il Surrealismo prova a trovarne uno più profondo: non nella ragione cosciente, ma nell'inconscio. André Breton parla di automatismo psichico, di scrittura e immagini che aggirano il controllo razionale.
           </p>
           <p>
-            La psicoanalisi di Freud esercita qui un’influenza decisiva. L’idea che l’essere umano sia abitato da contenuti nascosti, da pulsioni, rimozioni, immagini simboliche e traumi non pienamente accessibili alla coscienza apre agli artisti una nuova prospettiva. L’arte non deve più riprodurre fedelmente il reale visibile: può mostrare ciò che di solito resta nascosto sotto la superficie del quotidiano.
+            Freud offre ai surrealisti un lessico nuovo: desiderio, rimozione, sogno, simbolo. L'arte non rappresenta più soltanto il mondo esterno, ma le forze nascoste che abitano la mente.
           </p>
 
           <div class="pullquote">
-            Il sogno non è evasione dalla realtà: è una via alternativa per penetrarla più a fondo.
+            Il sogno non è evasione: è una forma diversa di verità.
           </div>
 
           <p>
-            Salvador Dalí e René Magritte rappresentano due modalità diverse ma complementari del Surrealismo. Dalí costruisce immagini allucinate, ossessive, rese con una precisione quasi fotografica; Magritte invece lavora sull’enigma, sul rapporto fra ciò che vediamo e ciò che ci sfugge, trasformando la realtà più comune in un problema filosofico.
+            Dalí e Magritte mostrano due strade diverse: da una parte l'immagine onirica e ossessiva, dall'altra l'enigma lucido e apparentemente realistico.
           </p>
 
           <div class="interactive-box">
             <h4>Automatismo</h4>
-            <p>I surrealisti volevano far emergere immagini e parole prima che il filtro razionale le correggesse o le censurasse.</p>
+            <p>I surrealisti volevano far emergere immagini e parole prima che il filtro razionale le correggesse.</p>
             <div class="btn-group">
               <button class="btn" onclick="revealBox('surrReveal','method')">Come funziona</button>
               <button class="btn" onclick="revealBox('surrReveal','examples')">Che effetto produce</button>
@@ -1054,21 +971,21 @@
               <div class="image-card-title">La persistenza della memoria</div>
               <div class="image-card-meta">Salvador Dalí · 1931</div>
               <div class="image-card-desc">
-                Gli orologi molli trasformano il tempo in un’immagine fragile, soggettiva, irreale e insieme nitidissima. È una delle icone assolute del Surrealismo.
+                Gli orologi molli trasformano il tempo in un'immagine fragile, soggettiva, irreale e insieme perfettamente nitida.
               </div>
-              <div class="caption-lite">Il tempo non appare più rigido: si piega, si scioglie, diventa interiore.</div>
+              <div class="caption-lite">Il tempo non appare più solido: si piega, si scioglie, diventa mentale.</div>
             </div>
           </div>
 
           <div class="image-card fade-in" onclick="openModal('sonofman')" style="margin-top:1rem;">
             <img src="https://en.wikipedia.org/wiki/Special:FilePath/Magritte_TheSonOfMan.jpg" alt="The Son of Man di René Magritte">
             <div class="image-card-body">
-              <div class="image-card-title">Il figlio dell’uomo</div>
+              <div class="image-card-title">Il figlio dell'uomo</div>
               <div class="image-card-meta">René Magritte · 1964</div>
               <div class="image-card-desc">
-                Un’immagine apparentemente semplice diventa un enigma: il volto è nascosto, il visibile non basta più a spiegare il reale.
+                Un'immagine apparentemente semplice diventa un enigma: il volto è nascosto, il visibile non basta più a spiegare il reale.
               </div>
-              <div class="caption-lite">Magritte mostra che ciò che vediamo nasconde sempre qualcos’altro.</div>
+              <div class="caption-lite">Magritte mostra che ciò che vediamo nasconde sempre qualcosa.</div>
             </div>
           </div>
         </div>
@@ -1092,55 +1009,49 @@
     <div class="section-header">
       <span class="section-number">Sala 03 / 04 — 1910–1940</span>
       <h2 class="section-title">ASTRATTISMO</h2>
-      <p class="section-subtitle">Quando l’arte smette di rappresentare oggetti e comincia a parlare con forme, ritmi e colori.</p>
+      <p class="section-subtitle">Quando l'arte smette di rappresentare oggetti e comincia a parlare con forme, ritmi e colori.</p>
     </div>
 
     <div class="content-wrap">
       <div class="text-block">
-        <h3>Oltre il visibile</h3>
+        <h3>Dalla realtà visibile a una realtà interiore</h3>
         <p>
-          Con l’Astrattismo la pittura compie una delle rivoluzioni più radicali della sua storia. Per secoli l’arte aveva rappresentato qualcosa: corpi, paesaggi, scene religiose, battaglie, interni domestici. Anche quando le forme si facevano più libere, il legame con il mondo visibile restava forte. Gli artisti astratti, invece, si chiedono se la pittura non possa parlare direttamente all’anima, alla mente, alle emozioni, senza passare attraverso la rappresentazione di oggetti riconoscibili.
-        </p>
-        <p>
-          Kandinskij, Mondrian e Paul Klee offrono tre risposte diverse a questa domanda. Kandinskij vede nella pittura una sorta di musica visiva, fatta di ritmo, energia e tensioni interiori; Mondrian riduce la realtà a linee ortogonali e colori primari per cercare un ordine universale; Klee costruisce immagini poetiche e simboliche, in cui l’astrazione non elimina il mistero, ma lo intensifica.
-        </p>
-        <p>
-          L’Astrattismo non è quindi una fuga dalla realtà, ma una ricerca di una realtà più profonda, meno immediata, meno legata alle apparenze. È un linguaggio nuovo per un mondo nuovo.
+          Con l'Astrattismo, la pittura rinuncia al compito tradizionale di raffigurare il mondo esterno. Kandinskij cerca una musica visiva, Mondrian una struttura universale, Klee una scrittura poetica fatta di segni, colore e memoria.
         </p>
       </div>
 
       <div class="grid-3" style="margin-top:1.2rem;">
         <div class="image-card fade-in" onclick="openModal('kandinsky')">
-          <img src="https://uploads7.wikiart.org/images/wassily-kandinsky/composition-8-1923.jpg">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Kandinsky_-_Composition_8.jpg" alt="Composition 8 di Kandinsky">
           <div class="image-card-body">
-            <div class="image-card-title">Composizione VIII</div>
-            <div class="image-card-meta">Wassily Kandinsky · 1923</div>
-            <div class="image-card-desc">Astrazione lirica: il quadro funziona come un’orchestra di linee, cerchi, forze e tensioni cromatiche.</div>
+            <div class="image-card-title">Kandinskij</div>
+            <div class="image-card-meta">Composizione VIII · 1923</div>
+            <div class="image-card-desc">Astrazione lirica: il quadro funziona come un'orchestra di linee, cerchi e tensioni cromatiche.</div>
           </div>
         </div>
 
         <div class="image-card fade-in" onclick="openModal('mondrian')">
           <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Piet%20Mondriaan,%201930%20-%20Mondrian%20Composition%20II%20in%20Red,%20Blue,%20and%20Yellow.jpg" alt="Composition II in Red Blue and Yellow di Mondrian">
           <div class="image-card-body">
-            <div class="image-card-title">Composition II</div>
-            <div class="image-card-meta">Piet Mondrian · 1930</div>
-            <div class="image-card-desc">Astrazione geometrica: linee rette, equilibrio, colori primari e ricerca di un ordine universale essenziale.</div>
+            <div class="image-card-title">Mondrian</div>
+            <div class="image-card-meta">Composition II · 1930</div>
+            <div class="image-card-desc">Astrazione geometrica: linee rette, equilibrio, colori primari e ricerca di un ordine universale.</div>
           </div>
         </div>
 
         <div class="image-card fade-in" onclick="openModal('klee')">
           <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ad%20Parnassum,%20Paul%20Klee%20(1932).png" alt="Ad Parnassum di Paul Klee">
           <div class="image-card-body">
-            <div class="image-card-title">Ad Parnassum</div>
-            <div class="image-card-meta">Paul Klee · 1932</div>
-            <div class="image-card-desc">Astrazione poetica: colore e struttura si combinano in un’immagine che sembra memoria, paesaggio, architettura e musica insieme.</div>
+            <div class="image-card-title">Paul Klee</div>
+            <div class="image-card-meta">Ad Parnassum · 1932</div>
+            <div class="image-card-desc">Astrazione poetica: colore e struttura si combinano in un'immagine che sembra memoria, mappa, città e musica insieme.</div>
           </div>
         </div>
       </div>
 
       <div class="interactive-box">
         <h4>Tre modi di essere astratti</h4>
-        <p>Kandinskij emoziona, Mondrian ordina, Klee evoca. L’astrazione non è una sola: è una famiglia di risposte diverse alla crisi del visibile e alla ricerca di un nuovo linguaggio spirituale e mentale.</p>
+        <p>Kandinskij emoziona, Mondrian ordina, Klee evoca. L'astrazione non è una sola: è una famiglia di risposte diverse alla crisi del visibile.</p>
       </div>
 
       <div class="quiz-box">
@@ -1148,11 +1059,11 @@
         <p>La differenza più netta tra Kandinskij e Mondrian è che:</p>
         <div class="quiz-options">
           <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">A) Kandinskij usa colore, Mondrian no</button>
-          <button class="quiz-option" onclick="quiz(this,'correct','abstQ')">B) Kandinskij cerca un’espressione lirica e spirituale, Mondrian un ordine razionale e geometrico</button>
+          <button class="quiz-option" onclick="quiz(this,'correct','abstQ')">B) Kandinskij cerca un'espressione lirica e spirituale, Mondrian un ordine razionale e geometrico</button>
           <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">C) Mondrian resta figurativo, Kandinskij no</button>
-          <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">D) non c’è differenza sostanziale</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">D) non c'è differenza sostanziale</button>
         </div>
-        <div class="quiz-feedback" id="abstQ">✓ Esatto: l’astrazione di Kandinskij è più musicale ed emotiva, quella di Mondrian più strutturale e universale.</div>
+        <div class="quiz-feedback" id="abstQ">✓ Esatto: l'astrazione di Kandinskij è più musicale ed emotiva, quella di Mondrian più strutturale e universale.</div>
       </div>
     </div>
   </section>
@@ -1170,17 +1081,16 @@
           <h4 style="color:#c9ea88;">✓ Perché sì</h4>
           <ul>
             <li>Einstein, Freud e le avanguardie mettono tutti in crisi vecchie certezze.</li>
-            <li>Il Surrealismo dialoga apertamente con l’inconscio freudiano.</li>
-            <li>L’Astrattismo nasce anche da una nuova idea di realtà non immediatamente visibile.</li>
-            <li>Arte e cultura del primo Novecento condividono un senso generale di instabilità e trasformazione.</li>
+            <li>Il Surrealismo dialoga apertamente con l'inconscio freudiano.</li>
+            <li>L'Astrattismo nasce anche da una nuova idea di realtà non immediatamente visibile.</li>
           </ul>
         </div>
         <div class="debate-card">
           <h4 style="color:#ff7b7b;">⚠ Ma attenzione</h4>
           <ul>
-            <li>Non sempre esiste un’influenza diretta e dimostrabile fra scienza e arte.</li>
+            <li>Non sempre esiste un'influenza diretta e documentabile.</li>
             <li>Spesso si tratta di risposte parallele a uno stesso clima storico.</li>
-            <li>Le analogie sono forti, ma non vanno trasformate automaticamente in rapporti meccanici di causa-effetto.</li>
+            <li>Le analogie non vanno trasformate automaticamente in dipendenze meccaniche.</li>
           </ul>
         </div>
       </div>
@@ -1188,16 +1098,16 @@
       <div class="final-box">
         <h4>Conclusione argomentata</h4>
         <p>
-          La lettura più convincente è questa: artisti, scienziati e psicoanalisti non si limitano a copiarsi tra loro, ma affrontano lo stesso crollo di certezze. Il mondo non appare più stabile, trasparente, assoluto. E allora cambiano anche i linguaggi con cui lo pensiamo e lo rappresentiamo.
+          La lettura più convincente è questa: artisti, scienziati e psicoanalisti non si limitano a copiarsi tra loro, ma affrontano lo stesso crollo di certezze. Il mondo non appare più stabile, trasparente, assoluto. E allora cambiano anche i linguaggi con cui lo pensiamo.
         </p>
         <p>
-          Dada rifiuta. Il Surrealismo esplora. L’Astrattismo reinventa. Tre modi diversi di rispondere a una stessa frattura storica del primo Novecento.
+          Dada rifiuta. Il Surrealismo esplora. L'Astrattismo reinventa.
         </p>
       </div>
 
       <div class="interactive-box">
         <h4>Riflessione finale</h4>
-        <p>Secondo te oggi, con intelligenza artificiale, crisi globali e trasformazioni rapidissime, stiamo vivendo un’altra stagione in cui anche l’arte deve reinventare i suoi strumenti e i suoi linguaggi?</p>
+        <p>Secondo te oggi, con IA, crisi globali e trasformazioni rapide, stiamo vivendo un'altra stagione in cui anche l'arte deve reinventare i suoi strumenti?</p>
         <div class="btn-group">
           <button class="btn" onclick="revealBox('interReveal','si')">Sì</button>
           <button class="btn" onclick="revealBox('interReveal','no')">No</button>
@@ -1229,96 +1139,81 @@
         <p>Alessandro Montalto</p>
       </div>
     </div>
-    <div class="footer-bottom">Mostra virtuale · Dal caos all’inconscio · Avanguardie del primo Novecento</div>
+    <div class="footer-bottom">Mostra virtuale · Dal caos all'inconscio · Avanguardie del primo Novecento</div>
   </footer>
 
   <script>
     const modalData = {
       hugoball: {
         title: "Hugo Ball al Cabaret Voltaire",
-        meta: "Zurigo · 1916 · performance dadaista",
+        meta: "Zurigo · 1916",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg",
         body: `
-          <p>Questa immagine è una delle più celebri del Dada storico. Hugo Ball appare in costume scenico durante il periodo del Cabaret Voltaire, luogo di nascita del movimento. Il corpo, la voce, il costume e la rottura del linguaggio diventano qui strumenti di una vera e propria rivolta estetica.</p>
-          <p>Ball non vuole “intrattenere” il pubblico secondo regole tradizionali: vuole disorientarlo. La performance dadaista mette in crisi il rapporto normale tra parola e significato. Le poesie sonore, fatte di sillabe prive di senso logico, mostrano che il linguaggio della civiltà europea — lo stesso linguaggio che aveva giustificato guerra, patriottismo e distruzione — può essere smontato e ridotto a puro suono.</p>
-          <p>In questa prospettiva la performance non è un semplice spettacolo, ma un gesto di sabotaggio culturale. Il Dadaismo rivela che l’arte può diventare azione critica e non soltanto produzione di oggetti belli.</p>
+          <p>Questa immagine è una delle più celebri del Dada storico: Hugo Ball appare in costume scenico durante il periodo del Cabaret Voltaire, luogo di nascita del movimento.</p>
+          <p>Il corpo diventa linguaggio sperimentale. La performance distrugge la distinzione netta tra poesia, teatro, gesto e provocazione.</p>
         `
       },
       fountain: {
         title: "Fountain — Marcel Duchamp",
-        meta: "1917 · ready-made · opera cardine del Novecento",
+        meta: "1917 · readymade",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Marcel%20Duchamp,%201917,%20Fountain,%20photograph%20by%20Alfred%20Stieglitz.jpg",
         body: `
-          <p><em>Fountain</em> è probabilmente il ready-made più famoso della storia dell’arte. Duchamp prende un oggetto industriale, un orinatoio, lo sottrae alla sua funzione pratica, lo firma con lo pseudonimo “R. Mutt” e lo presenta come opera d’arte. Il gesto, apparentemente semplice, produce una frattura enorme.</p>
-          <p>Il punto non è l’oggetto in sé, ma la domanda che l’opera pone: che cosa rende qualcosa arte? La bellezza? La manualità? Il contesto museale? L’intenzione dell’artista? Duchamp dimostra che il valore dell’opera non risiede solo nella sua esecuzione, ma anche nell’atto mentale della scelta e nella ridefinizione del contesto.</p>
-          <p><em>Fountain</em> non si limita a provocare: cambia per sempre il modo di pensare l’arte contemporanea. Da quel momento diventa impossibile sostenere che un’opera sia arte solo se è costruita, scolpita o dipinta in modo tradizionale. Si apre così la strada all’arte concettuale, alla performance, all’installazione e a molte pratiche del secondo Novecento.</p>
-          <p>La grandezza di Duchamp sta proprio qui: nell’aver spostato il centro dell’arte dalla mano alla mente.</p>
+          <p><em>Fountain</em> è il ready-made più famoso del Novecento: un oggetto d'uso comune viene sottratto alla funzione pratica e ricollocato nel contesto artistico.</p>
+          <p>Con Duchamp cambia il centro dell'opera: non più solo l'abilità tecnica, ma l'atto concettuale della scelta.</p>
         `
       },
       lhooq: {
         title: "L.H.O.O.Q. — Marcel Duchamp",
-        meta: "1919 · appropriazione e desacralizzazione",
+        meta: "1919",
         image: "https://en.wikipedia.org/wiki/Special:FilePath/Marcel_Duchamp,_1919,_L.H.O.O.Q.jpg",
         body: `
-          <p>Con <em>L.H.O.O.Q.</em>, Duchamp interviene su una riproduzione della Gioconda aggiungendo baffi e pizzetto. Il gesto è minimo dal punto di vista materiale, ma devastante dal punto di vista simbolico. La Gioconda è uno dei massimi emblemi dell’arte occidentale, e proprio per questo Duchamp la sceglie: colpire il capolavoro significa colpire il sistema di venerazione che si è costruito attorno all’arte.</p>
-          <p>L’opera smonta il concetto di capolavoro intoccabile. Non è tanto Leonardo a essere preso di mira, quanto il culto sacralizzante del museo e della tradizione. Duchamp suggerisce che l’arte del passato, invece di essere soltanto ammirata in modo passivo, può essere rimontata, riscritta, messa in discussione.</p>
-          <p>In questo senso <em>L.H.O.O.Q.</em> anticipa pratiche fondamentali dell’arte contemporanea: appropriazione, citazione, ironia, riscrittura delle immagini celebri. È un’opera che dimostra come la provocazione possa essere anche un’intelligentissima operazione critica.</p>
-          <p>Il messaggio è chiaro: nessuna immagine è neutra, nessuna tradizione è intoccabile, nessun capolavoro è al riparo dallo sguardo critico del presente.</p>
+          <p>La Gioconda viene “violata” con baffi e pizzetto. L'opera desacralizza l'idea di capolavoro intoccabile e attacca il culto museale dell'arte classica.</p>
+          <p>È un gesto piccolo, ma storicamente enorme.</p>
         `
       },
       persistence: {
         title: "La persistenza della memoria — Salvador Dalí",
-        meta: "1931 · Surrealismo · il tempo come visione",
+        meta: "1931",
         image: "https://en.wikipedia.org/wiki/Special:FilePath/The%20Persistence%20of%20Memory.jpg",
         body: `
-          <p>Quest’opera è una delle immagini più celebri dell’intero Novecento. Gli orologi molli, appoggiati su superfici rigide e immersi in un paesaggio quasi immobile, trasformano il tempo in qualcosa di flessibile, instabile, quasi organico. Dalí riesce a rendere visibile una sensazione mentale: il tempo non come misura oggettiva, ma come esperienza interiore.</p>
-          <p>La forza del dipinto nasce dal contrasto tra il carattere assurdo delle immagini e la precisione quasi fotografica della loro resa. Questo è uno dei tratti fondamentali del Surrealismo di Dalí: l’allucinazione non è dipinta in modo confuso, ma con una lucidità estrema. Proprio per questo risulta ancora più inquietante.</p>
-          <p>Gli orologi molli possono essere letti come simboli della fragilità delle certezze moderne. Se il tempo si deforma, allora si deforma anche la fiducia in una realtà perfettamente ordinata e misurabile. Il quadro dialoga così con il clima culturale del primo Novecento, segnato dal crollo delle sicurezze assolute.</p>
-          <p><em>La persistenza della memoria</em> non racconta un sogno in modo letterale: costruisce un’immagine in cui il sogno sembra diventare più reale della realtà stessa.</p>
+          <p>Gli orologi molli rendono visibile un tempo non più assoluto ma interiore, deformabile, visionario.</p>
+          <p>Il dipinto è diventato un simbolo universale del Surrealismo proprio perché traduce in immagine l'instabilità delle certezze moderne.</p>
         `
       },
       sonofman: {
-        title: "Il figlio dell’uomo — René Magritte",
-        meta: "1964 · enigma del visibile",
+        title: "Il figlio dell'uomo — René Magritte",
+        meta: "1964",
         image: "https://en.wikipedia.org/wiki/Special:FilePath/Magritte_TheSonOfMan.jpg",
         body: `
-          <p><em>Il figlio dell’uomo</em> è uno dei quadri più celebri di René Magritte. A prima vista sembra semplice: un uomo in abito scuro, con la classica bombetta, sta davanti a un parapetto e a un cielo nuvoloso. Ma il suo volto è nascosto da una mela verde sospesa. Proprio qui nasce l’enigma: ciò che dovrebbe essere visibile resta sottratto.</p>
-          <p>Magritte lavora spesso su immagini normalissime che vengono rese disturbanti da una minima alterazione. Non c’è nulla di mostruoso, eppure tutto diventa ambiguo. L’opera suggerisce che il rapporto tra visibile e verità non sia affatto immediato. Vedere non significa comprendere. Ogni immagine mostra qualcosa e allo stesso tempo nasconde qualcos’altro.</p>
-          <p>La mela, simbolo tradizionale di conoscenza, tentazione e mistero, impedisce l’accesso al volto: quindi proprio ciò che sembra promettere rivelazione finisce per occultare. Magritte mette così in scena il limite della nostra percezione e la tensione continua tra ciò che appare e ciò che resta celato.</p>
-          <p>Il quadro è profondamente surrealista proprio perché trasforma il quotidiano in una domanda filosofica. La realtà più banale si apre improvvisamente all’enigma.</p>
+          <p>Il volto nascosto dalla mela trasforma una scena apparentemente normale in un enigma filosofico.</p>
+          <p>Magritte insiste sul fatto che ciò che vediamo ne nasconde sempre altro: il reale non coincide mai del tutto con il visibile.</p>
         `
       },
       kandinsky: {
         title: "Composizione VIII — Wassily Kandinsky",
-        meta: "1923 · astrattismo lirico e musicale",
-        image: "https://uploads7.wikiart.org/images/wassily-kandinsky/composition-8-1923.jpg",
+        meta: "1923",
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kandinsky_-_Composition_8.jpg",
         body: `
-          <p><em>Composizione VIII</em> è una delle opere più importanti dell’astrazione di Kandinskij. Cerchi, linee, angoli, segmenti, curve e campiture cromatiche non rappresentano oggetti riconoscibili, ma costruiscono un sistema di relazioni visive. Il quadro non descrive il mondo esterno: lo sostituisce con una struttura autonoma fatta di ritmo, energia, equilibrio e tensione.</p>
-          <p>Kandinskij concepisce la pittura in modo simile alla musica. Così come una composizione musicale può suscitare emozioni senza raffigurare nulla di concreto, allo stesso modo il colore e la forma possono agire direttamente sulla sensibilità dello spettatore. Per questo il titolo stesso di molte sue opere richiama il lessico musicale: composizione, improvvisazione, impressione.</p>
-          <p>In <em>Composizione VIII</em> la geometria non è fredda: è animata da un’intensa vita interiore. Il grande cerchio, le diagonali, le linee sottili e i contrasti cromatici producono un effetto quasi orchestrale. Lo spettatore non è invitato a riconoscere oggetti, ma a percepire forze.</p>
-          <p>L’opera dimostra che l’astrazione può essere non solo formale, ma profondamente spirituale. Kandinskij cerca un linguaggio puro, capace di parlare direttamente all’anima.</p>
+          <p>Kandinskij concepisce il quadro come una struttura musicale: forme e colori non rappresentano oggetti, ma tensioni interiori, ritmo, energia.</p>
+          <p>L'astrazione qui è lirica, spirituale, dinamica.</p>
         `
       },
       mondrian: {
         title: "Composition II in Red, Blue, and Yellow — Piet Mondrian",
-        meta: "1930 · astrattismo geometrico",
+        meta: "1930",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Piet%20Mondriaan,%201930%20-%20Mondrian%20Composition%20II%20in%20Red,%20Blue,%20and%20Yellow.jpg",
         body: `
-          <p>Con Mondrian l’astrazione prende una direzione molto diversa rispetto a Kandinskij. Se quest’ultimo cerca il dinamismo interiore e la musicalità, Mondrian persegue la massima semplificazione e l’ordine universale. In <em>Composition II in Red, Blue, and Yellow</em> il quadro si riduce a linee nere ortogonali, campi bianchi e pochi colori primari.</p>
-          <p>Questa estrema riduzione non è povertà, ma rigore. Mondrian vuole eliminare il superfluo per arrivare a una struttura essenziale del reale. Verticale e orizzontale diventano le due direzioni fondamentali del mondo, mentre rosso, blu e giallo assumono il valore di elementi universali.</p>
-          <p>La forza dell’opera sta nel suo equilibrio. Nulla è casuale: ogni rettangolo, ogni linea, ogni rapporto tra pieni e vuoti è calibrato con precisione. Lo spettatore non è chiamato a seguire un racconto, ma a fare esperienza di una tensione ordinata, di una armonia costruita.</p>
-          <p>Mondrian mostra così che l’astrazione può essere anche una ricerca di razionalità e di equilibrio, una risposta alla complessità del mondo attraverso la chiarezza della struttura.</p>
+          <p>Mondrian riduce la pittura a linee ortogonali e colori primari per cercare una struttura universale dell'ordine.</p>
+          <p>La sua astrazione è geometrica, razionale, essenziale.</p>
         `
       },
       klee: {
         title: "Ad Parnassum — Paul Klee",
-        meta: "1932 · astrattismo poetico",
+        meta: "1932",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ad%20Parnassum,%20Paul%20Klee%20(1932).png",
         body: `
-          <p><em>Ad Parnassum</em> è una delle opere più celebri di Paul Klee e rappresenta perfettamente il suo modo personalissimo di intendere l’astrazione. A differenza del rigore di Mondrian o della tensione musicale di Kandinskij, Klee costruisce un’immagine più ambigua e poetica, in cui colore, struttura e simbolo si intrecciano.</p>
-          <p>La superficie del dipinto è composta da una moltitudine di piccoli moduli cromatici che creano una forma che può ricordare una montagna, una piramide, un’architettura o un paesaggio mentale. L’immagine oscilla continuamente tra figurazione e astrazione, tra concretezza e allusione.</p>
-          <p>Questa ambiguità è centrale nell’arte di Klee. Il quadro non impone un significato unico: suggerisce, evoca, apre possibilità. È proprio questa apertura a renderlo profondamente poetico. Le forme sembrano nascere da una memoria visiva, da un linguaggio interiore che non vuole essere completamente tradotto.</p>
-          <p>In <em>Ad Parnassum</em> l’astrazione non elimina il mistero: lo organizza. E così il quadro diventa un luogo di meditazione, di leggerezza e di immaginazione.</p>
+          <p>Klee costruisce una superficie fatta di piccoli moduli cromatici che evoca insieme architettura, paesaggio, simbolo e memoria.</p>
+          <p>La sua astrazione resta aperta, poetica e suggestiva.</p>
         `
       }
     };
@@ -1347,16 +1242,16 @@
       const el = document.getElementById(id);
       const map = {
         dadaReveal: {
-          si: "Per Dada, la tua domanda è già parte dell’opera: se dubiti, l’opera ha colpito nel segno.",
+          si: "Per Dada, la tua domanda è già parte dell'opera: se dubiti, l'opera ha colpito nel segno.",
           no: "Anche il rifiuto è significativo: mostra quanto i criteri tradizionali continuino a pesare sul nostro giudizio.",
-          trap: "Esatto: è una trappola concettuale. Ogni risposta ti costringe a ridefinire l’arte."
+          trap: "Esatto: è una trappola concettuale. Ogni risposta ti costringe a ridefinire l'arte."
         },
         surrReveal: {
-          method: "L’automatismo prova a scrivere o creare prima che il controllo razionale censuri immagini e associazioni più profonde.",
+          method: "L'automatismo prova a scrivere o creare prima che il controllo razionale censuri immagini e associazioni più profonde.",
           examples: "Il risultato può sembrare illogico, ma proprio per questo rivela connessioni inattese, simboli e nuclei emotivi nascosti."
         },
         interReveal: {
-          si: "È una posizione forte: grandi trasformazioni tecniche e culturali spesso costringono anche l’arte a cambiare linguaggio.",
+          si: "È una posizione forte: grandi trasformazioni tecniche e culturali spesso costringono anche l'arte a cambiare linguaggio.",
           no: "Può essere: ogni epoca ha crisi specifiche, e non tutte producono avanguardie paragonabili a quelle del primo Novecento.",
           forse: "Probabilmente è la risposta più prudente: certe svolte si riconoscono davvero solo con il tempo."
         }
