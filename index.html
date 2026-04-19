@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dal Caos all'Inconscio — Mostra Virtuale</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -13,21 +14,20 @@
       --dada-cream: #f5f0e8;
       --dada-yellow: #f0c040;
 
-      --surr-blue: #1a2744;
-      --surr-gold: #d9b75a;
-      --surr-violet: #6b3fa0;
+      --surr-blue: #15233d;
+      --surr-gold: #d7b65a;
 
       --abst-orange: #e85d04;
-      --abst-blue: #023e8a;
+      --abst-blue: #114a9f;
       --abst-yellow: #ffbe0b;
       --abst-red: #cb1b16;
 
+      --inter-dark: #081423;
       --inter-lime: #a8c96b;
-      --inter-dark: #0a1628;
 
       --text-main: rgba(255,255,255,0.94);
-      --text-soft: rgba(255,255,255,0.84);
-      --text-muted: rgba(255,255,255,0.66);
+      --text-soft: rgba(255,255,255,0.82);
+      --text-muted: rgba(255,255,255,0.62);
 
       --font-display: "Playfair Display", serif;
       --font-mono: "Space Mono", monospace;
@@ -48,8 +48,8 @@
       background: var(--dada-black);
       color: var(--dada-cream);
       font-family: var(--font-body);
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 20px;
+      line-height: 1.75;
       overflow-x: hidden;
     }
 
@@ -58,9 +58,8 @@
       max-width: 100%;
     }
 
-    a,
-    button {
-      -webkit-tap-highlight-color: transparent;
+    a {
+      color: inherit;
     }
 
     nav {
@@ -68,130 +67,71 @@
       top: 0;
       left: 0;
       right: 0;
+      height: 64px;
       z-index: 1000;
-      background: rgba(10, 10, 10, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 0 2rem;
-      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 1.3rem;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav-logo {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--dada-yellow);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: var(--dada-yellow);
     }
 
     .nav-links {
       display: flex;
       gap: 0.25rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.78);
       text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
       text-transform: uppercase;
-      border-radius: 2px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.76);
+      padding: 0.42rem 0.72rem;
       border: 1px solid transparent;
-      padding: 0.4rem 0.8rem;
-      transition: 0.3s ease;
+      border-radius: 2px;
+      transition: 0.25s ease;
     }
 
     .nav-links a:hover {
-      background: rgba(255,255,255,0.05);
       color: #fff;
       border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
     }
-
-    .nav-links a.dada { color: #ef6666; }
-    .nav-links a.dada:hover { background: var(--dada-red); color: #fff; }
-
-    .nav-links a.surr { color: #f1cf79; }
-    .nav-links a.surr:hover { background: var(--surr-gold); color: #101a30; }
-
-    .nav-links a.abst { color: #ff904d; }
-    .nav-links a.abst:hover { background: var(--abst-orange); color: #fff; }
-
-    .nav-links a.inter { color: #c9ea88; }
-    .nav-links a.inter:hover { background: var(--inter-lime); color: var(--inter-dark); }
 
     section {
       min-height: 100vh;
       position: relative;
     }
 
-    .reading-progress {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(255,255,255,0.05);
-      z-index: 999;
-    }
-
-    .reading-progress-bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--dada-red), var(--surr-gold), var(--abst-orange), var(--inter-lime));
-      transition: width 0.15s ease;
-    }
-
     #home {
-      background: #060606;
+      background:
+        linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.72)),
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg') center/cover no-repeat;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 90px 2rem 4rem;
+      justify-content: center;
+      padding: 7rem 1.4rem 3rem;
       text-align: center;
-      overflow: hidden;
+    }
+
+    .home-overlay {
+      width: 100%;
+      max-width: 1050px;
       position: relative;
-    }
-
-    .home-noise {
-      position: absolute;
-      inset: 0;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      background-size: 200px;
-      pointer-events: none;
-    }
-
-    .home-grid-lines {
-      position: absolute;
-      inset: 0;
-      opacity: 0.05;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-      background-size: 80px 80px;
-      pointer-events: none;
-    }
-
-    .home-year {
-      font-family: var(--font-mono);
-      font-size: clamp(6rem, 20vw, 16rem);
-      font-weight: 700;
-      line-height: 0.85;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.12);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: -0.04em;
     }
 
     .home-tag {
@@ -200,650 +140,370 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--dada-yellow);
-      margin-bottom: 1.4rem;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 1.2rem;
       line-height: 1.8;
-      max-width: 1100px;
     }
 
     .home-title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 5.2rem);
       font-weight: 900;
-      line-height: 1.03;
-      position: relative;
-      z-index: 2;
-      max-width: 920px;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: 0.98;
       color: var(--text-main);
     }
 
     .home-title em {
-      color: #ff6565;
+      color: #ff6b6b;
       font-style: italic;
     }
 
     .home-subtitle {
-      font-size: 1.3rem;
+      margin: 1.4rem auto 0;
+      max-width: 760px;
+      color: var(--text-soft);
+      font-size: 1.28rem;
       font-style: italic;
+    }
+
+    .home-text {
+      margin: 2rem auto 0;
+      max-width: 800px;
       color: var(--text-soft);
-      margin-top: 1.3rem;
-      max-width: 760px;
-      position: relative;
-      z-index: 2;
+      font-size: 1.14rem;
     }
 
-    .home-divider {
-      width: 60px;
-      height: 1px;
-      background: var(--dada-yellow);
-      margin: 2rem auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .home-intro-text {
-      max-width: 760px;
-      font-size: 1.15rem;
-      line-height: 1.9;
-      color: var(--text-soft);
-      position: relative;
-      z-index: 2;
-    }
-
-    .home-movements {
+    .home-links {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 2.8rem;
-      position: relative;
-      z-index: 2;
+      margin-top: 2.2rem;
     }
 
-    .movement-pill {
+    .pill {
+      text-decoration: none;
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.7rem 1.3rem;
-      border: 1px solid;
+      letter-spacing: 0.16em;
+      padding: 0.75rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.28);
+      color: #fff;
       border-radius: 2px;
-      text-decoration: none;
-      transition: 0.3s ease;
+      transition: 0.25s ease;
     }
 
-    .movement-pill.d { border-color: #ef6666; color: #ef6666; }
-    .movement-pill.d:hover { background: var(--dada-red); color: #fff; transform: translateY(-2px); }
-
-    .movement-pill.s { border-color: #f1cf79; color: #f1cf79; }
-    .movement-pill.s:hover { background: var(--surr-gold); color: #101a30; transform: translateY(-2px); }
-
-    .movement-pill.a { border-color: #ff904d; color: #ff904d; }
-    .movement-pill.a:hover { background: var(--abst-orange); color: #fff; transform: translateY(-2px); }
-
-    .movement-pill.i { border-color: #c9ea88; color: #c9ea88; }
-    .movement-pill.i:hover { background: var(--inter-lime); color: var(--inter-dark); transform: translateY(-2px); }
-
-    .home-visual-strip {
-      width: 100%;
-      max-width: 1140px;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 1rem;
-      margin-top: 3rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .home-figure {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .home-figure img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .home-caption {
-      padding: 0.9rem 1rem 1rem;
-    }
-
-    .home-caption strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--text-main);
-      margin-bottom: 0.15rem;
-    }
-
-    .home-caption span {
-      display: block;
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--text-muted);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.45);
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 2;
-    }
-
-    .scroll-hint::after {
-      content: "";
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
-      animation: pulse-line 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-line {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+    .pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
     }
 
     .context-bar {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      padding: 2.3rem 3.2rem;
+      margin: 2.4rem auto 0;
+      max-width: 980px;
       display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 2rem;
-      width: 100%;
-      max-width: 1000px;
-      margin-top: 2.5rem;
-      position: relative;
-      z-index: 2;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
 
-    .context-item-label {
+    .context-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 1.1rem 1rem;
+      text-align: left;
+    }
+
+    .context-label {
       font-family: var(--font-mono);
       font-size: 0.58rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 0.45rem;
+      color: rgba(255,255,255,0.56);
+      margin-bottom: 0.3rem;
     }
 
-    .context-item-val {
+    .context-value {
       font-family: var(--font-display);
       font-size: 1.08rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
-    .context-item-desc {
-      margin-top: 0.2rem;
-      font-size: 0.88rem;
+    .context-desc {
+      margin-top: 0.24rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
-      font-style: italic;
     }
 
     .section-header {
-      padding: 7rem 4rem 3rem;
-      position: relative;
-      overflow: hidden;
+      padding: 6.4rem 1.4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .section-number {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      opacity: 0.68;
-      margin-bottom: 0.8rem;
+      color: rgba(255,255,255,0.54);
+      margin-bottom: 0.7rem;
       display: block;
     }
 
-    .section-title-huge {
+    .section-title {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 9vw, 8rem);
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      line-height: 0.92;
       font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
     }
 
-    .section-subtitle-main {
-      margin-top: 1rem;
-      max-width: 620px;
-      font-size: 1.35rem;
+    .section-subtitle {
+      margin-top: 0.9rem;
+      max-width: 650px;
+      font-size: 1.22rem;
       font-style: italic;
-      font-weight: 300;
-      opacity: 0.82;
+      color: var(--text-soft);
     }
 
-    .content-grid {
+    .content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.4rem 3.2rem;
+    }
+
+    .two-col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      padding: 2rem 4rem 4rem;
-      max-width: 1400px;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 2rem;
     }
 
-    .content-grid.wide {
-      grid-template-columns: 1.45fr 1fr;
-    }
-
-    .content-block h3 {
+    .text-block h3 {
       font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 0 0 1rem;
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
       color: var(--text-main);
     }
 
-    .content-block p {
-      font-size: 1.08rem;
-      line-height: 1.9;
+    .text-block p {
+      margin-bottom: 1rem;
       color: var(--text-soft);
-      margin-bottom: 1.35rem;
     }
 
     .pullquote {
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-style: italic;
-      line-height: 1.4;
+      margin: 1.6rem 0;
+      padding: 1rem 0 1rem 1.2rem;
       border-left: 3px solid;
-      padding: 0.5rem 0 0.5rem 1.8rem;
-      margin: 2rem 0;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      line-height: 1.4;
+      font-style: italic;
       color: var(--text-main);
     }
 
-    .figure-inline {
+    .image-card {
       background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
       overflow: hidden;
-      margin: 1.2rem 0 1.8rem;
-    }
-
-    .figure-inline img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-    }
-
-    .figure-inline figcaption {
-      padding: 0.85rem 1rem 1rem;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-      font-style: italic;
-    }
-
-    .obra-card {
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 1.8rem;
-      background: rgba(255,255,255,0.025);
+      transition: 0.25s ease;
       cursor: pointer;
-      transition: 0.35s ease;
     }
 
-    .obra-card:hover {
+    .image-card:hover {
       transform: translateY(-4px);
       border-color: rgba(255,255,255,0.24);
-      background: rgba(255,255,255,0.04);
     }
 
-    .obra-card-img-placeholder {
+    .image-card img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.04);
-      margin-bottom: 1.15rem;
-    }
-
-    .obra-card-img-placeholder img {
-      width: 100%;
-      height: 100%;
+      height: 290px;
       object-fit: cover;
     }
 
-    .obra-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.3rem;
+    .image-card-body {
+      padding: 1rem 1rem 1.1rem;
     }
 
-    .obra-meta {
+    .image-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .image-card-meta {
+      margin-top: 0.25rem;
       font-family: var(--font-mono);
-      font-size: 0.63rem;
-      letter-spacing: 0.12em;
+      font-size: 0.6rem;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
+    }
+
+    .image-card-desc {
+      margin-top: 0.7rem;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .caption-lite {
+      margin-top: 0.55rem;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .small-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .small-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .small-card p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
       line-height: 1.6;
     }
 
-    .obra-desc {
-      font-size: 0.98rem;
-      line-height: 1.75;
-      color: var(--text-soft);
-    }
-
-    .card-caption {
-      margin-top: 0.8rem;
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      font-style: italic;
-      line-height: 1.55;
-    }
-
-    .obra-link {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px solid;
-      border-radius: 2px;
-      transition: 0.3s ease;
-    }
-
-    .interactive-box {
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 6px;
+    .quiz-box,
+    .interactive-box,
+    .final-box {
+      margin-top: 1.6rem;
       background: rgba(255,255,255,0.04);
-      padding: 2.5rem;
-      margin: 2rem 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 1.4rem;
     }
 
-    .box-label {
-      position: absolute;
-      top: -0.75rem;
-      left: 1.5rem;
-      padding: 0.22rem 0.8rem;
-      border-radius: 2px;
-      border: 1px solid rgba(255,255,255,0.16);
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      background: #111;
-    }
-
-    .interactive-box h4 {
+    .interactive-box h4,
+    .quiz-box h4,
+    .final-box h4 {
       font-family: var(--font-display);
-      font-size: 1.28rem;
-      font-weight: 700;
+      font-size: 1.35rem;
       color: var(--text-main);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.7rem;
     }
 
-    .interactive-box p {
+    .interactive-box p,
+    .quiz-box p,
+    .final-box p {
       color: var(--text-soft);
-      margin-bottom: 0.9rem;
     }
 
     .btn-group {
       display: flex;
+      gap: 0.7rem;
       flex-wrap: wrap;
-      gap: 0.8rem;
       margin-top: 1rem;
     }
 
     .btn {
       background: transparent;
       color: inherit;
-      border: 1px solid;
-      border-radius: 2px;
-      padding: 0.6rem 1.2rem;
-      font-family: var(--font-mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.26);
+      border-radius: 3px;
+      padding: 0.65rem 1rem;
       cursor: pointer;
-      transition: 0.3s ease;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: 0.2s ease;
     }
 
-    .reveal-content {
+    .btn:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .reveal {
       display: none;
-      margin-top: 1.3rem;
+      margin-top: 1rem;
+      color: var(--text-soft);
     }
 
-    .reveal-content.active {
+    .reveal.active {
       display: block;
-      animation: fadeSlide 0.35s ease;
-    }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .quiz-box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 2.4rem;
-      margin: 2rem 0;
-    }
-
-    .quiz-question {
-      font-family: var(--font-display);
-      font-size: 1.16rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
     }
 
     .quiz-options {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.65rem;
+      margin-top: 1rem;
     }
 
-    .quiz-opt {
+    .quiz-option {
       text-align: left;
+      padding: 0.8rem 1rem;
       background: rgba(255,255,255,0.01);
-      color: var(--text-main);
       border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 3px;
-      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      color: var(--text-main);
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: 0.2s ease;
       font-family: var(--font-mono);
       font-size: 0.74rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
     }
 
-    .quiz-opt:hover {
-      border-color: rgba(255,255,255,0.38);
+    .quiz-option:hover {
       background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.35);
     }
 
-    .quiz-opt.correct {
-      border-color: #69d37f;
-      background: rgba(105,211,127,0.14);
-      color: #90f0a4;
+    .quiz-option.correct {
+      border-color: #67d38a;
+      background: rgba(103,211,138,0.12);
+      color: #98efb1;
     }
 
-    .quiz-opt.wrong {
-      border-color: #ff7070;
-      background: rgba(255,112,112,0.12);
-      color: #ff9191;
+    .quiz-option.wrong {
+      border-color: #ff7272;
+      background: rgba(255,114,114,0.1);
+      color: #ff9090;
     }
 
     .quiz-feedback {
-      margin-top: 1rem;
-      font-size: 0.96rem;
+      margin-top: 0.9rem;
       color: var(--text-soft);
+      display: none;
       font-style: italic;
-      opacity: 0;
-      transition: 0.35s ease;
     }
 
     .quiz-feedback.show {
-      opacity: 1;
-    }
-
-    .timeline {
-      padding: 2rem 4rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 2rem;
-      position: relative;
-      margin-bottom: 2.4rem;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: 119px;
-      top: 0;
-      bottom: -2.4rem;
-      width: 1px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .timeline-year {
-      position: relative;
-      text-align: right;
-      padding-top: 0.1rem;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.72);
-    }
-
-    .timeline-year::after {
-      content: "";
-      position: absolute;
-      right: -8px;
-      top: 0.45rem;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: currentColor;
-      border: 1px solid rgba(255,255,255,0.28);
-    }
-
-    .timeline-content h4 {
-      font-family: var(--font-display);
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.35rem;
-    }
-
-    .timeline-content p {
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: var(--text-soft);
+      display: block;
     }
 
     #dadaismo {
-      background: #0c0505;
+      background: #0b0505;
       border-top: 3px solid var(--dada-red);
     }
 
-    #dadaismo .section-title-huge { color: #ff6363; }
-    #dadaismo .pullquote { border-color: var(--dada-red); }
-    #dadaismo .obra-link, #dadaismo .btn, #dadaismo .box-label { border-color: #ef6666; color: #ef6666; }
-    #dadaismo .obra-link:hover, #dadaismo .btn:hover { background: var(--dada-red); color: #fff; }
-
-    .dada-manifesto {
-      background: var(--dada-red);
-      color: #fff;
-      padding: 3rem 4rem;
-      margin: 2rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.84rem;
-      line-height: 2.15;
-      letter-spacing: 0.08em;
-    }
-
-    .dada-manifesto h3 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 1.4rem;
-    }
-
-    .dada-chaos-text {
-      position: absolute;
-      right: 4rem;
-      top: 50%;
-      transform: translateY(-50%);
-      writing-mode: vertical-rl;
-      white-space: nowrap;
-      user-select: none;
-      pointer-events: none;
-      color: rgba(212,43,43,0.1);
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .ready-made-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 1.5rem;
-      padding: 2rem 4rem;
-    }
-
-    .ready-made-item {
-      border: 1px solid rgba(212,43,43,0.34);
-      border-radius: 4px;
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.02);
-      transition: 0.3s ease;
-    }
-
-    .ready-made-item:hover {
-      background: rgba(212,43,43,0.07);
-      border-color: var(--dada-red);
-    }
-
-    .item-emoji {
-      display: block;
-      font-size: 2.3rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .ready-made-item h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-    }
-
-    .ready-made-item p {
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      line-height: 1.65;
+    #dadaismo .section-title,
+    #dadaismo .pullquote,
+    #dadaismo .image-card-title,
+    #dadaismo .interactive-box h4,
+    #dadaismo .quiz-box h4 {
+      color: #ff7171;
     }
 
     #surrealismo {
@@ -851,118 +511,12 @@
       border-top: 3px solid var(--surr-gold);
     }
 
-    #surrealismo .section-title-huge { color: #f1cf79; }
-    #surrealismo .pullquote { border-color: var(--surr-gold); }
-    #surrealismo .obra-link, #surrealismo .btn, #surrealismo .box-label { border-color: #f1cf79; color: #f1cf79; }
-    #surrealismo .obra-link:hover, #surrealismo .btn:hover { background: var(--surr-gold); color: #101a30; }
-
-    .dream-landscape {
-      background: linear-gradient(180deg, #1a2744 0%, #0d1a33 40%, #0a1020 100%);
-      padding: 4rem;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-    }
-
-    .dream-stars {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 80% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.2) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .dream-title {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      font-family: var(--font-display);
-      font-size: 2.45rem;
-      font-style: italic;
+    #surrealismo .section-title,
+    #surrealismo .pullquote,
+    #surrealismo .image-card-title,
+    #surrealismo .interactive-box h4,
+    #surrealismo .quiz-box h4 {
       color: #f1cf79;
-      margin-bottom: 1.4rem;
-    }
-
-    .dream-text {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 660px;
-      margin: 0 auto;
-      font-size: 1.2rem;
-      line-height: 1.9;
-      color: var(--text-soft);
-      font-style: italic;
-    }
-
-    .dream-mini-figure {
-      position: relative;
-      z-index: 1;
-      max-width: 360px;
-      margin: 2rem auto 0;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.18);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .dream-mini-figure img {
-      width: 100%;
-      height: 235px;
-      object-fit: cover;
-    }
-
-    .dream-mini-figure figcaption {
-      padding: 0.85rem 1rem 1rem;
-      font-size: 0.86rem;
-      line-height: 1.55;
-      color: rgba(255,255,255,0.72);
-      font-style: italic;
-    }
-
-    .freud-box {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      margin: 2rem 4rem;
-      padding: 2rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.24);
-      border-radius: 6px;
-    }
-
-    .freud-portrait {
-      width: 84px;
-      height: 84px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid rgba(201,168,76,0.3);
-      background: rgba(201,168,76,0.14);
-      flex-shrink: 0;
-    }
-
-    .freud-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .freud-content h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: #f1cf79;
-      margin-bottom: 0.45rem;
-    }
-
-    .freud-content p {
-      font-size: 0.98rem;
-      line-height: 1.72;
-      color: var(--text-soft);
     }
 
     #astrattismo {
@@ -970,341 +524,206 @@
       border-top: 3px solid var(--abst-yellow);
     }
 
-    #astrattismo .section-title-huge { color: #ffd24a; }
-    #astrattismo .pullquote { border-color: var(--abst-orange); }
-    #astrattismo .obra-link { border-color: #ff904d; color: #ff904d; }
-    #astrattismo .obra-link:hover { background: var(--abst-orange); color: #fff; }
-    #astrattismo .btn, #astrattismo .box-label { border-color: #ffd24a; color: #ffd24a; }
-    #astrattismo .btn:hover { background: var(--abst-yellow); color: #000; }
-
-    .trio-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      margin: 2rem 0;
-    }
-
-    .trio-panel {
-      padding: 3rem 2.5rem;
-      background: rgba(255,255,255,0.015);
-      border-right: 1px solid rgba(255,255,255,0.08);
-      transition: 0.3s ease;
-    }
-
-    .trio-panel:last-child {
-      border-right: none;
-    }
-
-    .trio-panel:hover {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .trio-color-bar {
-      height: 4px;
-      border-radius: 1px;
-      margin-bottom: 1.6rem;
-    }
-
-    .kandinskij-color { background: linear-gradient(135deg, var(--abst-blue), var(--abst-orange)); }
-    .mondrian-color { background: linear-gradient(135deg, var(--abst-red), var(--abst-blue)); }
-    .klee-color { background: linear-gradient(135deg, #7b3f00, #ffa07a); }
-
-    .panel-art-thumb {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 1.1rem;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .panel-art-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .panel-art-thumb.contain img {
-      object-fit: contain;
-    }
-
-    .trio-period {
-      display: block;
-      margin-bottom: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .trio-panel h3 {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-    }
-
-    .trio-panel p {
-      font-size: 0.96rem;
-      line-height: 1.75;
-      color: var(--text-soft);
-      margin-bottom: 1rem;
-    }
-
-    .trio-tag {
-      display: inline-block;
-      padding: 0.3rem 0.7rem;
-      margin: 0.18rem;
-      border: 1px solid;
-      border-radius: 2px;
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .color-theory-vis {
-      display: flex;
-      gap: 0;
-      height: 80px;
-      overflow: hidden;
-      border-radius: 4px;
-      margin: 1.4rem 0;
-    }
-
-    .color-seg {
-      flex: 1;
-      position: relative;
-      transition: flex 0.45s ease;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 0.35rem;
-    }
-
-    .color-seg:hover {
-      flex: 2;
-    }
-
-    .color-seg span {
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      font-family: var(--font-mono);
-      font-size: 0.52rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      white-space: nowrap;
-    }
-
-    .color-seg:hover span {
-      opacity: 1;
+    #astrattismo .section-title,
+    #astrattismo .pullquote,
+    #astrattismo .image-card-title,
+    #astrattismo .interactive-box h4,
+    #astrattismo .quiz-box h4 {
+      color: #ffd24a;
     }
 
     #interdisciplinare {
-      background: #040a14;
+      background: var(--inter-dark);
       border-top: 3px solid var(--inter-lime);
     }
 
-    #interdisciplinare .section-title-huge { color: #c9ea88; }
-    #interdisciplinare .btn, #interdisciplinare .box-label { border-color: #c9ea88; color: #c9ea88; }
-    #interdisciplinare .btn:hover { background: var(--inter-lime); color: var(--inter-dark); }
-
-    .connections-diagram {
-      padding: 3rem 4rem;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .connection-node {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(168,201,107,0.24);
-      border-radius: 6px;
-      padding: 1.7rem;
-      text-align: center;
-      transition: 0.35s ease;
-    }
-
-    .connection-node:hover {
-      transform: scale(1.02);
-      border-color: var(--inter-lime);
-      background: rgba(168,201,107,0.06);
-    }
-
-    .connection-node img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 1rem;
-    }
-
-    .connection-node .node-icon {
-      display: block;
-      font-size: 2.4rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .connection-node h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
+    #interdisciplinare .section-title,
+    #interdisciplinare .final-box h4,
+    #interdisciplinare .interactive-box h4 {
       color: #c9ea88;
-      margin-bottom: 0.45rem;
     }
 
-    .connection-node p {
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: var(--text-soft);
-    }
-
-    .connection-arrow {
-      text-align: center;
-      color: var(--text-soft);
-      opacity: 0.45;
-      font-size: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .debate-section {
-      padding: 2rem 4rem 4rem;
-    }
-
-    .debate-section h3 {
-      font-family: var(--font-display);
-      font-size: 2.1rem;
-      color: #c9ea88;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-    }
-
-    .debate-sides {
+    .debate-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1rem;
+      margin-top: 1.4rem;
     }
 
     .debate-card {
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 2rem;
-      background: rgba(255,255,255,0.02);
-      transition: 0.3s ease;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 1.2rem;
     }
-
-    .debate-card:hover {
-      border-color: rgba(255,255,255,0.24);
-    }
-
-    .debate-card.yes { border-top: 3px solid var(--inter-lime); }
-    .debate-card.no { border-top: 3px solid var(--dada-red); }
 
     .debate-card h4 {
       font-family: var(--font-display);
       font-size: 1.18rem;
-      color: var(--text-main);
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
     }
 
     .debate-card ul {
-      padding-left: 1.2rem;
+      padding-left: 1.1rem;
     }
 
     .debate-card li {
-      font-size: 0.97rem;
-      line-height: 1.7;
       color: var(--text-soft);
-      margin-bottom: 0.5rem;
-    }
-
-    .final-answer {
-      margin: 2rem 4rem;
-      padding: 3rem 4rem;
-      background: rgba(168,201,107,0.07);
-      border: 1px solid rgba(168,201,107,0.28);
-      border-radius: 6px;
-    }
-
-    .final-answer h3 {
-      font-family: var(--font-display);
-      font-size: 1.95rem;
-      font-weight: 900;
-      color: #c9ea88;
-      margin-bottom: 1.3rem;
-      line-height: 1.2;
-    }
-
-    .final-answer p {
-      font-size: 1.04rem;
-      line-height: 1.9;
-      color: var(--text-soft);
-      margin-bottom: 1rem;
+      margin-bottom: 0.45rem;
+      line-height: 1.6;
     }
 
     footer {
       background: rgba(255,255,255,0.03);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 3rem 4rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2.4rem 1.4rem;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     footer h4 {
       font-family: var(--font-mono);
-      font-size: 0.64rem;
-      letter-spacing: 0.2em;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      opacity: 0.64;
-      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 0.8rem;
     }
 
     footer p,
     footer a {
       display: block;
-      color: inherit;
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.94rem;
       line-height: 1.6;
-      margin-bottom: 0.3rem;
-      opacity: 0.78;
-      transition: 0.25s ease;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
     }
 
     footer a:hover {
-      opacity: 1;
+      color: var(--text-main);
     }
 
     .footer-bottom {
-      grid-column: 1 / -1;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: 2rem;
-      padding-top: 1.4rem;
+      max-width: 1200px;
+      margin: 1.6rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
       text-align: center;
-    }
-
-    .footer-bottom p {
       font-family: var(--font-mono);
       font-size: 0.58rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      opacity: 0.44;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.84);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      width: min(760px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      background: #101010;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 1.3rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.75);
+      border-radius: 3px;
+      padding: 0.35rem 0.6rem;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .modal-image {
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .modal-image img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+    }
+
+    .modal-meta {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .modal-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 0.7rem;
+    }
+
+    .modal-box p {
+      color: var(--text-soft);
+      margin-bottom: 0.85rem;
+    }
+
+    .progress {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.05);
+      z-index: 999;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--dada-red), var(--surr-gold), var(--abst-orange), var(--inter-lime));
+      transition: width 0.18s ease;
     }
 
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .fade-in.visible {
@@ -1312,468 +731,198 @@
       transform: translateY(0);
     }
 
-    .float-anim {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.3s ease;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-box {
-      position: relative;
-      width: 90%;
-      max-width: 720px;
-      max-height: 84vh;
-      overflow-y: auto;
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      padding: 2.5rem;
-      transform: scale(0.95);
-      transition: 0.3s ease;
-    }
-
-    .modal-overlay.open .modal-box {
-      transform: scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: transparent;
-      color: rgba(255,255,255,0.7);
-      border-radius: 2px;
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      transition: 0.25s ease;
-    }
-
-    .modal-close:hover {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-    }
-
-    .modal-meta {
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .modal-image {
-      width: 100%;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 1.2rem;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .modal-image img {
-      width: 100%;
-      max-height: 360px;
-      object-fit: contain;
-    }
-
-    .modal-box h3 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-    }
-
-    .modal-box p {
-      color: var(--text-soft);
-      line-height: 1.82;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    @media (max-width: 1050px) {
-      .home-visual-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .home-figure img {
-        height: 240px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .content-grid,
-      .content-grid.wide,
-      .ready-made-grid,
-      .trio-grid,
-      .debate-sides,
-      .connections-diagram,
+    @media (max-width: 980px) {
+      .two-col,
+      .grid-3,
       .context-bar,
-      footer {
+      .debate-grid,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
+    }
 
-      .nav-links,
-      .connection-arrow {
+    @media (max-width: 760px) {
+      .nav-links {
         display: none;
       }
 
-      .section-header,
-      .content-grid,
-      .ready-made-grid,
-      .timeline,
-      .freud-box,
-      .debate-section,
-      .final-answer {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+      body {
+        font-size: 18px;
       }
 
-      .dada-manifesto {
-        padding: 2rem 1.5rem;
+      .home-subtitle {
+        font-size: 1.1rem;
       }
 
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
+      .home-text {
+        font-size: 1.04rem;
       }
 
-      .timeline-item::before,
-      .timeline-year::after {
-        display: none;
-      }
-
-      .timeline-year {
-        text-align: left;
-      }
-
-      .freud-box {
-        grid-template-columns: 1fr;
-      }
-
-      .context-bar {
-        padding: 2rem;
-      }
-
-      .home-tag {
-        font-size: 0.6rem;
-        letter-spacing: 0.08em;
+      .image-card img {
+        height: 230px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="reading-progress">
-    <div class="reading-progress-bar" id="progressBar"></div>
-  </div>
+
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
 
   <nav>
     <div class="nav-logo">Mostra Virtuale · '900</div>
     <div class="nav-links">
       <a href="#home">Home</a>
-      <a href="#dadaismo" class="dada">Dadaismo</a>
-      <a href="#surrealismo" class="surr">Surrealismo</a>
-      <a href="#astrattismo" class="abst">Astrattismo</a>
-      <a href="#interdisciplinare" class="inter">Connessioni</a>
+      <a href="#dadaismo">Dadaismo</a>
+      <a href="#surrealismo">Surrealismo</a>
+      <a href="#astrattismo">Astrattismo</a>
+      <a href="#interdisciplinare">Connessioni</a>
     </div>
   </nav>
 
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-box">
-      <button class="modal-close" onclick="closeModal()">✕ chiudi</button>
+      <button class="modal-close" onclick="closeModal()">Chiudi</button>
       <div id="modalContent"></div>
     </div>
   </div>
 
   <section id="home">
-    <div class="home-noise"></div>
-    <div class="home-grid-lines"></div>
-    <div class="home-year">1900</div>
+    <div class="home-overlay">
+      <div class="home-tag">Mostra virtuale · Marco Cugno · Vincenzo Riemma · Vincenzo Fava · Alessandro Montalto</div>
+      <h1 class="home-title">Dal <em>Caos</em><br>all'Inconscio</h1>
+      <p class="home-subtitle">La rivoluzione artistica degli inizi del '900 — quando l'arte smise di fidarsi delle vecchie certezze.</p>
+      <p class="home-text">
+        Guerra, crisi della ragione, relatività, inconscio, rottura dei linguaggi tradizionali: il primo Novecento cambia il modo di vedere il mondo. Dadaismo, Surrealismo e Astrattismo nascono come tre risposte diverse allo stesso shock storico e culturale.
+      </p>
 
-    <span class="home-tag">Mostra Virtuale · Marco Cugno · Vincenzo Riemma · Vincenzo Fava · Alessandro Montalto</span>
-
-    <h1 class="home-title">
-      Dal <em>Caos</em><br />all'Inconscio
-    </h1>
-
-    <p class="home-subtitle">
-      La rivoluzione artistica degli inizi del '900 — quando l'arte decise di rompere tutto
-    </p>
-
-    <div class="home-divider"></div>
-
-    <p class="home-intro-text">
-      Immaginate un mondo che credeva di aver capito tutto. La fisica di Newton sembrava eterna,
-      le regole sociali erano solide come roccia, la ragione era Dio. Poi, in pochi decenni,
-      <strong>tutto crollò</strong>. Einstein relativizzò lo spazio e il tempo. Freud scoprì che
-      la mente umana era molto più oscura e complessa del previsto. E la guerra devastò un'intera
-      generazione, lasciando dietro di sé una domanda inevitabile: che senso aveva ancora il mondo moderno?
-    </p>
-
-    <div class="home-movements">
-      <a href="#dadaismo" class="movement-pill d">① Dadaismo</a>
-      <a href="#surrealismo" class="movement-pill s">② Surrealismo</a>
-      <a href="#astrattismo" class="movement-pill a">③ Astrattismo</a>
-      <a href="#interdisciplinare" class="movement-pill i">④ Connessioni</a>
-    </div>
-
-    <div class="home-visual-strip">
-      <figure class="home-figure fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Italian%20Soldiers%20in%20Trench%20World%20War%201.jpg" alt="Soldati italiani in trincea durante la Prima guerra mondiale">
-        <div class="home-caption">
-          <strong>Crisi storica</strong>
-          <span>Le trincee mostrano il volto industriale della guerra: il progresso si trasforma in distruzione.</span>
-        </div>
-      </figure>
-
-      <figure class="home-figure fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Einstein%20Portrait.png" alt="Ritratto di Albert Einstein">
-        <div class="home-caption">
-          <strong>Crisi scientifica</strong>
-          <span>La fisica moderna mette in dubbio l'idea di una realtà fissa, ordinata e assoluta.</span>
-        </div>
-      </figure>
-
-      <figure class="home-figure fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%201926.jpg" alt="Ritratto di Sigmund Freud">
-        <div class="home-caption">
-          <strong>Crisi interiore</strong>
-          <span>La psicoanalisi porta alla luce sogni, desideri e traumi nascosti sotto la coscienza.</span>
-        </div>
-      </figure>
-    </div>
-
-    <div class="context-bar">
-      <div class="context-item">
-        <div class="context-item-label">Contesto storico</div>
-        <div class="context-item-val">1914–1945</div>
-        <div class="context-item-desc">Due guerre mondiali, totalitarismi, crollo delle certezze</div>
+      <div class="home-links">
+        <a class="pill" href="#dadaismo">① Dadaismo</a>
+        <a class="pill" href="#surrealismo">② Surrealismo</a>
+        <a class="pill" href="#astrattismo">③ Astrattismo</a>
+        <a class="pill" href="#interdisciplinare">④ Connessioni</a>
       </div>
-      <div class="context-item">
-        <div class="context-item-label">Rivoluzione culturale</div>
-        <div class="context-item-val">Einstein · Freud</div>
-        <div class="context-item-desc">Spazio, tempo, mente: tutto viene ripensato da zero</div>
-      </div>
-      <div class="context-item">
-        <div class="context-item-label">Risposta artistica</div>
-        <div class="context-item-val">3 movimenti</div>
-        <div class="context-item-desc">Dada, Surrealismo, Astrattismo: tre risposte al caos</div>
+
+      <div class="context-bar">
+        <div class="context-card">
+          <div class="context-label">Contesto storico</div>
+          <div class="context-value">1914–1945</div>
+          <div class="context-desc">Guerre mondiali, crisi europea, crollo della fiducia nel progresso.</div>
+        </div>
+        <div class="context-card">
+          <div class="context-label">Rivoluzione culturale</div>
+          <div class="context-value">Freud · Einstein</div>
+          <div class="context-desc">Inconscio e relatività cambiano il modo di pensare la realtà.</div>
+        </div>
+        <div class="context-card">
+          <div class="context-label">Risposta artistica</div>
+          <div class="context-value">3 movimenti</div>
+          <div class="context-desc">Rifiuto, sogno, astrazione: tre modi di attraversare il caos.</div>
+        </div>
       </div>
     </div>
-
-    <div class="scroll-hint">Scorri per entrare</div>
   </section>
 
   <section id="dadaismo">
     <div class="section-header">
-      <div class="dada-chaos-text">ANTI-ARTE</div>
       <span class="section-number">Sala 01 / 04 — 1916–1924</span>
-      <h2 class="section-title-huge">DADA</h2>
-      <p class="section-subtitle-main">L'arte dell'anti-arte. Il rifiuto come manifesto.</p>
+      <h2 class="section-title">DADA</h2>
+      <p class="section-subtitle">L'anti-arte come risposta alla follia del mondo moderno.</p>
     </div>
 
-    <div class="dada-manifesto">
-      <h3>"DADA NON SIGNIFICA NULLA"</h3>
-      Nato a Zurigo nel 1916, al Cabaret Voltaire, mentre l'Europa si dissanguava nelle trincee.<br />
-      Hugo Ball, Emmy Hennings, Tristan Tzara, Jean Arp: artisti in esilio che risposero alla
-      follia del mondo con la follia creativa.<br /><br />
-      Se il mondo "razionale" aveva prodotto la guerra,<br />
-      allora la razionalità non poteva più essere considerata una salvezza.
-    </div>
-
-    <div class="content-grid wide">
-      <div class="content-block">
-        <h3>Il contesto: la trincea come fabbrica di nichilismo</h3>
-        <p>
-          Per capire il Dadaismo bisogna partire dalla Prima guerra mondiale. Non fu una guerra eroica,
-          ma un massacro industriale: mitragliatrici, gas tossici, bombardamenti continui, uomini
-          ridotti a numeri. La tecnica, simbolo del progresso, diventò una macchina di morte.
-        </p>
-        <p>
-          Gli artisti dada, rifugiati nella neutrale Zurigo, non rispondono con il sentimentalismo,
-          ma con una risata corrosiva. Se il mondo non ha più un senso stabile, anche l'arte può
-          smettere di comportarsi come se il senso fosse garantito.
-        </p>
-
-        <figure class="figure-inline fade-in">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg" alt="Hugo Ball al Cabaret Voltaire">
-          <figcaption>Hugo Ball in costume al Cabaret Voltaire: performance, provocazione e distruzione della lingua tradizionale.</figcaption>
-        </figure>
-
-        <div class="pullquote">
-          "Per fare una poesia dadaista: prendi un giornale, prendi le forbici, taglia le parole,
-          mettile in un sacchetto, agita, estrai una per una." — Tristan Tzara
-        </div>
-
-        <p>
-          Questo non è nichilismo passivo. È una critica radicale alla cultura borghese che aveva
-          celebrato il progresso e finito per produrre la catastrofe. Dada smonta il linguaggio,
-          il buon gusto, la logica e l'idea stessa di opera "nobile".
-        </p>
-
-        <div class="interactive-box">
-          <div class="box-label">⚡ Interazione</div>
-          <h4>Questo è arte?</h4>
+    <div class="content-wrap">
+      <div class="two-col">
+        <div class="text-block">
+          <h3>Quando la ragione fallisce</h3>
           <p>
-            Una poesia di sillabe senza senso, recitata da un uomo vestito da scatola di cartone.
-            Ti mette a disagio? Bene — è proprio questo il punto.
+            Il Dadaismo nasce nel 1916 a Zurigo, al Cabaret Voltaire, mentre l'Europa si dissangua nelle trincee. Se la civiltà “razionale” ha prodotto il massacro industriale della guerra, allora la razionalità non è più un rifugio: è parte del problema.
           </p>
-          <div class="btn-group">
-            <button class="btn" onclick="revealDada('si')">SÌ, è arte</button>
-            <button class="btn" onclick="revealDada('no')">NO, è spazzatura</button>
-            <button class="btn" onclick="revealDada('trap')">È una trappola</button>
+          <p>
+            I dadaisti reagiscono con il nonsense, la provocazione, la distruzione delle convenzioni artistiche. Non vogliono consolare: vogliono sabotare.
+          </p>
+
+          <div class="pullquote">
+            "Dada non significa nulla." La contraddizione non è un difetto: è un metodo.
           </div>
-          <div class="reveal-content" id="dadaReveal">
-            <p id="dadaRevealText"></p>
+
+          <p>
+            Il gesto dadaista non cerca il bello, ma lo shock. L'opera diventa domanda: che cos'è arte? Chi la decide? Il museo? L'artista? Il pubblico?
+          </p>
+
+          <div class="interactive-box">
+            <h4>Questo è arte?</h4>
+            <p>Per i dadaisti, il vero successo non è piacere al pubblico, ma costringerlo a rimettere in discussione i propri criteri.</p>
+            <div class="btn-group">
+              <button class="btn" onclick="revealBox('dadaReveal','si')">Sì</button>
+              <button class="btn" onclick="revealBox('dadaReveal','no')">No</button>
+              <button class="btn" onclick="revealBox('dadaReveal','trap')">È una trappola</button>
+            </div>
+            <div class="reveal" id="dadaReveal"></div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <div class="obra-card fade-in" onclick="openModal('fountain')">
-          <div class="obra-card-img-placeholder">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Marcel%20Duchamp%2C%201917%2C%20Fountain%2C%20photograph%20by%20Alfred%20Stieglitz.jpg" alt="Fountain di Marcel Duchamp">
-          </div>
-          <div class="obra-title">Fountain</div>
-          <div class="obra-meta">Marcel Duchamp · 1917 · Ready-made · Philadelphia Museum of Art</div>
-          <p class="obra-desc">
-            Un orinatoio comprato in negozio, firmato "R. Mutt", presentato come opera. È il gesto
-            che cambia per sempre il modo di pensare l'arte.
-          </p>
-          <div class="card-caption">Non conta più la tecnica, ma la scelta, il contesto, l'atto mentale.</div>
-          <a href="javascript:void(0)" class="obra-link" onclick="openModal('fountain')">→ Approfondisci</a>
-        </div>
-
-        <div class="obra-card fade-in" style="margin-top:1.5rem;">
-          <div class="obra-card-img-placeholder">
+        <div>
+          <div class="image-card fade-in" onclick="openModal('hugoball')">
             <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg" alt="Hugo Ball al Cabaret Voltaire">
+            <div class="image-card-body">
+              <div class="image-card-title">Hugo Ball al Cabaret Voltaire</div>
+              <div class="image-card-meta">Zurigo · 1916</div>
+              <div class="image-card-desc">
+                Una delle immagini simbolo del Dada storico: costume, performance, disarticolazione del linguaggio e del corpo.
+              </div>
+              <div class="caption-lite">L'avanguardia entra in scena non con l'armonia, ma con la rottura.</div>
+            </div>
           </div>
-          <div class="obra-title">Cabaret Voltaire</div>
-          <div class="obra-meta">Zurigo · 1916 · Performance e poesia sonora</div>
-          <p class="obra-desc">
-            Il Dadaismo nasce anche come esperienza scenica: voce, costume, frammento, provocazione.
-            L'arte smette di voler rassicurare il pubblico.
-          </p>
-          <div class="card-caption">La performance diventa gesto di rottura contro la civiltà che ha prodotto la guerra.</div>
-        </div>
-      </div>
-    </div>
 
-    <h3 style="padding: 1rem 4rem 0.5rem; font-family: var(--font-display); font-size: 1.5rem;">
-      Il Ready-Made: rivoluzione in tre mosse
-    </h3>
+          <div class="image-card fade-in" onclick="openModal('fountain')" style="margin-top:1rem;">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Marcel%20Duchamp,%201917,%20Fountain,%20photograph%20by%20Alfred%20Stieglitz.jpg" alt="Fountain di Marcel Duchamp">
+            <div class="image-card-body">
+              <div class="image-card-title">Fountain</div>
+              <div class="image-card-meta">Marcel Duchamp · 1917</div>
+              <div class="image-card-desc">
+                Un orinatoio diventa opera d'arte. La tecnica non basta più: conta la scelta, conta il contesto, conta la domanda.
+              </div>
+            </div>
+          </div>
 
-    <div class="ready-made-grid">
-      <div class="ready-made-item">
-        <span class="item-emoji">🛒</span>
-        <h4>Mossa 1: scegli un oggetto qualunque</h4>
-        <p>Non dipingere, non scolpire: scegliere diventa già un atto creativo.</p>
-      </div>
-      <div class="ready-made-item">
-        <span class="item-emoji">✍️</span>
-        <h4>Mossa 2: firma e sposta il contesto</h4>
-        <p>L'oggetto cambia significato quando entra nello spazio dell'arte.</p>
-      </div>
-      <div class="ready-made-item">
-        <span class="item-emoji">💥</span>
-        <h4>Mossa 3: guarda la reazione</h4>
-        <p>Lo scandalo non è un effetto secondario: diventa parte dell'opera.</p>
-      </div>
-    </div>
-
-    <div class="timeline" style="margin-top: 2rem;">
-      <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.5rem; padding-left: 140px; color: var(--dada-red);">
-        Cronologia Dada
-      </h3>
-
-      <div class="timeline-item">
-        <div class="timeline-year" style="color: var(--dada-red);">1914</div>
-        <div class="timeline-content">
-          <h4>Scoppia la Prima guerra mondiale</h4>
-          <p>La fiducia nel progresso e nella ragione inizia a crollare di fronte alla guerra moderna.</p>
+          <div class="image-card fade-in" onclick="openModal('lhooq')" style="margin-top:1rem;">
+            <img src="https://en.wikipedia.org/wiki/Special:FilePath/Marcel_Duchamp,_1919,_L.H.O.O.Q.jpg" alt="L.H.O.O.Q. di Marcel Duchamp">
+            <div class="image-card-body">
+              <div class="image-card-title">L.H.O.O.Q.</div>
+              <div class="image-card-meta">Marcel Duchamp · 1919</div>
+              <div class="image-card-desc">
+                La Gioconda con baffi e pizzetto: il capolavoro intoccabile viene desacralizzato con un gesto minimo e feroce.
+              </div>
+              <div class="caption-lite">La citazione diventa provocazione: il passato non è più sacro.</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-year" style="color: var(--dada-red);">1916</div>
-        <div class="timeline-content">
-          <h4>Nasce Dada a Zurigo</h4>
-          <p>Nel Cabaret Voltaire si mescolano poesia sonora, collage, improvvisazione, nonsense e protesta.</p>
+      <div class="grid-3">
+        <div class="small-card">
+          <h4>Scelta</h4>
+          <p>Duchamp mostra che l'atto creativo può iniziare non dalla produzione manuale, ma dalla selezione di un oggetto comune.</p>
+        </div>
+        <div class="small-card">
+          <h4>Contesto</h4>
+          <p>Lo stesso oggetto, in un museo o in una mostra, cambia statuto: non è più “solo” utile, ma diventa concetto.</p>
+        </div>
+        <div class="small-card">
+          <h4>Reazione</h4>
+          <p>Lo scandalo fa parte dell'opera. La provocazione non è accessoria: è il cuore del linguaggio dadaista.</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-year" style="color: var(--dada-red);">1917</div>
-        <div class="timeline-content">
-          <h4>Duchamp presenta <em>Fountain</em></h4>
-          <p>Il ready-made diventa il simbolo più radicale della sfida dada alla definizione classica di opera d'arte.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-year" style="color: var(--dada-red);">1918</div>
-        <div class="timeline-content">
-          <h4>Manifesto Dada</h4>
-          <p>Contraddizione, provocazione e rifiuto diventano metodo e linguaggio.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-year" style="color: var(--dada-red);">1924</div>
-        <div class="timeline-content">
-          <h4>Trasformazione nel Surrealismo</h4>
-          <p>Dada non scompare del tutto: molte sue energie confluiscono in una nuova ricerca dell'inconscio.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="padding: 2rem 4rem 4rem;">
       <div class="quiz-box">
-        <div style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dada-red); margin-bottom: 0.8rem;">
-          Quiz · Dadaismo
-        </div>
-
-        <div class="quiz-question">
-          Duchamp dimostra soprattutto che:
-        </div>
-
+        <h4>Quiz · Dadaismo</h4>
+        <p>Duchamp dimostra soprattutto che:</p>
         <div class="quiz-options">
-          <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">A) l'arte coincide con la bravura manuale</button>
-          <button class="quiz-opt" onclick="quiz(this,'correct','dada1')">B) l'opera dipende da scelta e contesto, non solo dalla tecnica</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">C) ogni oggetto comune è bello automaticamente</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','dada1')">D) il disegno accademico è tutto</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">A) il valore artistico dipende dalla bravura manuale</button>
+          <button class="quiz-option" onclick="quiz(this,'correct','dadaQ')">B) il contesto e la scelta possono definire un'opera</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">C) ogni oggetto comune è automaticamente bello</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','dadaQ')">D) l'arte deve rispettare sempre le regole accademiche</button>
         </div>
-
-        <div class="quiz-feedback" id="dada1">
-          ✓ Esatto. Il ready-made sposta l'attenzione dalla mano all'idea.
-        </div>
+        <div class="quiz-feedback" id="dadaQ">✓ Esatto: il ready-made sposta l'attenzione dall'esecuzione alla decisione concettuale.</div>
       </div>
     </div>
   </section>
@@ -1781,133 +930,77 @@
   <section id="surrealismo">
     <div class="section-header">
       <span class="section-number">Sala 02 / 04 — 1924–1950</span>
-      <h2 class="section-title-huge">SURREAL<br />ISMO</h2>
-      <p class="section-subtitle-main">L'inconscio come territorio dell'arte. I sogni come realtà più vera della realtà.</p>
+      <h2 class="section-title">SURREALISMO</h2>
+      <p class="section-subtitle">L'inconscio, il sogno, il reale che si nasconde dietro il visibile.</p>
     </div>
 
-    <div class="dream-landscape">
-      <div class="dream-stars"></div>
-      <div class="dream-title float-anim">Entra nella mente surrealista</div>
-      <p class="dream-text">
-        Orologi che si sciolgono, oggetti impossibili, volti nascosti, associazioni strane ma potenti.
-        Il Surrealismo cerca ciò che sfugge al controllo della ragione.
-      </p>
+    <div class="content-wrap">
+      <div class="two-col">
+        <div class="text-block">
+          <h3>Oltre la logica</h3>
+          <p>
+            Se Dada distrugge il senso, il Surrealismo prova a trovarne uno più profondo: non nella ragione cosciente, ma nell'inconscio. André Breton parla di automatismo psichico, di scrittura e immagini che aggirano il controllo razionale.
+          </p>
+          <p>
+            Freud offre ai surrealisti un lessico nuovo: desiderio, rimozione, sogno, simbolo. L'arte non rappresenta più soltanto il mondo esterno, ma le forze nascoste che abitano la mente.
+          </p>
 
-      <figure class="dream-mini-figure fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%201926.jpg" alt="Ritratto di Sigmund Freud">
-        <figcaption>La psicoanalisi suggerisce che sotto la coscienza agisca un mondo profondo di immagini, desideri e paure.</figcaption>
-      </figure>
-    </div>
+          <div class="pullquote">
+            Il sogno non è evasione: è una forma diversa di verità.
+          </div>
 
-    <div class="content-grid" style="margin-top: 2rem;">
-      <div class="content-block">
-        <h3>Dall'eredità Dada alla scoperta di Freud</h3>
-        <p>
-          Se il Dadaismo aveva distrutto la fiducia nei valori tradizionali, il Surrealismo prova a
-          trovare un nuovo accesso alla realtà: non nella logica cosciente, ma nell'inconscio.
-          André Breton parla infatti di automatismo psichico puro.
-        </p>
-        <p>
-          La psicoanalisi di Freud fornisce un modello decisivo: sogni, lapsus, desideri repressi e
-          simboli diventano materiale artistico. L'arte non rappresenta più soltanto ciò che si vede,
-          ma ciò che la mente nasconde.
-        </p>
+          <p>
+            Dalí e Magritte mostrano due strade diverse: da una parte l'immagine onirica e ossessiva, dall'altra l'enigma lucido e apparentemente realistico.
+          </p>
 
-        <div class="pullquote">
-          "Il Surrealismo è un automatismo psichico puro..." — André Breton
+          <div class="interactive-box">
+            <h4>Automatismo</h4>
+            <p>I surrealisti volevano far emergere immagini e parole prima che il filtro razionale le correggesse.</p>
+            <div class="btn-group">
+              <button class="btn" onclick="revealBox('surrReveal','method')">Come funziona</button>
+              <button class="btn" onclick="revealBox('surrReveal','examples')">Che effetto produce</button>
+            </div>
+            <div class="reveal" id="surrReveal"></div>
+          </div>
         </div>
 
-        <p>
-          Per i surrealisti la realtà non coincide con il mondo visibile. Esiste una "super-realtà"
-          fatta di memoria, sogno, associazione e immaginazione.
-        </p>
-      </div>
+        <div>
+          <div class="image-card fade-in" onclick="openModal('persistence')">
+            <img src="https://en.wikipedia.org/wiki/Special:FilePath/The%20Persistence%20of%20Memory.jpg" alt="The Persistence of Memory di Salvador Dalí">
+            <div class="image-card-body">
+              <div class="image-card-title">La persistenza della memoria</div>
+              <div class="image-card-meta">Salvador Dalí · 1931</div>
+              <div class="image-card-desc">
+                Gli orologi molli trasformano il tempo in un'immagine fragile, soggettiva, irreale e insieme perfettamente nitida.
+              </div>
+              <div class="caption-lite">Il tempo non appare più solido: si piega, si scioglie, diventa mentale.</div>
+            </div>
+          </div>
 
-      <div class="content-block">
-        <h3>Le tecniche dell'automatismo</h3>
-        <p><strong>Scrittura automatica:</strong> lasciare fluire le parole senza filtro razionale.</p>
-        <p><strong>Cadavere squisito:</strong> costruire insieme immagini e testi senza controllo totale.</p>
-        <p><strong>Pittura onirica:</strong> dipingere il sogno con precisione quasi fotografica.</p>
-        <p><strong>Frottage e grattage:</strong> far emergere forme inattese da superfici e texture.</p>
-      </div>
-    </div>
-
-    <div class="freud-box fade-in">
-      <div class="freud-portrait">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%201926.jpg" alt="Sigmund Freud">
-      </div>
-      <div class="freud-content">
-        <h4>Freud e i surrealisti</h4>
-        <p>
-          I surrealisti amavano Freud perché sembrava aprire una via teorica verso il sogno e
-          l'inconscio. Anche se Freud non apprezzava sempre il loro uso artistico delle sue idee,
-          il dialogo culturale tra psicoanalisi e Surrealismo resta fondamentale.
-        </p>
-      </div>
-    </div>
-
-    <div class="content-grid" style="margin-top: 1rem;">
-      <div class="obra-card fade-in" onclick="openModal('orologi')">
-        <div class="obra-card-img-placeholder">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dargenta%20%26%20Salvador%20Dali%20The%20persistance%20of%20Memory.png" alt="La persistenza della memoria di Salvador Dalí">
-        </div>
-        <div class="obra-title">La persistenza della memoria</div>
-        <div class="obra-meta">Salvador Dalí · 1931 · Olio su tela · MoMA, New York</div>
-        <p class="obra-desc">
-          Gli orologi molli trasformano il tempo in immagine mentale. Il paesaggio resta fermo,
-          ma la misura stessa della realtà si liquefa.
-        </p>
-        <div class="card-caption">Il tempo non appare più rigido: diventa interiore, instabile, onirico.</div>
-        <a href="javascript:void(0)" class="obra-link" onclick="openModal('orologi')">→ Leggi l'analisi</a>
-      </div>
-
-      <div class="obra-card fade-in">
-        <div class="obra-card-img-placeholder">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%201926.jpg" alt="Ritratto di Sigmund Freud">
-        </div>
-        <div class="obra-title">Inconscio e sogno</div>
-        <div class="obra-meta">Chiave teorica del Surrealismo</div>
-        <p class="obra-desc">
-          Il Surrealismo non si limita a inventare immagini strane: cerca un metodo per fare emergere
-          ciò che la coscienza, di solito, reprime o nasconde.
-        </p>
-        <div class="card-caption">Il sogno diventa una strada per superare i limiti della razionalità.</div>
-      </div>
-    </div>
-
-    <div style="padding: 0 4rem 2rem;">
-      <div class="interactive-box">
-        <div class="box-label">🌙 Esercizio surrealista</div>
-        <h4>Automatismo in 60 secondi</h4>
-        <p>
-          Prova a scrivere cinque parole senza pensarci troppo. Poi guardale: c'è una connessione
-          nascosta? Un'immagine comune? È esattamente ciò che interessava ai surrealisti.
-        </p>
-        <div class="btn-group">
-          <button class="btn" onclick="revealSurr('method')">Come funziona davvero?</button>
-          <button class="btn" onclick="revealSurr('examples')">Esempi di automatismo</button>
-        </div>
-        <div class="reveal-content" id="surrReveal">
-          <p id="surrRevealText"></p>
+          <div class="image-card fade-in" onclick="openModal('sonofman')" style="margin-top:1rem;">
+            <img src="https://en.wikipedia.org/wiki/Special:FilePath/Magritte_TheSonOfMan.jpg" alt="The Son of Man di René Magritte">
+            <div class="image-card-body">
+              <div class="image-card-title">Il figlio dell'uomo</div>
+              <div class="image-card-meta">René Magritte · 1964</div>
+              <div class="image-card-desc">
+                Un'immagine apparentemente semplice diventa un enigma: il volto è nascosto, il visibile non basta più a spiegare il reale.
+              </div>
+              <div class="caption-lite">Magritte mostra che ciò che vediamo nasconde sempre qualcosa.</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="quiz-box" style="margin-top: 1.5rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--surr-gold); margin-bottom: 0.8rem;">
-          Quiz · Surrealismo
-        </div>
-        <div class="quiz-question">
-          Il metodo paranoico-critico di Dalí punta a:
-        </div>
+      <div class="quiz-box">
+        <h4>Quiz · Surrealismo</h4>
+        <p>Il metodo “paranoico-critico” di Dalí indica soprattutto:</p>
         <div class="quiz-options">
-          <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">A) copiare fotografie fedelmente</button>
-          <button class="quiz-opt" onclick="quiz(this,'correct','surr1')">B) produrre associazioni irrazionali mantenendo un'esecuzione controllata</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">C) rifiutare ogni tecnica pittorica</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','surr1')">D) descrivere sogni in modo casuale</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','surrQ')">A) improvvisazione tecnica senza controllo</button>
+          <button class="quiz-option" onclick="quiz(this,'correct','surrQ')">B) generare associazioni irrazionali mantenendo una resa tecnica lucidissima</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','surrQ')">C) una critica diretta alla scienza</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','surrQ')">D) il rifiuto di qualsiasi immagine riconoscibile</button>
         </div>
-        <div class="quiz-feedback" id="surr1">
-          ✓ Esatto. Il contenuto è onirico, ma la realizzazione resta precisissima.
-        </div>
+        <div class="quiz-feedback" id="surrQ">✓ Esatto: contenuto visionario e controllo pittorico altissimo convivono nello stesso quadro.</div>
       </div>
     </div>
   </section>
@@ -1915,341 +1008,212 @@
   <section id="astrattismo">
     <div class="section-header">
       <span class="section-number">Sala 03 / 04 — 1910–1940</span>
-      <h2 class="section-title-huge">ASTRAT<br />TISMO</h2>
-      <p class="section-subtitle-main">Quando forma e colore parlano da soli. Senza oggetti, senza storie.</p>
+      <h2 class="section-title">ASTRATTISMO</h2>
+      <p class="section-subtitle">Quando l'arte smette di rappresentare oggetti e comincia a parlare con forme, ritmi e colori.</p>
     </div>
 
-    <div class="content-grid">
-      <div class="content-block">
-        <h3>La grande rinuncia: addio al mondo visibile</h3>
+    <div class="content-wrap">
+      <div class="text-block">
+        <h3>Dalla realtà visibile a una realtà interiore</h3>
         <p>
-          L'Astrattismo rompe con secoli di rappresentazione. Per la prima volta, un quadro non deve
-          più mostrare paesaggi, corpi o scene riconoscibili per essere significativo.
-        </p>
-        <p>
-          Non è una scelta arbitraria: è una conseguenza della crisi del primo Novecento. Se la
-          realtà non è più semplice, compatta e trasparente, anche l'arte può cercare un linguaggio
-          più essenziale e profondo.
-        </p>
-
-        <div class="pullquote" style="border-color: var(--abst-orange);">
-          "Il colore è il tasto. L'occhio è il martelletto. L'anima è il pianoforte." — Kandinskij
-        </div>
-
-        <p>
-          Kandinskij, Mondrian e Paul Klee arrivano all'astrazione per strade diverse: spirituale,
-          geometrica, poetica. Ma in tutti e tre i casi il quadro diventa un sistema autonomo di forme.
+          Con l'Astrattismo, la pittura rinuncia al compito tradizionale di raffigurare il mondo esterno. Kandinskij cerca una musica visiva, Mondrian una struttura universale, Klee una scrittura poetica fatta di segni, colore e memoria.
         </p>
       </div>
 
-      <div class="content-block">
-        <h3>Arte e musica: la grande analogia</h3>
-        <p>
-          Kandinskij guarda alla musica perché essa comunica senza imitare oggetti. Così anche la
-          pittura può agire direttamente su emozione, ritmo, tensione, armonia.
-        </p>
-        <p>
-          Mondrian cerca invece l'ordine universale, riducendo tutto a linee essenziali e colori
-          primari. Paul Klee sviluppa una visione più lirica, simbolica, quasi fiabesca.
-        </p>
-      </div>
-    </div>
-
-    <h3 style="padding: 1rem 4rem 0.5rem; font-family: var(--font-display); font-size: 1.5rem; color: var(--abst-yellow);">
-      Tre visioni dell'astrazione a confronto
-    </h3>
-
-    <div class="trio-grid">
-      <div class="trio-panel">
-        <div class="trio-color-bar kandinskij-color"></div>
-        <div class="panel-art-thumb contain">
-           <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Kandinsky_-_Composition_8.jpg" alt="Composition 8 di Kandinsky">
+      <div class="grid-3" style="margin-top:1.2rem;">
+        <div class="image-card fade-in" onclick="openModal('kandinsky')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Kandinsky_-_Composition_8.jpg" alt="Composition 8 di Kandinsky">
+          <div class="image-card-body">
+            <div class="image-card-title">Kandinskij</div>
+            <div class="image-card-meta">Composizione VIII · 1923</div>
+            <div class="image-card-desc">Astrazione lirica: il quadro funziona come un'orchestra di linee, cerchi e tensioni cromatiche.</div>
+          </div>
         </div>
-        <span class="trio-period">Monaco · Bauhaus · 1866–1944</span>
-        <h3>Kandinskij</h3>
-        <p style="color: var(--abst-orange); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">Astrazione lirica</p>
-        <p>
-          Forme dinamiche, colori spirituali, ritmo visivo. Il quadro funziona come una musica per gli occhi.
-        </p>
-        <div>
-          <span class="trio-tag" style="border-color: var(--abst-orange); color: var(--abst-orange);">Emotivo</span>
-          <span class="trio-tag" style="border-color: var(--abst-orange); color: var(--abst-orange);">Spirituale</span>
-          <span class="trio-tag" style="border-color: var(--abst-orange); color: var(--abst-orange);">Musicale</span>
+
+        <div class="image-card fade-in" onclick="openModal('mondrian')">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Piet%20Mondriaan,%201930%20-%20Mondrian%20Composition%20II%20in%20Red,%20Blue,%20and%20Yellow.jpg" alt="Composition II in Red Blue and Yellow di Mondrian">
+          <div class="image-card-body">
+            <div class="image-card-title">Mondrian</div>
+            <div class="image-card-meta">Composition II · 1930</div>
+            <div class="image-card-desc">Astrazione geometrica: linee rette, equilibrio, colori primari e ricerca di un ordine universale.</div>
+          </div>
+        </div>
+
+        <div class="image-card fade-in" onclick="openModal('klee')">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ad%20Parnassum,%20Paul%20Klee%20(1932).png" alt="Ad Parnassum di Paul Klee">
+          <div class="image-card-body">
+            <div class="image-card-title">Paul Klee</div>
+            <div class="image-card-meta">Ad Parnassum · 1932</div>
+            <div class="image-card-desc">Astrazione poetica: colore e struttura si combinano in un'immagine che sembra memoria, mappa, città e musica insieme.</div>
+          </div>
         </div>
       </div>
 
-      <div class="trio-panel">
-        <div class="trio-color-bar mondrian-color"></div>
-        <div class="panel-art-thumb contain">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Piet%20Mondriaan%2C%201930%20-%20Mondrian%20Composition%20II%20in%20Red%2C%20Blue%2C%20and%20Yellow.jpg" alt="Composizione di Mondrian">
-        </div>
-        <span class="trio-period">Olanda · De Stijl · 1872–1944</span>
-        <h3>Mondrian</h3>
-        <p style="color: #e43737; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">Astrazione geometrica</p>
-        <p>
-          Linee orizzontali e verticali, colori primari, equilibrio razionale: la ricerca di un ordine universale.
-        </p>
-        <div>
-          <span class="trio-tag" style="border-color: #e43737; color: #e43737;">Geometrico</span>
-          <span class="trio-tag" style="border-color: #e43737; color: #e43737;">Universale</span>
-          <span class="trio-tag" style="border-color: #e43737; color: #e43737;">Razionale</span>
-        </div>
+      <div class="interactive-box">
+        <h4>Tre modi di essere astratti</h4>
+        <p>Kandinskij emoziona, Mondrian ordina, Klee evoca. L'astrazione non è una sola: è una famiglia di risposte diverse alla crisi del visibile.</p>
       </div>
 
-      <div class="trio-panel">
-        <div class="trio-color-bar klee-color"></div>
-        <div class="panel-art-thumb contain">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ad%20Parnassum%2C%20Paul%20Klee%20%281932%29.png" alt="Ad Parnassum di Paul Klee">
-        </div>
-        <span class="trio-period">Berna · Bauhaus · 1879–1940</span>
-        <h3>Paul Klee</h3>
-        <p style="color: #ffa07a; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">Astrazione poetica</p>
-        <p>
-          Segni, ritmo, simbolo, leggerezza. L'astrazione di Klee sembra costruire mondi interiori e mappe immaginarie.
-        </p>
-        <div>
-          <span class="trio-tag" style="border-color: #ffa07a; color: #ffa07a;">Poetico</span>
-          <span class="trio-tag" style="border-color: #ffa07a; color: #ffa07a;">Simbolico</span>
-          <span class="trio-tag" style="border-color: #ffa07a; color: #ffa07a;">Multiforme</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="padding: 2rem 4rem;">
-      <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 1rem; color: var(--abst-yellow);">
-        La psicologia dei colori secondo Kandinskij
-      </h3>
-
-      <p style="font-size: 1rem; color: var(--text-soft); margin-bottom: 1rem;">
-        Passa il cursore sui colori per scoprire il significato che Kandinskij attribuiva a ciascuno.
-      </p>
-
-      <div class="color-theory-vis">
-        <div class="color-seg" style="background:#FFD700;"><span>Giallo · Aggressivo, caldo</span></div>
-        <div class="color-seg" style="background:#1E3A8A;"><span>Blu · Spirituale, profondo</span></div>
-        <div class="color-seg" style="background:#CC1818;"><span>Rosso · Vitale, deciso</span></div>
-        <div class="color-seg" style="background:#1A6B2A;"><span>Verde · Calmo, passivo</span></div>
-        <div class="color-seg" style="background:#F5F0E8; border:1px solid rgba(255,255,255,0.1);"><span style="color:#111;">Bianco · Silenzio, potenziale</span></div>
-        <div class="color-seg" style="background:#111111; border:1px solid rgba(255,255,255,0.1);"><span>Nero · Fine, nulla</span></div>
-      </div>
-    </div>
-
-    <div style="padding: 0 4rem 2rem;">
-      <div class="obra-card fade-in" onclick="openModal('composizione')" style="max-width: 720px;">
-        <div class="obra-card-img-placeholder">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Composition%20VIII.jpg" alt="Composizione VIII di Kandinskij">
-        </div>
-        <div class="obra-title">Composizione VIII</div>
-        <div class="obra-meta">Vasilij Kandinskij · 1923 · Olio su tela · Guggenheim Museum</div>
-        <p class="obra-desc">
-          Cerchi, rette, angoli e curve si organizzano come strumenti in un'orchestra. L'astrazione
-          qui non elimina il significato: lo trasforma in ritmo e tensione.
-        </p>
-        <div class="card-caption">La pittura non descrive: fa sentire.</div>
-        <a href="javascript:void(0)" class="obra-link" onclick="openModal('composizione')">→ Analisi completa</a>
-      </div>
-
-      <div class="quiz-box" style="margin-top: 2rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--abst-yellow); margin-bottom: 0.8rem;">
-          Quiz · Astrattismo
-        </div>
-
-        <div class="quiz-question">
-          Qual è la differenza più importante tra Kandinskij e Mondrian?
-        </div>
-
+      <div class="quiz-box">
+        <h4>Quiz · Astrattismo</h4>
+        <p>La differenza più netta tra Kandinskij e Mondrian è che:</p>
         <div class="quiz-options">
-          <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">A) Kandinskij usa solo colore, Mondrian solo linee</button>
-          <button class="quiz-opt" onclick="quiz(this,'correct','abst1')">B) Kandinskij cerca espressione emotiva e spirituale, Mondrian ordine universale e razionale</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">C) non c'è differenza reale</button>
-          <button class="quiz-opt" onclick="quiz(this,'wrong','abst1')">D) Mondrian è surrealista, Kandinskij dada</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">A) Kandinskij usa colore, Mondrian no</button>
+          <button class="quiz-option" onclick="quiz(this,'correct','abstQ')">B) Kandinskij cerca un'espressione lirica e spirituale, Mondrian un ordine razionale e geometrico</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">C) Mondrian resta figurativo, Kandinskij no</button>
+          <button class="quiz-option" onclick="quiz(this,'wrong','abstQ')">D) non c'è differenza sostanziale</button>
         </div>
-
-        <div class="quiz-feedback" id="abst1">
-          ✓ Esatto. L'astrazione può essere lirica o geometrica, interiore o costruttiva.
-        </div>
+        <div class="quiz-feedback" id="abstQ">✓ Esatto: l'astrazione di Kandinskij è più musicale ed emotiva, quella di Mondrian più strutturale e universale.</div>
       </div>
     </div>
   </section>
 
   <section id="interdisciplinare">
     <div class="section-header">
-      <span class="section-number">Sala 04 / 04 — Sintesi Finale</span>
-      <h2 class="section-title-huge">CON<br />NESS<br />IONI</h2>
-      <p class="section-subtitle-main">Arte, fisica moderna e psicoanalisi: coincidenza o rivoluzione condivisa?</p>
+      <span class="section-number">Sala 04 / 04 — Sintesi finale</span>
+      <h2 class="section-title">CONNESSIONI</h2>
+      <p class="section-subtitle">Arte, scienza e psicoanalisi: tre linguaggi diversi davanti alla stessa crisi.</p>
     </div>
 
-    <div class="connections-diagram">
-      <div class="connection-node fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Einstein%20Portrait.png" alt="Albert Einstein">
-        <span class="node-icon">⚛️</span>
-        <h4>Scienza e crisi della certezza</h4>
-        <p>
-          La fisica moderna mostra che spazio, tempo e osservazione non sono semplici né assoluti.
-        </p>
-      </div>
-
-      <div class="connection-arrow">
-        <div>↔</div>
-        <div style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; opacity: 0.45;">
-          stesso<br />orizzonte?
-        </div>
-      </div>
-
-      <div class="connection-node fade-in">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sigmund%20Freud%201926.jpg" alt="Sigmund Freud">
-        <span class="node-icon">🧠</span>
-        <h4>Psiche e inconscio</h4>
-        <p>
-          La mente non coincide con la sola coscienza: il sogno e il simbolo diventano decisivi.
-        </p>
-      </div>
-    </div>
-
-    <div style="text-align:center; padding:1rem 4rem; margin-bottom:1rem;">
-      <div style="font-size:3rem; opacity:0.3;">⬇</div>
-      <div style="font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity:0.5;">
-        risposta artistica
-      </div>
-      <div style="font-size:3rem; opacity:0.3;">⬇</div>
-    </div>
-
-    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; padding:0 4rem 2rem;">
-      <div style="border:1px solid rgba(212,43,43,0.3); border-radius:4px; padding:1rem 1.5rem; text-align:center; min-width:160px;">
-        <div style="font-family: var(--font-display); font-size:1.1rem; font-weight:700; color:var(--dada-red);">DADA</div>
-        <div style="font-size:0.8rem; opacity:0.65; margin-top:0.25rem;">Rifiuto</div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,0.3); border-radius:4px; padding:1rem 1.5rem; text-align:center; min-width:160px;">
-        <div style="font-family: var(--font-display); font-size:1.1rem; font-weight:700; color:var(--surr-gold);">SURREALISMO</div>
-        <div style="font-size:0.8rem; opacity:0.65; margin-top:0.25rem;">Inconscio</div>
-      </div>
-      <div style="border:1px solid rgba(255,190,11,0.3); border-radius:4px; padding:1rem 1.5rem; text-align:center; min-width:160px;">
-        <div style="font-family: var(--font-display); font-size:1.1rem; font-weight:700; color:var(--abst-yellow);">ASTRATTISMO</div>
-        <div style="font-size:0.8rem; opacity:0.65; margin-top:0.25rem;">Nuovo linguaggio</div>
-      </div>
-    </div>
-
-    <div class="debate-section">
-      <h3>"Arte e scienza si influenzano davvero<br />o rispondono solo allo stesso tempo storico?"</h3>
-
-      <div class="debate-sides">
-        <div class="debate-card yes">
-          <h4 style="color: var(--inter-lime);">✓ SÌ, esiste una connessione</h4>
+    <div class="content-wrap">
+      <div class="debate-grid">
+        <div class="debate-card">
+          <h4 style="color:#c9ea88;">✓ Perché sì</h4>
           <ul>
-            <li>Artisti, scienziati e scrittori vivono nello stesso clima di crisi delle certezze.</li>
-            <li>Breton usa esplicitamente Freud come riferimento teorico.</li>
-            <li>Kandinskij percepisce la realtà moderna come instabile e non più rigidamente descrivibile.</li>
+            <li>Einstein, Freud e le avanguardie mettono tutti in crisi vecchie certezze.</li>
+            <li>Il Surrealismo dialoga apertamente con l'inconscio freudiano.</li>
+            <li>L'Astrattismo nasce anche da una nuova idea di realtà non immediatamente visibile.</li>
           </ul>
         </div>
-
-        <div class="debate-card no">
-          <h4 style="color: var(--dada-red);">⚠ Ma non è un rapporto meccanico</h4>
+        <div class="debate-card">
+          <h4 style="color:#ff7b7b;">⚠ Ma attenzione</h4>
           <ul>
-            <li>Non tutti gli artisti conoscono davvero la fisica o la psicoanalisi in profondità.</li>
-            <li>Spesso si tratta di parallelismi storici più che di influenze dirette.</li>
-            <li>Ogni movimento conserva una propria autonomia estetica e teorica.</li>
+            <li>Non sempre esiste un'influenza diretta e documentabile.</li>
+            <li>Spesso si tratta di risposte parallele a uno stesso clima storico.</li>
+            <li>Le analogie non vanno trasformate automaticamente in dipendenze meccaniche.</li>
           </ul>
         </div>
       </div>
 
-      <div class="final-answer fade-in">
-        <h3>Una rivoluzione condivisa dell'epoca</h3>
+      <div class="final-box">
+        <h4>Conclusione argomentata</h4>
         <p>
-          La lettura più convincente è questa: non semplice coincidenza, ma nemmeno trasmissione diretta
-          e lineare di teorie. Scienza, psicologia e arte condividono una stessa crisi di fondo.
+          La lettura più convincente è questa: artisti, scienziati e psicoanalisti non si limitano a copiarsi tra loro, ma affrontano lo stesso crollo di certezze. Il mondo non appare più stabile, trasparente, assoluto. E allora cambiano anche i linguaggi con cui lo pensiamo.
         </p>
         <p>
-          Le vecchie certezze crollano — e con esse crollano i linguaggi che sembravano naturali.
-          L'arte allora reagisce in tre modi: rifiuta, esplora, reinventa.
-        </p>
-        <p>
-          In questo senso Dadaismo, Surrealismo e Astrattismo sono tre risposte diverse a una stessa
-          frattura storica del primo Novecento.
+          Dada rifiuta. Il Surrealismo esplora. L'Astrattismo reinventa.
         </p>
       </div>
 
-      <div class="interactive-box" style="margin-top: 2rem;">
-        <div class="box-label">💬 Riflessione finale</div>
-        <h4>Cosa ne pensi tu?</h4>
-        <p>
-          Oggi l'intelligenza artificiale mette in discussione creatività, immagine, linguaggio.
-          Potremmo trovarci di nuovo davanti a una crisi simile?
-        </p>
+      <div class="interactive-box">
+        <h4>Riflessione finale</h4>
+        <p>Secondo te oggi, con IA, crisi globali e trasformazioni rapide, stiamo vivendo un'altra stagione in cui anche l'arte deve reinventare i suoi strumenti?</p>
         <div class="btn-group">
-          <button class="btn" onclick="revealInter('sì')">Sì, è simile</button>
-          <button class="btn" onclick="revealInter('no')">No, è diverso</button>
-          <button class="btn" onclick="revealInter('forse')">Forse, lo capiremo dopo</button>
+          <button class="btn" onclick="revealBox('interReveal','si')">Sì</button>
+          <button class="btn" onclick="revealBox('interReveal','no')">No</button>
+          <button class="btn" onclick="revealBox('interReveal','forse')">Forse</button>
         </div>
-        <div class="reveal-content" id="interReveal">
-          <p id="interRevealText"></p>
-        </div>
+        <div class="reveal" id="interReveal"></div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div>
-      <h4>Musei consigliati</h4>
-      <a href="https://www.moma.org" target="_blank" rel="noopener noreferrer">→ MoMA New York</a>
-      <a href="https://www.centrepompidou.fr" target="_blank" rel="noopener noreferrer">→ Centre Pompidou, Parigi</a>
-      <a href="https://www.guggenheim.org" target="_blank" rel="noopener noreferrer">→ Guggenheim Museum</a>
-      <a href="https://www.tate.org.uk" target="_blank" rel="noopener noreferrer">→ Tate Modern, Londra</a>
+    <div class="footer-grid">
+      <div>
+        <h4>Musei</h4>
+        <a href="https://www.moma.org" target="_blank" rel="noopener noreferrer">MoMA</a>
+        <a href="https://www.guggenheim.org" target="_blank" rel="noopener noreferrer">Guggenheim</a>
+        <a href="https://www.tate.org.uk" target="_blank" rel="noopener noreferrer">Tate</a>
+      </div>
+      <div>
+        <h4>Riferimenti</h4>
+        <a href="https://www.treccani.it/enciclopedia/dadaismo/" target="_blank" rel="noopener noreferrer">Treccani — Dadaismo</a>
+        <a href="https://www.theartstory.org/" target="_blank" rel="noopener noreferrer">The Art Story</a>
+      </div>
+      <div>
+        <h4>Questa mostra</h4>
+        <p>Marco Cugno</p>
+        <p>Vincenzo Riemma</p>
+        <p>Vincenzo Fava</p>
+        <p>Alessandro Montalto</p>
+      </div>
     </div>
-
-    <div>
-      <h4>Risorse di approfondimento</h4>
-      <a href="https://www.treccani.it/enciclopedia/dadaismo/" target="_blank" rel="noopener noreferrer">→ Treccani — Dadaismo</a>
-      <a href="https://www.theartstory.org/movement/dada/" target="_blank" rel="noopener noreferrer">→ The Art Story</a>
-      <a href="https://www.theartstory.org/movement/surrealism/" target="_blank" rel="noopener noreferrer">→ The Art Story — Surrealismo</a>
-      <p>Kandinskij, <em>Lo spirituale nell'arte</em>, 1911</p>
-      <p>Breton, <em>Manifesto del Surrealismo</em>, 1924</p>
-    </div>
-
-    <div>
-      <h4>Questa mostra</h4>
-      <p>
-        Realizzata per il compito WebQuest<br />
-        "Oltre la Realtà: Le avanguardie storiche<br />
-        come laboratorio e sperimentazione"
-      </p>
-      <p style="margin-top:0.8rem;">Marco Cugno · Vincenzo Riemma · Vincenzo Fava · Alessandro Montalto</p>
-    </div>
-
-    <div class="footer-bottom">
-      <p>Mostra Virtuale · Dal Caos all'Inconscio · La Rivoluzione Artistica degli Inizi del '900</p>
-    </div>
+    <div class="footer-bottom">Mostra virtuale · Dal caos all'inconscio · Avanguardie del primo Novecento</div>
   </footer>
 
   <script>
     const modalData = {
+      hugoball: {
+        title: "Hugo Ball al Cabaret Voltaire",
+        meta: "Zurigo · 1916",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hugo%20Ball%20Cabaret%20Voltaire.jpg",
+        body: `
+          <p>Questa immagine è una delle più celebri del Dada storico: Hugo Ball appare in costume scenico durante il periodo del Cabaret Voltaire, luogo di nascita del movimento.</p>
+          <p>Il corpo diventa linguaggio sperimentale. La performance distrugge la distinzione netta tra poesia, teatro, gesto e provocazione.</p>
+        `
+      },
       fountain: {
-        title: "Fountain — Marcel Duchamp, 1917",
-        meta: "Ready-made · fotografia storica di Alfred Stieglitz · opera conservata in diverse repliche museali",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Marcel%20Duchamp%2C%201917%2C%20Fountain%2C%20photograph%20by%20Alfred%20Stieglitz.jpg",
+        title: "Fountain — Marcel Duchamp",
+        meta: "1917 · readymade",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Marcel%20Duchamp,%201917,%20Fountain,%20photograph%20by%20Alfred%20Stieglitz.jpg",
         body: `
-          <p><em>Fountain</em> è una delle opere più scandalose e decisive del Novecento. Duchamp presenta un orinatoio capovolto, firmato "R. Mutt", come se fosse una scultura.</p>
-          <p>Il gesto è rivoluzionario perché sposta l'attenzione dall'abilità tecnica alla scelta mentale: l'opera esiste perché l'artista la dichiara tale e la colloca in un contesto artistico.</p>
-          <p>Con questo atto nasce il ready-made come sfida radicale ai criteri tradizionali di bellezza, originalità e manualità.</p>
+          <p><em>Fountain</em> è il ready-made più famoso del Novecento: un oggetto d'uso comune viene sottratto alla funzione pratica e ricollocato nel contesto artistico.</p>
+          <p>Con Duchamp cambia il centro dell'opera: non più solo l'abilità tecnica, ma l'atto concettuale della scelta.</p>
         `
       },
-      orologi: {
-        title: "La persistenza della memoria — Salvador Dalí, 1931",
-        meta: "Olio su tela · MoMA, New York",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Dargenta%20%26%20Salvador%20Dali%20The%20persistance%20of%20Memory.png",
+      lhooq: {
+        title: "L.H.O.O.Q. — Marcel Duchamp",
+        meta: "1919",
+        image: "https://en.wikipedia.org/wiki/Special:FilePath/Marcel_Duchamp,_1919,_L.H.O.O.Q.jpg",
         body: `
-          <p>Gli orologi molli di Dalí sono diventati una delle immagini più celebri del Surrealismo. Il tempo, che dovrebbe misurare il mondo con precisione, appare qui come qualcosa di flessibile e instabile.</p>
-          <p>Il dipinto unisce precisione quasi fotografica e contenuto onirico: è proprio questo contrasto a renderlo così inquietante e memorabile.</p>
-          <p>Il paesaggio immobile e silenzioso accentua l'impressione di sogno lucido, sospeso fuori dalla logica ordinaria.</p>
+          <p>La Gioconda viene “violata” con baffi e pizzetto. L'opera desacralizza l'idea di capolavoro intoccabile e attacca il culto museale dell'arte classica.</p>
+          <p>È un gesto piccolo, ma storicamente enorme.</p>
         `
       },
-      composizione: {
-        title: "Composizione VIII — Vasilij Kandinskij, 1923",
-        meta: "Olio su tela · Guggenheim Museum",
-        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Composition%20VIII.jpg",
+      persistence: {
+        title: "La persistenza della memoria — Salvador Dalí",
+        meta: "1931",
+        image: "https://en.wikipedia.org/wiki/Special:FilePath/The%20Persistence%20of%20Memory.jpg",
         body: `
-          <p><em>Composizione VIII</em> mostra l'astrazione come linguaggio autonomo. Cerchi, linee e forme geometriche non descrivono oggetti, ma costruiscono relazioni di ritmo, tensione ed equilibrio.</p>
-          <p>Kandinskij pensa la pittura come una musica visiva: ogni elemento ha una forza interna, una vibrazione, una funzione emotiva.</p>
-          <p>Il risultato è un quadro che non racconta il mondo esterno ma mette in scena una struttura interiore complessa e dinamica.</p>
+          <p>Gli orologi molli rendono visibile un tempo non più assoluto ma interiore, deformabile, visionario.</p>
+          <p>Il dipinto è diventato un simbolo universale del Surrealismo proprio perché traduce in immagine l'instabilità delle certezze moderne.</p>
+        `
+      },
+      sonofman: {
+        title: "Il figlio dell'uomo — René Magritte",
+        meta: "1964",
+        image: "https://en.wikipedia.org/wiki/Special:FilePath/Magritte_TheSonOfMan.jpg",
+        body: `
+          <p>Il volto nascosto dalla mela trasforma una scena apparentemente normale in un enigma filosofico.</p>
+          <p>Magritte insiste sul fatto che ciò che vediamo ne nasconde sempre altro: il reale non coincide mai del tutto con il visibile.</p>
+        `
+      },
+      kandinsky: {
+        title: "Composizione VIII — Wassily Kandinsky",
+        meta: "1923",
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kandinsky_-_Composition_8.jpg",
+        body: `
+          <p>Kandinskij concepisce il quadro come una struttura musicale: forme e colori non rappresentano oggetti, ma tensioni interiori, ritmo, energia.</p>
+          <p>L'astrazione qui è lirica, spirituale, dinamica.</p>
+        `
+      },
+      mondrian: {
+        title: "Composition II in Red, Blue, and Yellow — Piet Mondrian",
+        meta: "1930",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Piet%20Mondriaan,%201930%20-%20Mondrian%20Composition%20II%20in%20Red,%20Blue,%20and%20Yellow.jpg",
+        body: `
+          <p>Mondrian riduce la pittura a linee ortogonali e colori primari per cercare una struttura universale dell'ordine.</p>
+          <p>La sua astrazione è geometrica, razionale, essenziale.</p>
+        `
+      },
+      klee: {
+        title: "Ad Parnassum — Paul Klee",
+        meta: "1932",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Ad%20Parnassum,%20Paul%20Klee%20(1932).png",
+        body: `
+          <p>Klee costruisce una superficie fatta di piccoli moduli cromatici che evoca insieme architettura, paesaggio, simbolo e memoria.</p>
+          <p>La sua astrazione resta aperta, poetica e suggestiva.</p>
         `
       }
     };
@@ -2257,74 +1221,65 @@
     function openModal(id) {
       const d = modalData[id];
       if (!d) return;
-      document.getElementById('modalContent').innerHTML = `
-        <div class="modal-meta">${d.meta}</div>
+      document.getElementById("modalContent").innerHTML = `
         <div class="modal-image"><img src="${d.image}" alt="${d.title}"></div>
+        <div class="modal-meta">${d.meta}</div>
         <h3>${d.title}</h3>
         ${d.body}
       `;
-      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById("modalOverlay").classList.add("open");
     }
 
     function closeModal() {
-      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById("modalOverlay").classList.remove("open");
     }
 
-    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    document.getElementById("modalOverlay").addEventListener("click", function (e) {
       if (e.target === this) closeModal();
     });
 
-    function revealDada(choice) {
-      const texts = {
-        si: "Hai ragione — ma non nel senso più tradizionale. Per i dadaisti, la domanda stessa 'è arte?' è già una vittoria: se l'opera ti costringe a ripensare i criteri con cui giudichi, allora ha già funzionato.",
-        no: "Perfetto — questa è esattamente la reazione che cercavano. Se dici 'è spazzatura', stai usando i criteri estetici tradizionali che Dada voleva mettere in crisi.",
-        trap: "Esatto. È una trappola concettuale: qualunque risposta ti obbliga a riflettere su cosa significhi davvero chiamare qualcosa 'arte'."
+    function revealBox(id, mode) {
+      const el = document.getElementById(id);
+      const map = {
+        dadaReveal: {
+          si: "Per Dada, la tua domanda è già parte dell'opera: se dubiti, l'opera ha colpito nel segno.",
+          no: "Anche il rifiuto è significativo: mostra quanto i criteri tradizionali continuino a pesare sul nostro giudizio.",
+          trap: "Esatto: è una trappola concettuale. Ogni risposta ti costringe a ridefinire l'arte."
+        },
+        surrReveal: {
+          method: "L'automatismo prova a scrivere o creare prima che il controllo razionale censuri immagini e associazioni più profonde.",
+          examples: "Il risultato può sembrare illogico, ma proprio per questo rivela connessioni inattese, simboli e nuclei emotivi nascosti."
+        },
+        interReveal: {
+          si: "È una posizione forte: grandi trasformazioni tecniche e culturali spesso costringono anche l'arte a cambiare linguaggio.",
+          no: "Può essere: ogni epoca ha crisi specifiche, e non tutte producono avanguardie paragonabili a quelle del primo Novecento.",
+          forse: "Probabilmente è la risposta più prudente: certe svolte si riconoscono davvero solo con il tempo."
+        }
       };
-      document.getElementById('dadaRevealText').textContent = texts[choice];
-      document.getElementById('dadaReveal').classList.add('active');
+      el.textContent = map[id][mode];
+      el.classList.add("active");
     }
 
-    function revealSurr(choice) {
-      const texts = {
-        method: "L'automatismo cerca di indebolire il filtro della ragione cosciente. Scrivere o associare rapidamente significa lasciare più spazio a connessioni profonde, simboliche, talvolta sorprendenti.",
-        examples: "I surrealisti producevano immagini e testi che sembravano strani o assurdi, ma proprio per questo potevano rivelare desideri, paure e simboli che la mente razionale tende a censurare."
-      };
-      document.getElementById('surrRevealText').textContent = texts[choice];
-      document.getElementById('surrReveal').classList.add('active');
-    }
-
-    function revealInter(choice) {
-      const texts = {
-        'sì': "Ci sono forti parallelismi. Quando una società entra in crisi, cambiano anche i linguaggi con cui essa pensa e rappresenta se stessa. L'arte contemporanea potrebbe essere già dentro una trasformazione simile.",
-        'no': "È anche vero che ogni epoca ha problemi diversi. Il primo Novecento nasceva da guerre mondiali, traumi collettivi e crolli politici molto specifici.",
-        'forse': "Probabilmente è la risposta più onesta. Le grandi svolte artistiche si riconoscono bene solo a distanza di anni, quando entrano davvero nella storia."
-      };
-      document.getElementById('interRevealText').textContent = texts[choice];
-      document.getElementById('interReveal').classList.add('active');
-    }
-
-    function quiz(btn, result, id) {
-      const parent = btn.closest('.quiz-box');
-      const opts = parent.querySelectorAll('.quiz-opt');
-      opts.forEach(o => { o.disabled = true; });
+    function quiz(btn, result, feedbackId) {
+      const box = btn.closest(".quiz-box");
+      box.querySelectorAll(".quiz-option").forEach(x => x.disabled = true);
       btn.classList.add(result);
-      const fb = document.getElementById(id);
-      if (fb) fb.classList.add('show');
+      document.getElementById(feedbackId).classList.add("show");
     }
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const docH = document.documentElement.scrollHeight - window.innerHeight;
-      const prog = (window.scrollY / docH) * 100;
-      document.getElementById('progressBar').style.width = prog + '%';
+      const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+      document.getElementById("progressBar").style.width = pct + "%";
     });
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
 
-    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
